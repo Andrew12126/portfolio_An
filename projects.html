@@ -241,31 +241,36 @@
         <!-- 4-Column Grid: Stacks cleanly to 1 col on mobile, 2 on tablet, 4 on desktop -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
-          <!-- CARD 1: AI (RAG Assistant) -->
+          <!-- CARD 1: AI (Smart Gesture Slide Controller) -->
           <div class="group flex flex-col bg-white dark:bg-[#111726] border border-[#E5E7EB] dark:border-white/10 rounded-xl overflow-hidden card-interactive reveal-on-scroll reveal-delay-1 select-none">
             <div class="relative h-44 w-full bg-[#FFF8F0] dark:bg-[#C25E00]/15 flex items-center justify-center p-6 border-b border-[#E5E7EB]/80 dark:border-white/10">
               <div class="absolute top-3.5 left-3.5">
                 <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-[#C25E00] text-white">
-                  AI • RAG
+                  AI • COMPUTER VISION
                 </span>
               </div>
               <div class="transition-transform duration-200 group-hover:scale-110">
-                <i data-lucide="brain" class="w-12 h-12 stroke-[1.5] text-[#C25E00]"></i>
+                <i data-lucide="scan" class="w-12 h-12 stroke-[1.5] text-[#C25E00]"></i>
               </div>
             </div>
             <div class="p-5 flex flex-col justify-between flex-1 bg-white dark:bg-[#111726]">
               <div>
-                <h3 data-i18n="proj1_title" class="font-heading font-semibold text-base text-[#111827] dark:text-white group-hover:text-[#C25E00] dark:group-hover:text-[#D95D1E] transition-colors line-clamp-1">
-                  Academic Paper RAG Assistant
-                </h3>
+                <div class="flex items-start justify-between gap-2">
+                  <h3 data-i18n="proj1_title" class="font-heading font-semibold text-base text-[#111827] dark:text-white group-hover:text-[#C25E00] dark:group-hover:text-[#D95D1E] transition-colors line-clamp-1">
+                    Smart Gesture Slide Controller
+                  </h3>
+                  <a href="https://andrew12126.github.io/Smart_Gesture_Slide_Controller/" target="_blank" rel="noopener noreferrer" title="Mở Live Web Demo" class="text-[#C25E00] dark:text-[#D95D1E] hover:opacity-80 transition-opacity">
+                    <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                  </a>
+                </div>
                 <p data-i18n="proj1_desc" class="text-xs text-[#6B7280] dark:text-slate-400 leading-relaxed line-clamp-3 mt-2 mb-4">
-                  Hệ thống trợ lý AI chuyên biệt cho nghiên cứu khoa học: Đọc hiểu Abstract, trích xuất ý chính và tự động tổng hợp bảng ma trận so sánh tài liệu học thuật.
+                  Hệ thống điều khiển slide không chạm On-Device bằng AI Computer Vision (MediaPipe Hands), tích hợp Cơ chế Chống Bấm Nhầm (Anti-False-Positive) 3 lớp thông minh.
                 </p>
               </div>
               <div class="pt-3 border-t border-[#F3F4F6] dark:border-white/5 flex items-center justify-between text-[11px] font-mono">
-                <span class="text-[#9CA3AF] uppercase">DESIGN SPEC</span>
+                <span class="text-[#16A34A] font-semibold uppercase">LIVE DEMO</span>
                 <span class="text-[#6B7280] dark:text-slate-400 font-medium uppercase tracking-widest text-[10px]">
-                  PYTHON • RAG • PROMPT
+                  MEDIAPIPE • VISION • JS
                 </span>
               </div>
             </div>
@@ -301,31 +306,31 @@
             </div>
           </div>
 
-          <!-- CARD 3: FOUNDATION (C & Python Mini Games Lab) -->
+          <!-- CARD 3: NCKH (Da Nang Winter Tourism Research) -->
           <div class="group flex flex-col bg-white dark:bg-[#111726] border border-[#E5E7EB] dark:border-white/10 rounded-xl overflow-hidden card-interactive reveal-on-scroll reveal-delay-3 select-none">
             <div class="relative h-44 w-full bg-[#FFFBEB] dark:bg-[#F59E0B]/15 flex items-center justify-center p-6 border-b border-[#E5E7EB]/80 dark:border-white/10">
               <div class="absolute top-3.5 left-3.5">
                 <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-[#F59E0B] text-white">
-                  FOUNDATION
+                  NCKH KHOA
                 </span>
               </div>
               <div class="transition-transform duration-200 group-hover:scale-110">
-                <i data-lucide="terminal" class="w-12 h-12 stroke-[1.5] text-[#F59E0B]"></i>
+                <i data-lucide="book-open" class="w-12 h-12 stroke-[1.5] text-[#F59E0B]"></i>
               </div>
             </div>
             <div class="p-5 flex flex-col justify-between flex-1 bg-white dark:bg-[#111726]">
               <div>
                 <h3 data-i18n="proj3_title" class="font-heading font-semibold text-base text-[#111827] dark:text-white group-hover:text-[#C25E00] dark:group-hover:text-[#D95D1E] transition-colors line-clamp-1">
-                  Algorithmic Logic & Mini Games Lab
+                  Đề Tài NCKH: Hành Vi Du Lịch Mùa Đông Đà Nẵng
                 </h3>
                 <p data-i18n="proj3_desc" class="text-xs text-[#6B7280] dark:text-slate-400 leading-relaxed line-clamp-3 mt-2 mb-4">
-                  Kho bài tập rèn luyện tư duy giải thuật bằng C và Python: Xử lý cấu trúc dữ liệu cơ bản, bài toán logic và mini-game tương tác (Kéo búa bao, tính toán CLI).
+                  Đề tài nghiên cứu khoa học cấp Khoa: Ứng dụng Google Scholar & Perplexity AI rà soát tài liệu học thuật, bóc tách biến số tâm lý và lập bảng ma trận so sánh đa chiều.
                 </p>
               </div>
               <div class="pt-3 border-t border-[#F3F4F6] dark:border-white/5 flex items-center justify-between text-[11px] font-mono">
-                <span class="text-[#9CA3AF] uppercase">FOUNDATION</span>
+                <span class="text-[#9CA3AF] uppercase">ACADEMIC R&D</span>
                 <span class="text-[#6B7280] dark:text-slate-400 font-medium uppercase tracking-widest text-[10px]">
-                  C • PYTHON • CLI
+                  SCHOLAR • PERPLEXITY
                 </span>
               </div>
             </div>
@@ -369,7 +374,7 @@
     <!-- ======================================================================
          4. CASE STUDY DETAIL VIEW
          ====================================================================== -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-24">
+    <section id="casestudy" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-24">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
         
         <!-- Left Column (col-span-8): Case Study Details & Curriculum -->
@@ -379,19 +384,19 @@
           <div class="space-y-4 reveal-on-scroll">
             <div class="flex flex-wrap items-center gap-2.5">
               <span class="inline-flex items-center px-2.5 py-1 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-[#C25E00] text-white">
-                AI ARCHITECTURE SPECIFICATION
+                AI & COMPUTER VISION SPECIFICATION
               </span>
               <span data-i18n="cs_level_badge" class="inline-flex items-center px-2.5 py-1 rounded text-[10px] font-mono font-semibold uppercase tracking-wider bg-[#F3F4F6] dark:bg-white/10 text-[#4B5563] dark:text-slate-300 border border-[#E5E7EB] dark:border-white/10">
-                BẢN THIẾT KẾ KIẾN TRÚC NGHIÊN CỨU
+                BẢN THIẾT KẾ KIẾN TRÚC & PRODUCTION DEMO
               </span>
             </div>
 
             <h2 data-i18n="cs_title" class="text-2xl sm:text-4xl lg:text-[40px] font-bold font-serif text-[#111827] dark:text-white tracking-tight leading-[1.18]">
-              Hệ Thống Trợ Lý AI Hỏi Đáp & Rà Soát Bài Báo Khoa Học (Academic Paper RAG Assistant)
+              Smart Gesture Slide Controller (Điều Khiển Slide Bằng Cử Chỉ Tay AI)
             </h2>
 
             <p data-i18n="cs_tagline" class="text-base text-[#4B5563] dark:text-slate-300 leading-relaxed font-normal">
-              Kiến trúc kỹ nghệ ứng dụng AI chuyên sâu: Kết hợp Kỹ nghệ Prompt và Truy xuất Tăng cường Ngữ nghĩa (RAG) để tự động hóa quy trình phân tích Abstract và lập bảng ma trận so sánh tài liệu học thuật không gây ảo giác.
+              Kiến trúc Computer Vision On-Device đột phá: Ứng dụng MediaPipe Hands nhận diện 21 khớp xương 3D thời gian thực, tích hợp Động cơ Chống Bấm Nhầm (Anti-False-Positive) 3 lớp độc quyền giúp diễn giả hoàn toàn tự do làm chủ sân khấu.
             </p>
           </div>
 
@@ -399,21 +404,21 @@
           <div class="p-6 rounded-xl bg-white dark:bg-[#111726] border border-[#E5E7EB] dark:border-white/10 space-y-3.5 card-interactive reveal-on-scroll">
             <div class="font-mono text-xs font-semibold uppercase tracking-wider text-[#111827] dark:text-white flex items-center gap-2">
               <i data-lucide="check-circle-2" class="w-4 h-4 text-[#16A34A]"></i>
-              <span data-i18n="cs_achievements_heading">MỤC TIÊU & NGUYÊN TẮC KIẾN TRÚC CỐT LÕI</span>
+              <span data-i18n="cs_achievements_heading">MỤC TIÊU & ĐỘT PHÁ KIẾN TRÚC CỐT LÕI</span>
             </div>
             
             <ul class="space-y-2.5 text-xs sm:text-sm text-[#374151] dark:text-slate-300">
               <li class="flex items-start gap-2.5">
                 <span class="w-1.5 h-1.5 rounded-full bg-[#C25E00] mt-2 shrink-0"></span>
-                <span data-i18n="cs_achieve_1">Truy xuất chuẩn xác không ảo giác (Zero Hallucination): Tác tử AI chỉ trả lời dựa trên nội dung bài báo khoa học đã nạp, luôn đính kèm trích dẫn nguồn học thuật (Tác giả, Năm, DOI).</span>
+                <span data-i18n="cs_achieve_1">Xử lý On-Device siêu tốc (30-60 FPS): Nhận diện 21 khớp tay 3D trực tiếp trên trình duyệt bằng Webcam qua MediaPipe Hands, không gửi video lên Cloud, bảo mật 100% và phản hồi tức thì dưới 25ms.</span>
               </li>
               <li class="flex items-start gap-2.5">
                 <span class="w-1.5 h-1.5 rounded-full bg-[#C25E00] mt-2 shrink-0"></span>
-                <span data-i18n="cs_achieve_2">Tự động bóc tách cấu trúc Abstract: Phân loại mục tiêu nghiên cứu, phương pháp luận thực nghiệm, cỡ mẫu và kết luận chính từ tệp PDF tài liệu khoa học.</span>
+                <span data-i18n="cs_achieve_2">Cơ chế Chống Bấm Nhầm (Anti-False-Positive Engine) 3 Lớp: Giải quyết triệt để vấn đề nhảy slide khi vung tay tự nhiên nhờ Master Lock (xòe 5 ngón 1.0s), Hold-to-Trigger (giữ 800ms với vòng tiến trình SVG) và Cooldown Buffer (1.2s chống nhảy liên hoàn).</span>
               </li>
               <li class="flex items-start gap-2.5">
                 <span class="w-1.5 h-1.5 rounded-full bg-[#C25E00] mt-2 shrink-0"></span>
-                <span data-i18n="cs_achieve_3">Tự động sinh Ma trận so sánh đa chiều: Tổng hợp các biến số tâm lý và kết quả của nhiều nghiên cứu tiền nhiệm thành bảng đối sánh phục vụ viết đề tài.</span>
+                <span data-i18n="cs_achieve_3">Trải nghiệm thuyết trình không chạm tự do: Hỗ trợ Con Trỏ Laser Ảo phát sáng (chụm ngón cái & trỏ) và Phóng to/Thu nhỏ slide 2 tay (Two-Hand Zoom 1.0x - 2.5x), diễn giả không còn phụ thuộc vào clicker cầm tay hay trợ lý bấm hộ.</span>
               </li>
             </ul>
           </div>
@@ -422,10 +427,10 @@
           <div class="space-y-4 pt-2 reveal-on-scroll">
             <div class="border-b border-[#E5E7EB] dark:border-white/10 pb-3">
               <h3 data-i18n="cs_curriculum_heading" class="text-xl sm:text-2xl font-bold font-serif text-[#111827] dark:text-white">
-                Kiến Trúc Hệ Thống & Phân Tách Module
+                Kiến Trúc Kỹ Nghệ & Luồng Xử Lý Hệ Thống
               </h3>
               <p data-i18n="cs_curriculum_sub" class="text-xs sm:text-sm text-[#6B7280] dark:text-slate-400 font-mono mt-1">
-                Đặc tả kỹ thuật của luồng xử lý RAG phục vụ nghiên cứu khoa học
+                Đặc tả kỹ thuật của luồng nhận diện cử chỉ On-Device và cơ chế chống bấm nhầm
               </p>
             </div>
 
@@ -443,10 +448,10 @@
                   </span>
                   <div>
                     <h4 data-i18n="cs_mod1_title" class="font-heading font-semibold text-sm sm:text-base text-[#111827] dark:text-white">
-                      Module 1: Tiếp Nhận & Phân Đoạn Văn Bản Khoa Học (Document Ingestion & Chunking)
+                      Module 1: Tiếp Nhận Luồng Video & Định Vị Khung Xương 21 Điểm (Camera Stream & 3D Landmarks)
                     </h4>
                     <p data-i18n="cs_mod1_sub" class="text-xs text-[#6B7280] dark:text-slate-400 mt-0.5">
-                      Trích xuất văn bản từ PDF và phân chia đoạn thông minh theo cấu trúc bài báo
+                      Thu nạp khung hình Webcam, tự động lật gương và trích xuất tọa độ 21 mốc xương bàn tay qua MediaPipe
                     </p>
                   </div>
                 </div>
@@ -455,12 +460,12 @@
 
               <div id="acc-mod-1" class="hidden p-4 sm:p-5 pt-0 border-t border-[#F3F4F6] dark:border-white/5 text-xs sm:text-sm text-[#4B5563] dark:text-slate-300 leading-relaxed space-y-3">
                 <p data-i18n="cs_mod1_content" class="pt-3">
-                  Thu nạp tệp tài liệu PDF, bóc tách các phân đoạn quan trọng (Abstract, Methodology, Findings) và bảo toàn ngữ cảnh học thuật thông qua phương pháp phân đoạn có ngữ nghĩa (semantic chunking).
+                  Khởi tạo luồng Webcam HTML5, render trực tiếp lên Canvas với hiệu ứng Cyber Neon. Pipeline MediaPipe Hands On-Device phân tách lòng bàn tay (Palm Detector) và định vị chính xác tọa độ không gian 3D (X, Y, Z) của 21 mốc xương bàn tay với tần số 30-60 FPS.
                 </p>
                 <div class="bg-[#FAF9F6] dark:bg-[#161D2F] p-3 rounded-lg font-mono text-xs border border-[#E5E7EB] dark:border-white/10 space-y-1 overflow-x-auto">
-                  <div class="text-[#C25E00] font-semibold">// Ingestion & Semantic Chunking Pipeline:</div>
-                  <div>PDF Upload &rarr; Structured Layout Extraction &rarr; Semantic Boundary Detection</div>
-                  <div>Chunks = [Abstract Context, Methodology Section, Findings &amp; Empirical Claims]</div>
+                  <div class="text-[#C25E00] font-semibold">// On-Device Computer Vision & Skeleton Tracking:</div>
+                  <div>Webcam Video (HTML5) &rarr; MediaPipe Hands (Palm Detection) &rarr; 21 3D Landmarks (X, Y, Z)</div>
+                  <div>Render: Mirrored Canvas HUD (30-60 FPS) &bull; Latency &lt; 25ms &bull; 100% Client-side Privacy</div>
                 </div>
               </div>
             </div>
@@ -479,10 +484,10 @@
                   </span>
                   <div>
                     <h4 data-i18n="cs_mod2_title" class="font-heading font-semibold text-sm sm:text-base text-[#111827] dark:text-white">
-                      Module 2: Kỹ Nghệ Prompt & Định Dạng Thẩm Định Học Thuật (Prompt Engineering)
+                      Module 2: Giải Thuật Phân Loại Cử Chỉ & Khoảng Cách Euclid (Geometric Gesture Classification)
                     </h4>
                     <p data-i18n="cs_mod2_sub" class="text-xs text-[#6B7280] dark:text-slate-400 mt-0.5">
-                      Hệ thống câu lệnh cấu trúc định hướng AI đóng vai trò trợ lý nghiên cứu khách quan
+                      Tính toán khoảng cách hình học giữa các khớp ngón tay để nhận diện chuẩn xác từng cử chỉ điều khiển
                     </p>
                   </div>
                 </div>
@@ -491,12 +496,12 @@
 
               <div id="acc-mod-2" class="hidden p-4 sm:p-5 pt-0 border-t border-[#F3F4F6] dark:border-white/5 text-xs sm:text-sm text-[#4B5563] dark:text-slate-300 leading-relaxed space-y-3">
                 <p data-i18n="cs_mod2_content" class="pt-3">
-                  Thiết kế các prompt mẫu định dạng JSON/Markdown chặt chẽ, ràng buộc mô hình chỉ trích xuất thông tin có bằng chứng thực nghiệm, loại bỏ hoàn toàn hiện tượng tự suy diễn không có căn cứ.
+                  Sử dụng khoảng cách Euclid (Euclidean Distance) giữa đầu ngón tay (Tip) và khớp đốt (PIP/MCP) để xác định trạng thái co/duỗi của từng ngón: 1 ngón trỏ (☝️ Next), 2 ngón chữ V (✌️ Prev), Chụm ngón cái - trỏ (🤏 Laser Pointer) và Khoảng cách 2 lòng bàn tay (👐 Zoom 1.0x - 2.5x).
                 </p>
                 <div class="bg-[#FAF9F6] dark:bg-[#161D2F] p-3 rounded-lg font-mono text-xs border border-[#E5E7EB] dark:border-white/10 space-y-1 overflow-x-auto">
-                  <div class="text-[#C25E00] font-semibold">// Rigorous Prompt Extraction Schema:</div>
-                  <div>Extract: { Problem, Methodology, SampleSize_N, KeyFindings, EmpiricalDOI }</div>
-                  <div>Constraint: Zero speculation. Missing data flagged as "Not Disclosed in Source".</div>
+                  <div class="text-[#C25E00] font-semibold">// Geometric Gesture Classification Logic:</div>
+                  <div>Finger Fold/Extend = EuclideanDistance(FingerTip, Wrist) vs EuclideanDistance(PIP, Wrist)</div>
+                  <div>Gesture Mapping: [☝️ Index Up = Next, ✌️ Peace = Prev, 🤏 Pinch = Laser, 👐 2-Hands = Zoom]</div>
                 </div>
               </div>
             </div>
@@ -515,10 +520,10 @@
                   </span>
                   <div>
                     <h4 data-i18n="cs_mod3_title" class="font-heading font-semibold text-sm sm:text-base text-[#111827] dark:text-white">
-                      Module 3: Truy Xuất Tăng Cường & Tổng Hợp Ma Trận So Sánh (RAG & Matrix Synthesis)
+                      Module 3: Động Cơ Chống Bấm Nhầm 3 Lớp & Máy Trạng Thái (3-Layer Anti-False-Positive Engine)
                     </h4>
                     <p data-i18n="cs_mod3_sub" class="text-xs text-[#6B7280] dark:text-slate-400 mt-0.5">
-                      Tìm kiếm ngữ nghĩa theo độ tương đồng và tổng hợp bảng đối sánh đa bài báo
+                      Máy trạng thái hữu hạn (FSM) kết hợp bộ đếm Dwell 800ms và Cooldown Buffer chống rung giật
                     </p>
                   </div>
                 </div>
@@ -527,11 +532,13 @@
 
               <div id="acc-mod-3" class="hidden p-4 sm:p-5 pt-0 border-t border-[#F3F4F6] dark:border-white/5 text-xs sm:text-sm text-[#4B5563] dark:text-slate-300 leading-relaxed space-y-3">
                 <p data-i18n="cs_mod3_content" class="pt-3">
-                  Thực hiện tìm kiếm ngữ nghĩa đối chiếu câu hỏi nghiên cứu với kho tài liệu, tự động đối chiếu các điểm tương đồng và khác biệt giữa các nghiên cứu trước để hình thành bảng ma trận so sánh hoàn chỉnh.
+                  Cơ chế 3 lớp độc quyền: Lớp 1 - Master Lock (xòe 5 ngón giữ 1.0s) chuyển đổi trạng thái ACTIVE ⟷ LOCKED; Lớp 2 - Hold-to-Trigger yêu cầu giữ cử chỉ ổn định 800ms kèm vòng tiến trình SVG (nếu quơ tay lướt qua sẽ lập tức hủy đếm); Lớp 3 - Cooldown Buffer 1.2s khóa lệnh tạm thời sau khi nhảy trang để chống lặp slide.
                 </p>
                 <div class="bg-[#FAF9F6] dark:bg-[#161D2F] p-3 rounded-lg font-mono text-xs border border-[#E5E7EB] dark:border-white/10 space-y-1 overflow-x-auto">
-                  <div class="text-[#C25E00] font-semibold">// Comparative Synthesis Output:</div>
-                  <div>Table Columns: [Study/Author, Context/Year, Core Variables, Methodology, Key Insights, Research Gap]</div>
+                  <div class="text-[#C25E00] font-semibold">// 3-Layer Anti-False-Positive State Machine:</div>
+                  <div>Layer 1: Master Lock [🖐️ Open Palm held 1.0s] &rarr; Toggle (ACTIVE &harr; LOCKED)</div>
+                  <div>Layer 2: Hold-to-Trigger [Dwell Time 800ms + SVG Charge Ring] &rarr; Accidental waves reset to 0%</div>
+                  <div>Layer 3: Cooldown Buffer [1200ms lock-out] &rarr; Slide Bounce Protection</div>
                 </div>
               </div>
             </div>
@@ -551,15 +558,17 @@
 
               <div class="space-y-3">
                 <a
-                  href="contact.html"
+                  href="https://andrew12126.github.io/Smart_Gesture_Slide_Controller/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   class="w-full min-h-[44px] rounded-lg text-xs sm:text-sm font-medium bg-[#C25E00] text-white hover:bg-[#A84E00] active:bg-[#8F4300] flex items-center justify-center gap-2 transition-colors shadow-sm btn-interactive"
                 >
-                  <i data-lucide="message-square" class="w-4 h-4"></i>
-                  <span data-i18n="cs_btn_demo">Trao Đổi Kiến Trúc Dự Án</span>
+                  <i data-lucide="play-circle" class="w-4 h-4"></i>
+                  <span data-i18n="cs_btn_demo">Trải Nghiệm Live Web Demo</span>
                 </a>
 
                 <a
-                  href="https://github.com/Andrew12126"
+                  href="https://github.com/Andrew12126/Smart_Gesture_Slide_Controller"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="w-full min-h-[44px] rounded-lg text-xs sm:text-sm font-medium bg-white dark:bg-[#161D2F] border border-[#E5E7EB] dark:border-white/10 text-[#111827] dark:text-white hover:bg-[#F9FAFB] dark:hover:bg-white/5 flex items-center justify-center gap-2 transition-colors btn-interactive"
@@ -575,19 +584,23 @@
               <dl class="divide-y divide-[#F3F4F6] dark:divide-white/5 text-xs">
                 <div class="py-2.5 flex items-center justify-between">
                   <dt class="text-[#6B7280] dark:text-slate-400 font-normal">Core Architecture</dt>
-                  <dd class="font-mono font-medium text-[#111827] dark:text-white">RAG Framework</dd>
+                  <dd class="font-mono font-medium text-[#111827] dark:text-white">On-Device Vision (Client-side)</dd>
                 </div>
                 <div class="py-2.5 flex items-center justify-between">
-                  <dt class="text-[#6B7280] dark:text-slate-400 font-normal">Languages</dt>
-                  <dd class="font-mono font-medium text-[#111827] dark:text-white">Python 3.11+ • C Foundation</dd>
+                  <dt class="text-[#6B7280] dark:text-slate-400 font-normal">Vision Framework</dt>
+                  <dd class="font-mono font-medium text-[#111827] dark:text-white">MediaPipe Hands</dd>
                 </div>
                 <div class="py-2.5 flex items-center justify-between">
-                  <dt class="text-[#6B7280] dark:text-slate-400 font-normal">Retrieval Logic</dt>
-                  <dd class="font-mono font-medium text-[#111827] dark:text-white">Cosine Similarity</dd>
+                  <dt class="text-[#6B7280] dark:text-slate-400 font-normal">Hand Landmarks</dt>
+                  <dd class="font-mono font-medium text-[#111827] dark:text-white">21 3D Spatial Joints</dd>
                 </div>
                 <div class="py-2.5 flex items-center justify-between">
-                  <dt class="text-[#6B7280] dark:text-slate-400 font-normal">Dev Environments</dt>
-                  <dd class="font-mono font-medium text-[#111827] dark:text-white">Antigravity IDE • VS Code</dd>
+                  <dt class="text-[#6B7280] dark:text-slate-400 font-normal">Frame Rate / Latency</dt>
+                  <dd class="font-mono font-medium text-[#111827] dark:text-white">30-60 FPS • &lt; 25ms</dd>
+                </div>
+                <div class="py-2.5 flex items-center justify-between">
+                  <dt class="text-[#6B7280] dark:text-slate-400 font-normal">Anti-False-Positive</dt>
+                  <dd class="font-mono font-medium text-[#111827] dark:text-white">3-Layer (Lock, Dwell, Cool)</dd>
                 </div>
                 <div class="py-2.5 flex items-center justify-between">
                   <dt class="text-[#6B7280] dark:text-slate-400 font-normal">Version Control</dt>
@@ -604,7 +617,7 @@
                   <span data-i18n="cs_peer_reviewed">Định Hướng Kiến Trúc Vị Nhân Sinh</span>
                 </div>
                 <p data-i18n="cs_peer_desc" class="text-[11px] leading-relaxed">
-                  Thiết kế nhằm hỗ trợ các nhà nghiên cứu, sinh viên và giảng viên tiết kiệm hàng chục giờ đọc tài liệu, hướng tới ứng dụng AI thiết thực cho đời sống học thuật.
+                  Thiết kế nhằm giải phóng đôi tay và thăng hoa cảm xúc cho diễn giả, sinh viên và giảng viên khi thuyết trình, hướng tới ứng dụng AI thiết thực không rào cản phần cứng.
                 </p>
               </div>
             </div>

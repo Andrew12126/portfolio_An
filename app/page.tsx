@@ -5,8 +5,8 @@ import { ProjectDetailView } from "@/components/projects/project-detail-view";
 import { portfolioData } from "@/data/portfolio-data";
 
 export default function HomePage() {
-  // Use the Raft Consensus / Systems project as the featured deep-dive case study
-  const featuredCaseStudy = portfolioData.projects[3];
+  // Use Smart Gesture Slide Controller as the featured deep-dive case study
+  const featuredCaseStudy = portfolioData.projects[0];
 
   return (
     <div className="w-full flex flex-col">
