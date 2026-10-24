@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects & Engineering Systems | Nguyen Van An</title>
+  <meta name="description" content="Applied software engineering, distributed systems, and AI tooling projects by Nguyen Van An.">
+  <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0B0F17" media="(prefers-color-scheme: dark)">
+
+  <!-- Google Fonts: Playfair Display (Serif), Inter (Sans), JetBrains Mono (Monospace) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            accent: {
+              DEFAULT: '#C25E00',
+              hover: '#A84E00',
+              light: '#FFF8F0',
+              border: '#FBE3CC',
+              dark: '#D95D1E'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+            heading: ['Montserrat', 'Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Stylesheet (Swiss Minimalist + ECC Micro-interactions) -->
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="min-h-screen bg-white dark:bg-[#0B0F17] text-[#111827] dark:text-[#F9FAFB] flex flex-col font-sans antialiased selection:bg-[#FBE3CC] selection:text-[#C25E00] transition-colors duration-200">
+
+  <!-- Accessible Skip Link (WCAG 2.2 AA) -->
+  <a href="#main-content" class="skip-link">Chuyển đến nội dung chính</a>
+
+  <!-- ========================================================================
+       1. TOP NAVIGATION BAR (Fixed Top with Multi-Page Navigation)
+       ======================================================================== -->
+  <header role="banner" class="sticky top-0 z-50 w-full bg-white/95 dark:bg-[#0B0F17]/95 backdrop-blur-md border-b border-[#E5E7EB] dark:border-white/10 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 gap-3 sm:gap-4">
+        
+        <!-- Left: Logo & Identity -->
+        <a href="index.html" class="flex items-center gap-2.5 shrink-0 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C25E00] rounded-lg p-1" aria-label="Nguyen Van An - Personal Hub">
+          <div class="w-8 h-8 rounded-lg bg-[#C25E00] flex items-center justify-center text-white shadow-none group-hover:bg-[#A84E00] transition-colors">
+            <i data-lucide="terminal" class="w-4 h-4"></i>
+          </div>
+          <div class="flex items-baseline gap-1.5">
+            <span class="font-heading font-bold text-base tracking-tight text-[#111827] dark:text-white">
+              Nguyen Van An
+            </span>
+            <span class="text-sm font-normal text-[#6B7280] dark:text-slate-400">
+              AI Hub
+            </span>
+          </div>
+        </a>
+
+        <!-- Middle: Navigation Links -->
+        <nav role="navigation" aria-label="Menu chính" class="hidden md:flex items-center gap-7 lg:gap-8">
+          <a
+            href="index.html"
+            data-i18n="nav_about"
+            class="text-xs font-semibold uppercase tracking-wider text-[#6B7280] dark:text-slate-400 hover:text-[#111827] dark:hover:text-white py-2 transition-colors font-mono"
+          >
+            Về Tôi
+          </a>
+          <a
+            href="research.html"
+            data-i18n="nav_research"
+            class="text-xs font-semibold uppercase tracking-wider text-[#6B7280] dark:text-slate-400 hover:text-[#111827] dark:hover:text-white py-2 transition-colors font-mono"
+          >
+            Nghiên Cứu
+          </a>
+          <a
+            href="projects.html"
+            data-i18n="nav_projects"
+            class="text-xs font-semibold uppercase tracking-wider text-[#C25E00] dark:text-[#D95D1E] underline underline-offset-8 decoration-2 decoration-[#C25E00] dark:decoration-[#D95D1E] py-2 transition-colors font-mono font-bold"
+            aria-current="page"
+          >
+            Dự Án
+          </a>
+          <a
+            href="contact.html"
+            data-i18n="nav_contact"
+            class="text-xs font-semibold uppercase tracking-wider text-[#6B7280] dark:text-slate-400 hover:text-[#111827] dark:hover:text-white py-2 transition-colors font-mono"
+          >
+            Liên Hệ
+          </a>
+        </nav>
+
+        <!-- Right Utility Actions -->
+        <div class="flex items-center gap-2 sm:gap-2.5">
+          
+          <!-- Language Toggle - Min 44x44px touch area -->
+          <button
+            id="lang-toggle-btn"
+            type="button"
+            class="inline-flex items-center gap-1.5 h-10 px-3 rounded-lg border border-[#E5E7EB] dark:border-white/10 bg-[#F9FAFB] dark:bg-[#161D2F] text-xs font-mono font-medium text-[#111827] dark:text-white hover:border-[#C25E00] dark:hover:border-[#D95D1E] transition-colors btn-interactive"
+            aria-label="Chuyển đổi ngôn ngữ Tiếng Việt / English"
+            title="Chuyển đổi ngôn ngữ / Switch language"
+          >
+            <i data-lucide="globe" class="w-3.5 h-3.5 text-[#C25E00]"></i>
+            <span id="lang-indicator-en" class="text-[#C25E00] font-bold">EN</span>
+            <span class="text-[#D1D5DB] dark:text-slate-600">|</span>
+            <span id="lang-indicator-vi" class="text-[#9CA3AF] font-normal">VI</span>
+          </button>
+
+          <!-- Theme Toggle - Min 44x44px touch area -->
+          <button
+            type="button"
+            class="theme-toggle-btn w-10 h-10 rounded-lg border border-[#E5E7EB] dark:border-white/10 bg-[#F9FAFB] dark:bg-[#161D2F] text-[#4B5563] dark:text-slate-300 hover:text-[#C25E00] dark:hover:text-[#D95D1E] hover:border-[#C25E00] dark:hover:border-[#D95D1E] transition-colors flex items-center justify-center btn-interactive"
+            aria-label="Chuyển đổi giao diện Sáng / Tối"
+            title="Chuyển đổi giao diện Sáng / Tối"
+          >
+            <i data-lucide="sun" class="theme-sun-icon w-4 h-4 hidden text-amber-400"></i>
+            <i data-lucide="moon" class="theme-moon-icon w-4 h-4 text-[#4B5563]"></i>
+          </button>
+
+          <!-- Resume Link -->
+          <a
+            href="contact.html#cv"
+            data-i18n="btn_resume"
+            class="hidden sm:inline-flex items-center text-xs font-semibold uppercase tracking-wider text-[#4B5563] dark:text-slate-300 hover:text-[#111827] dark:hover:text-white px-2.5 h-10 transition-colors font-mono"
+          >
+            Hồ Sơ (CV)
+          </a>
+
+          <!-- Primary CTA Button -->
+          <a
+            href="contact.html"
+            data-i18n="btn_contact"
+            class="inline-flex items-center justify-center h-10 px-4 rounded-lg text-xs sm:text-sm font-medium bg-[#C25E00] text-white hover:bg-[#A84E00] active:bg-[#8F4300] transition-colors shadow-sm btn-interactive"
+          >
+            Liên Hệ
+          </a>
+
+          <!-- Mobile Hamburger Toggle - Min 44x44px touch target -->
+          <button
+            id="mobile-menu-btn"
+            type="button"
+            class="md:hidden w-11 h-11 rounded-lg text-[#4B5563] dark:text-slate-300 hover:text-[#111827] dark:hover:text-white hover:bg-[#F3F4F6] dark:hover:bg-white/10 transition-colors flex items-center justify-center btn-interactive"
+            aria-label="Mở menu điều hướng"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+          >
+            <i id="menu-icon-open" data-lucide="menu" class="w-5 h-5"></i>
+            <i id="menu-icon-close" data-lucide="x" class="w-5 h-5 hidden"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-[#E5E7EB] dark:border-white/10 bg-white dark:bg-[#0B0F17] px-4 pt-3 pb-5 space-y-2">
+      <div class="flex flex-col space-y-1.5" role="menu">
+        <a href="index.html" data-i18n="nav_about" role="menuitem" class="min-h-[44px] flex items-center px-3.5 py-2.5 rounded-lg text-sm font-medium text-[#4B5563] dark:text-slate-300 hover:bg-[#F9FAFB] dark:hover:bg-white/5 transition-colors">
+          Về Tôi
+        </a>
+        <a href="research.html" data-i18n="nav_research" role="menuitem" class="min-h-[44px] flex items-center px-3.5 py-2.5 rounded-lg text-sm font-medium text-[#4B5563] dark:text-slate-300 hover:bg-[#F9FAFB] dark:hover:bg-white/5 transition-colors">
+          Nghiên Cứu
+        </a>
+        <a href="projects.html" data-i18n="nav_projects" role="menuitem" class="min-h-[44px] flex items-center px-3.5 py-2.5 rounded-lg text-sm font-semibold bg-[#FFF8F0] dark:bg-white/5 text-[#C25E00] dark:text-[#D95D1E]">
+          Dự Án
+        </a>
+        <a href="contact.html" data-i18n="nav_contact" role="menuitem" class="min-h-[44px] flex items-center px-3.5 py-2.5 rounded-lg text-sm font-medium text-[#4B5563] dark:text-slate-300 hover:bg-[#F9FAFB] dark:hover:bg-white/5 transition-colors">
+          Liên Hệ
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       MAIN CONTENT CONTAINER
+       ======================================================================== -->
+  <main id="main-content" class="flex-1 w-full bg-[#FAF9F6] dark:bg-[#0B0F17] transition-colors">
+
+    <!-- ======================================================================
+         2. PROJECTS PAGE HEADER
+         ====================================================================== -->
+    <section class="w-full bg-[#FFFFFF] dark:bg-[#0B0F17] py-12 sm:py-20 border-b border-[#E5E7EB] dark:border-white/10 transition-colors">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4 reveal-on-scroll">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#FDF3E7] dark:bg-[#C25E00]/15 text-[#C25E00] dark:text-[#D95D1E] border border-[#FBE3CC] dark:border-[#C25E00]/30 text-xs font-mono font-semibold uppercase tracking-wider">
+          <i data-lucide="layers" class="w-3.5 h-3.5"></i>
+          <span data-i18n="proj_page_badge">03 · DỰ ÁN CÔNG NGHỆ & KỸ NGHỆ HỆ THỐNG</span>
+        </div>
+        <h1 data-i18n="proj_page_title" class="text-3xl sm:text-5xl lg:text-6xl font-bold font-serif text-[#111827] dark:text-white tracking-tight leading-tight">
+          Dự Án Công Nghệ & Kỹ Nghệ Ứng Dụng
+        </h1>
+        <p data-i18n="proj_page_sub" class="text-base sm:text-lg text-[#4B5563] dark:text-slate-300 leading-relaxed max-w-3xl font-normal">
+          Hiện thực hóa ý tưởng qua mã nguồn, kiến trúc hệ thống và giao diện người dùng tối giản lấy con người làm trọng tâm.
+        </p>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         3. FEATURED PROJECTS GRID (4 Columns - Stacks on mobile)
+         ====================================================================== -->
+    <section class="w-full py-12 sm:py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+        
+        <!-- Section Header -->
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-4 border-b border-[#E5E7EB] dark:border-white/10 reveal-on-scroll">
+          <div>
+            <h2 data-i18n="featured_heading" class="text-2xl sm:text-3xl font-bold font-serif text-[#111827] dark:text-white tracking-tight">
+              Dự Án Tiêu Biểu
+            </h2>
+            <p data-i18n="featured_sub" class="text-sm text-[#6B7280] dark:text-slate-400 mt-1 font-normal">
+              Tuyển chọn các đồ án kỹ thuật và công cụ ứng dụng
+            </p>
+          </div>
+
+          <a
+            href="https://github.com/Andrew12126"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 text-sm font-medium text-[#C25E00] dark:text-[#D95D1E] hover:underline self-start sm:self-auto group btn-interactive py-1"
+          >
+            <span data-i18n="view_all_projects">Xem GitHub @Andrew12126</span>
+            <i data-lucide="arrow-up-right" class="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+          </a>
+        </div>
+
+        <!-- 4-Column Grid: Stacks cleanly to 1 col on mobile, 2 on tablet, 4 on desktop -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+          <!-- CARD 1: AI (RAG Assistant) -->
+          <div class="group flex flex-col bg-white dark:bg-[#111726] border border-[#E5E7EB] dark:border-white/10 rounded-xl overflow-hidden card-interactive reveal-on-scroll reveal-delay-1 select-none">
+            <div class="relative h-44 w-full bg-[#FFF8F0] dark:bg-[#C25E00]/15 flex items-center justify-center p-6 border-b border-[#E5E7EB]/80 dark:border-white/10">
+              <div class="absolute top-3.5 left-3.5">
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-[#C25E00] text-white">
+                  AI • RAG
+                </span>
+              </div>
+              <div class="transition-transform duration-200 group-hover:scale-110">
+                <i data-lucide="brain" class="w-12 h-12 stroke-[1.5] text-[#C25E00]"></i>
+              </div>
+            </div>
+            <div class="p-5 flex flex-col justify-between flex-1 bg-white dark:bg-[#111726]">
+              <div>
+                <h3 data-i18n="proj1_title" class="font-heading font-semibold text-base text-[#111827] dark:text-white group-hover:text-[#C25E00] dark:group-hover:text-[#D95D1E] transition-colors line-clamp-1">
+                  Academic Paper RAG Assistant
+                </h3>
+                <p data-i18n="proj1_desc" class="text-xs text-[#6B7280] dark:text-slate-400 leading-relaxed line-clamp-3 mt-2 mb-4">
+                  Hệ thống trợ lý AI chuyên biệt cho nghiên cứu khoa học: Đọc hiểu Abstract, trích xuất ý chính và tự động tổng hợp bảng ma trận so sánh tài liệu học thuật.
+                </p>
+              </div>
+              <div class="pt-3 border-t border-[#F3F4F6] dark:border-white/5 flex items-center justify-between text-[11px] font-mono">
+                <span class="text-[#9CA3AF] uppercase">DESIGN SPEC</span>
+                <span class="text-[#6B7280] dark:text-slate-400 font-medium uppercase tracking-widest text-[10px]">
+                  PYTHON • RAG • PROMPT
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 2: WEB (Swiss Minimalist Portfolio) -->
+          <div class="group flex flex-col bg-white dark:bg-[#111726] border border-[#E5E7EB] dark:border-white/10 rounded-xl overflow-hidden card-interactive reveal-on-scroll reveal-delay-2 select-none">
+            <div class="relative h-44 w-full bg-[#F0FDF4] dark:bg-[#16A34A]/15 flex items-center justify-center p-6 border-b border-[#E5E7EB]/80 dark:border-white/10">
+              <div class="absolute top-3.5 left-3.5">
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-[#16A34A] text-white">
+                  PORTFOLIO
+                </span>
+              </div>
+              <div class="transition-transform duration-200 group-hover:scale-110">
+                <i data-lucide="globe" class="w-12 h-12 stroke-[1.5] text-[#16A34A]"></i>
+              </div>
+            </div>
+            <div class="p-5 flex flex-col justify-between flex-1 bg-white dark:bg-[#111726]">
+              <div>
+                <h3 data-i18n="proj2_title" class="font-heading font-semibold text-base text-[#111827] dark:text-white group-hover:text-[#C25E00] dark:group-hover:text-[#D95D1E] transition-colors line-clamp-1">
+                  Personal Portfolio & Academic Hub
+                </h3>
+                <p data-i18n="proj2_desc" class="text-xs text-[#6B7280] dark:text-slate-400 leading-relaxed line-clamp-3 mt-2 mb-4">
+                  Website cá nhân chuẩn Swiss Minimalist lấy cảm hứng từ Andrew Ng: Tích hợp song ngữ EN/VI, chuyển đổi Dark/Light mode và kiến trúc đa trang học thuật.
+                </p>
+              </div>
+              <div class="pt-3 border-t border-[#F3F4F6] dark:border-white/5 flex items-center justify-between text-[11px] font-mono">
+                <span class="text-[#9CA3AF] uppercase">PRODUCTION</span>
+                <span class="text-[#6B7280] dark:text-slate-400 font-medium uppercase tracking-widest text-[10px]">
+                  HTML5 • CSS3 • JS • i18n
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 3: FOUNDATION (C & Python Mini Games Lab) -->
+          <div class="group flex flex-col bg-white dark:bg-[#111726] border border-[#E5E7EB] dark:border-white/10 rounded-xl overflow-hidden card-interactive reveal-on-scroll reveal-delay-3 select-none">
+            <div class="relative h-44 w-full bg-[#FFFBEB] dark:bg-[#F59E0B]/15 flex items-center justify-center p-6 border-b border-[#E5E7EB]/80 dark:border-white/10">
+              <div class="absolute top-3.5 left-3.5">
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-[#F59E0B] text-white">
+                  FOUNDATION
+                </span>
+              </div>
+              <div class="transition-transform duration-200 group-hover:scale-110">
+                <i data-lucide="terminal" class="w-12 h-12 stroke-[1.5] text-[#F59E0B]"></i>
+              </div>
+            </div>
+            <div class="p-5 flex flex-col justify-between flex-1 bg-white dark:bg-[#111726]">
+              <div>
+                <h3 data-i18n="proj3_title" class="font-heading font-semibold text-base text-[#111827] dark:text-white group-hover:text-[#C25E00] dark:group-hover:text-[#D95D1E] transition-colors line-clamp-1">
+                  Algorithmic Logic & Mini Games Lab
+                </h3>
+                <p data-i18n="proj3_desc" class="text-xs text-[#6B7280] dark:text-slate-400 leading-relaxed line-clamp-3 mt-2 mb-4">
+                  Kho bài tập rèn luyện tư duy giải thuật bằng C và Python: Xử lý cấu trúc dữ liệu cơ bản, bài toán logic và mini-game tương tác (Kéo búa bao, tính toán CLI).
+                </p>
+              </div>
+              <div class="pt-3 border-t border-[#F3F4F6] dark:border-white/5 flex items-center justify-between text-[11px] font-mono">
+                <span class="text-[#9CA3AF] uppercase">FOUNDATION</span>
+                <span class="text-[#6B7280] dark:text-slate-400 font-medium uppercase tracking-widest text-[10px]">
+                  C • PYTHON • CLI
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 4: RESEARCH PIPELINE (Human-Centric AI Ideation) -->
+          <div class="group flex flex-col bg-white dark:bg-[#111726] border border-[#E5E7EB] dark:border-white/10 rounded-xl overflow-hidden card-interactive reveal-on-scroll reveal-delay-4 select-none">
+            <div class="relative h-44 w-full bg-[#F0F9FF] dark:bg-sky-500/15 flex items-center justify-center p-6 border-b border-[#E5E7EB]/80 dark:border-white/10">
+              <div class="absolute top-3.5 left-3.5">
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-sky-600 text-white">
+                  IDEATION
+                </span>
+              </div>
+              <div class="transition-transform duration-200 group-hover:scale-110">
+                <i data-lucide="compass" class="w-12 h-12 stroke-[1.5] text-sky-600"></i>
+              </div>
+            </div>
+            <div class="p-5 flex flex-col justify-between flex-1 bg-white dark:bg-[#111726]">
+              <div>
+                <h3 data-i18n="proj4_title" class="font-heading font-semibold text-base text-[#111827] dark:text-white group-hover:text-[#C25E00] dark:group-hover:text-[#D95D1E] transition-colors line-clamp-1">
+                  Human-Centric AI Ideation Lab
+                </h3>
+                <p data-i18n="proj4_desc" class="text-xs text-[#6B7280] dark:text-slate-400 leading-relaxed line-clamp-3 mt-2 mb-4">
+                  Không gian ấp ủ ý tưởng nghiên cứu AI vị nhân sinh: Thử nghiệm các bài toán Smart Home, công nghệ hỗ trợ người cao tuổi/bệnh lý để tìm đề tài Thạc sĩ đột phá.
+                </p>
+              </div>
+              <div class="pt-3 border-t border-[#F3F4F6] dark:border-white/5 flex items-center justify-between text-[11px] font-mono">
+                <span class="text-[#9CA3AF] uppercase">PIPELINE</span>
+                <span class="text-[#6B7280] dark:text-slate-400 font-medium uppercase tracking-widest text-[10px]">
+                  SMART HOME • HEALTHCARE
+                </span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         4. CASE STUDY DETAIL VIEW
+         ====================================================================== -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-24">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+        
+        <!-- Left Column (col-span-8): Case Study Details & Curriculum -->
+        <div class="lg:col-span-8 space-y-8">
+          
+          <!-- Header & Title Block -->
+          <div class="space-y-4 reveal-on-scroll">
+            <div class="flex flex-wrap items-center gap-2.5">
+              <span class="inline-flex items-center px-2.5 py-1 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-[#C25E00] text-white">
+                AI ARCHITECTURE SPECIFICATION
+              </span>
+              <span data-i18n="cs_level_badge" class="inline-flex items-center px-2.5 py-1 rounded text-[10px] font-mono font-semibold uppercase tracking-wider bg-[#F3F4F6] dark:bg-white/10 text-[#4B5563] dark:text-slate-300 border border-[#E5E7EB] dark:border-white/10">
+                BẢN THIẾT KẾ KIẾN TRÚC NGHIÊN CỨU
+              </span>
+            </div>
+
+            <h2 data-i18n="cs_title" class="text-2xl sm:text-4xl lg:text-[40px] font-bold font-serif text-[#111827] dark:text-white tracking-tight leading-[1.18]">
+              Hệ Thống Trợ Lý AI Hỏi Đáp & Rà Soát Bài Báo Khoa Học (Academic Paper RAG Assistant)
+            </h2>
+
+            <p data-i18n="cs_tagline" class="text-base text-[#4B5563] dark:text-slate-300 leading-relaxed font-normal">
+              Kiến trúc kỹ nghệ ứng dụng AI chuyên sâu: Kết hợp Kỹ nghệ Prompt và Truy xuất Tăng cường Ngữ nghĩa (RAG) để tự động hóa quy trình phân tích Abstract và lập bảng ma trận so sánh tài liệu học thuật không gây ảo giác.
+            </p>
+          </div>
+
+          <!-- Highlight Box: Key Achievements -->
+          <div class="p-6 rounded-xl bg-white dark:bg-[#111726] border border-[#E5E7EB] dark:border-white/10 space-y-3.5 card-interactive reveal-on-scroll">
+            <div class="font-mono text-xs font-semibold uppercase tracking-wider text-[#111827] dark:text-white flex items-center gap-2">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-[#16A34A]"></i>
+              <span data-i18n="cs_achievements_heading">MỤC TIÊU & NGUYÊN TẮC KIẾN TRÚC CỐT LÕI</span>
+            </div>
+            
+            <ul class="space-y-2.5 text-xs sm:text-sm text-[#374151] dark:text-slate-300">
+              <li class="flex items-start gap-2.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#C25E00] mt-2 shrink-0"></span>
+                <span data-i18n="cs_achieve_1">Truy xuất chuẩn xác không ảo giác (Zero Hallucination): Tác tử AI chỉ trả lời dựa trên nội dung bài báo khoa học đã nạp, luôn đính kèm trích dẫn nguồn học thuật (Tác giả, Năm, DOI).</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#C25E00] mt-2 shrink-0"></span>
+                <span data-i18n="cs_achieve_2">Tự động bóc tách cấu trúc Abstract: Phân loại mục tiêu nghiên cứu, phương pháp luận thực nghiệm, cỡ mẫu và kết luận chính từ tệp PDF tài liệu khoa học.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#C25E00] mt-2 shrink-0"></span>
+                <span data-i18n="cs_achieve_3">Tự động sinh Ma trận so sánh đa chiều: Tổng hợp các biến số tâm lý và kết quả của nhiều nghiên cứu tiền nhiệm thành bảng đối sánh phục vụ viết đề tài.</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Architecture Breakdown: Accordion Modules -->
+          <div class="space-y-4 pt-2 reveal-on-scroll">
+            <div class="border-b border-[#E5E7EB] dark:border-white/10 pb-3">
+              <h3 data-i18n="cs_curriculum_heading" class="text-xl sm:text-2xl font-bold font-serif text-[#111827] dark:text-white">
+                Kiến Trúc Hệ Thống & Phân Tách Module
+              </h3>
+              <p data-i18n="cs_curriculum_sub" class="text-xs sm:text-sm text-[#6B7280] dark:text-slate-400 font-mono mt-1">
+                Đặc tả kỹ thuật của luồng xử lý RAG phục vụ nghiên cứu khoa học
+              </p>
+            </div>
+
+            <!-- Accordion Module 1 -->
+            <div class="border border-[#E5E7EB] dark:border-white/10 rounded-xl overflow-hidden bg-white dark:bg-[#111726] card-interactive">
+              <button
+                type="button"
+                data-accordion-target="acc-mod-1"
+                aria-expanded="false"
+                class="w-full p-4 sm:p-5 text-left flex items-center justify-between gap-4 hover:bg-[#F9FAFB] dark:hover:bg-[#161D2F] transition-colors min-h-[44px]"
+              >
+                <div class="flex items-center gap-3">
+                  <span class="w-7 h-7 rounded-lg bg-[#FDF3E7] dark:bg-[#C25E00]/20 text-[#C25E00] dark:text-[#D95D1E] text-xs font-mono font-bold flex items-center justify-center shrink-0">
+                    01
+                  </span>
+                  <div>
+                    <h4 data-i18n="cs_mod1_title" class="font-heading font-semibold text-sm sm:text-base text-[#111827] dark:text-white">
+                      Module 1: Tiếp Nhận & Phân Đoạn Văn Bản Khoa Học (Document Ingestion & Chunking)
+                    </h4>
+                    <p data-i18n="cs_mod1_sub" class="text-xs text-[#6B7280] dark:text-slate-400 mt-0.5">
+                      Trích xuất văn bản từ PDF và phân chia đoạn thông minh theo cấu trúc bài báo
+                    </p>
+                  </div>
+                </div>
+                <i data-lucide="chevron-down" class="accordion-icon w-4 h-4 text-[#9CA3AF] transition-transform duration-200 shrink-0"></i>
+              </button>
+
+              <div id="acc-mod-1" class="hidden p-4 sm:p-5 pt-0 border-t border-[#F3F4F6] dark:border-white/5 text-xs sm:text-sm text-[#4B5563] dark:text-slate-300 leading-relaxed space-y-3">
+                <p data-i18n="cs_mod1_content" class="pt-3">
+                  Thu nạp tệp tài liệu PDF, bóc tách các phân đoạn quan trọng (Abstract, Methodology, Findings) và bảo toàn ngữ cảnh học thuật thông qua phương pháp phân đoạn có ngữ nghĩa (semantic chunking).
+                </p>
+                <div class="bg-[#FAF9F6] dark:bg-[#161D2F] p-3 rounded-lg font-mono text-xs border border-[#E5E7EB] dark:border-white/10 space-y-1 overflow-x-auto">
+                  <div class="text-[#C25E00] font-semibold">// Ingestion & Semantic Chunking Pipeline:</div>
+                  <div>PDF Upload &rarr; Structured Layout Extraction &rarr; Semantic Boundary Detection</div>
+                  <div>Chunks = [Abstract Context, Methodology Section, Findings &amp; Empirical Claims]</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Accordion Module 2 -->
+            <div class="border border-[#E5E7EB] dark:border-white/10 rounded-xl overflow-hidden bg-white dark:bg-[#111726] card-interactive">
+              <button
+                type="button"
+                data-accordion-target="acc-mod-2"
+                aria-expanded="false"
+                class="w-full p-4 sm:p-5 text-left flex items-center justify-between gap-4 hover:bg-[#F9FAFB] dark:hover:bg-[#161D2F] transition-colors min-h-[44px]"
+              >
+                <div class="flex items-center gap-3">
+                  <span class="w-7 h-7 rounded-lg bg-[#FDF3E7] dark:bg-[#C25E00]/20 text-[#C25E00] dark:text-[#D95D1E] text-xs font-mono font-bold flex items-center justify-center shrink-0">
+                    02
+                  </span>
+                  <div>
+                    <h4 data-i18n="cs_mod2_title" class="font-heading font-semibold text-sm sm:text-base text-[#111827] dark:text-white">
+                      Module 2: Kỹ Nghệ Prompt & Định Dạng Thẩm Định Học Thuật (Prompt Engineering)
+                    </h4>
+                    <p data-i18n="cs_mod2_sub" class="text-xs text-[#6B7280] dark:text-slate-400 mt-0.5">
+                      Hệ thống câu lệnh cấu trúc định hướng AI đóng vai trò trợ lý nghiên cứu khách quan
+                    </p>
+                  </div>
+                </div>
+                <i data-lucide="chevron-down" class="accordion-icon w-4 h-4 text-[#9CA3AF] transition-transform duration-200 shrink-0"></i>
+              </button>
+
+              <div id="acc-mod-2" class="hidden p-4 sm:p-5 pt-0 border-t border-[#F3F4F6] dark:border-white/5 text-xs sm:text-sm text-[#4B5563] dark:text-slate-300 leading-relaxed space-y-3">
+                <p data-i18n="cs_mod2_content" class="pt-3">
+                  Thiết kế các prompt mẫu định dạng JSON/Markdown chặt chẽ, ràng buộc mô hình chỉ trích xuất thông tin có bằng chứng thực nghiệm, loại bỏ hoàn toàn hiện tượng tự suy diễn không có căn cứ.
+                </p>
+                <div class="bg-[#FAF9F6] dark:bg-[#161D2F] p-3 rounded-lg font-mono text-xs border border-[#E5E7EB] dark:border-white/10 space-y-1 overflow-x-auto">
+                  <div class="text-[#C25E00] font-semibold">// Rigorous Prompt Extraction Schema:</div>
+                  <div>Extract: { Problem, Methodology, SampleSize_N, KeyFindings, EmpiricalDOI }</div>
+                  <div>Constraint: Zero speculation. Missing data flagged as "Not Disclosed in Source".</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Accordion Module 3 -->
+            <div class="border border-[#E5E7EB] dark:border-white/10 rounded-xl overflow-hidden bg-white dark:bg-[#111726] card-interactive">
+              <button
+                type="button"
+                data-accordion-target="acc-mod-3"
+                aria-expanded="false"
+                class="w-full p-4 sm:p-5 text-left flex items-center justify-between gap-4 hover:bg-[#F9FAFB] dark:hover:bg-[#161D2F] transition-colors min-h-[44px]"
+              >
+                <div class="flex items-center gap-3">
+                  <span class="w-7 h-7 rounded-lg bg-[#FDF3E7] dark:bg-[#C25E00]/20 text-[#C25E00] dark:text-[#D95D1E] text-xs font-mono font-bold flex items-center justify-center shrink-0">
+                    03
+                  </span>
+                  <div>
+                    <h4 data-i18n="cs_mod3_title" class="font-heading font-semibold text-sm sm:text-base text-[#111827] dark:text-white">
+                      Module 3: Truy Xuất Tăng Cường & Tổng Hợp Ma Trận So Sánh (RAG & Matrix Synthesis)
+                    </h4>
+                    <p data-i18n="cs_mod3_sub" class="text-xs text-[#6B7280] dark:text-slate-400 mt-0.5">
+                      Tìm kiếm ngữ nghĩa theo độ tương đồng và tổng hợp bảng đối sánh đa bài báo
+                    </p>
+                  </div>
+                </div>
+                <i data-lucide="chevron-down" class="accordion-icon w-4 h-4 text-[#9CA3AF] transition-transform duration-200 shrink-0"></i>
+              </button>
+
+              <div id="acc-mod-3" class="hidden p-4 sm:p-5 pt-0 border-t border-[#F3F4F6] dark:border-white/5 text-xs sm:text-sm text-[#4B5563] dark:text-slate-300 leading-relaxed space-y-3">
+                <p data-i18n="cs_mod3_content" class="pt-3">
+                  Thực hiện tìm kiếm ngữ nghĩa đối chiếu câu hỏi nghiên cứu với kho tài liệu, tự động đối chiếu các điểm tương đồng và khác biệt giữa các nghiên cứu trước để hình thành bảng ma trận so sánh hoàn chỉnh.
+                </p>
+                <div class="bg-[#FAF9F6] dark:bg-[#161D2F] p-3 rounded-lg font-mono text-xs border border-[#E5E7EB] dark:border-white/10 space-y-1 overflow-x-auto">
+                  <div class="text-[#C25E00] font-semibold">// Comparative Synthesis Output:</div>
+                  <div>Table Columns: [Study/Author, Context/Year, Core Variables, Methodology, Key Insights, Research Gap]</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Right Column (col-span-4): Sticky Card with Specs & CTAs -->
+        <div class="lg:col-span-4 lg:sticky lg:top-24 space-y-6">
+          <div class="bg-white dark:bg-[#111726] border border-[#E5E7EB] dark:border-white/10 rounded-xl p-6 space-y-6 shadow-none card-interactive reveal-on-scroll">
+            
+            <div>
+              <h3 data-i18n="cs_specs_heading" class="font-mono text-xs font-semibold uppercase tracking-widest text-[#6B7280] dark:text-slate-400 mb-4">
+                THÔNG SỐ KỸ NGHỆ HỆ THỐNG
+              </h3>
+
+              <div class="space-y-3">
+                <a
+                  href="contact.html"
+                  class="w-full min-h-[44px] rounded-lg text-xs sm:text-sm font-medium bg-[#C25E00] text-white hover:bg-[#A84E00] active:bg-[#8F4300] flex items-center justify-center gap-2 transition-colors shadow-sm btn-interactive"
+                >
+                  <i data-lucide="message-square" class="w-4 h-4"></i>
+                  <span data-i18n="cs_btn_demo">Trao Đổi Kiến Trúc Dự Án</span>
+                </a>
+
+                <a
+                  href="https://github.com/Andrew12126"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="w-full min-h-[44px] rounded-lg text-xs sm:text-sm font-medium bg-white dark:bg-[#161D2F] border border-[#E5E7EB] dark:border-white/10 text-[#111827] dark:text-white hover:bg-[#F9FAFB] dark:hover:bg-white/5 flex items-center justify-center gap-2 transition-colors btn-interactive"
+                >
+                  <i data-lucide="github" class="w-4 h-4"></i>
+                  <span data-i18n="cs_btn_repo">Mã Nguồn GitHub (@Andrew12126)</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- System Specifications Table -->
+            <div class="pt-4 border-t border-[#E5E7EB] dark:border-white/10">
+              <dl class="divide-y divide-[#F3F4F6] dark:divide-white/5 text-xs">
+                <div class="py-2.5 flex items-center justify-between">
+                  <dt class="text-[#6B7280] dark:text-slate-400 font-normal">Core Architecture</dt>
+                  <dd class="font-mono font-medium text-[#111827] dark:text-white">RAG Framework</dd>
+                </div>
+                <div class="py-2.5 flex items-center justify-between">
+                  <dt class="text-[#6B7280] dark:text-slate-400 font-normal">Languages</dt>
+                  <dd class="font-mono font-medium text-[#111827] dark:text-white">Python 3.11+ • C Foundation</dd>
+                </div>
+                <div class="py-2.5 flex items-center justify-between">
+                  <dt class="text-[#6B7280] dark:text-slate-400 font-normal">Retrieval Logic</dt>
+                  <dd class="font-mono font-medium text-[#111827] dark:text-white">Cosine Similarity</dd>
+                </div>
+                <div class="py-2.5 flex items-center justify-between">
+                  <dt class="text-[#6B7280] dark:text-slate-400 font-normal">Dev Environments</dt>
+                  <dd class="font-mono font-medium text-[#111827] dark:text-white">Antigravity IDE • VS Code</dd>
+                </div>
+                <div class="py-2.5 flex items-center justify-between">
+                  <dt class="text-[#6B7280] dark:text-slate-400 font-normal">Version Control</dt>
+                  <dd class="font-mono font-medium text-[#111827] dark:text-white">Git • GitHub (@Andrew12126)</dd>
+                </div>
+              </dl>
+            </div>
+
+            <!-- Peer Review Badge -->
+            <div class="pt-1">
+              <div class="p-3.5 rounded-xl bg-[#FAF9F6] dark:bg-[#161D2F] border border-[#E5E7EB] dark:border-white/10 text-xs text-[#6B7280] dark:text-slate-400 space-y-1">
+                <div class="font-semibold text-[#111827] dark:text-white flex items-center gap-1.5">
+                  <i data-lucide="sparkles" class="w-3.5 h-3.5 text-[#C25E00] dark:text-[#D95D1E]"></i>
+                  <span data-i18n="cs_peer_reviewed">Định Hướng Kiến Trúc Vị Nhân Sinh</span>
+                </div>
+                <p data-i18n="cs_peer_desc" class="text-[11px] leading-relaxed">
+                  Thiết kế nhằm hỗ trợ các nhà nghiên cứu, sinh viên và giảng viên tiết kiệm hàng chục giờ đọc tài liệu, hướng tới ứng dụng AI thiết thực cho đời sống học thuật.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================================
+       5. MINIMALIST ACADEMIC FOOTER
+       ======================================================================== -->
+  <footer role="contentinfo" class="w-full bg-[#FFFFFF] dark:bg-[#0B0F17] py-12 px-4 sm:px-6 lg:px-8 border-t border-[#E5E7EB] dark:border-white/10 text-xs text-[#6B7280] dark:text-slate-400 transition-colors">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      
+      <!-- Brand & Tagline -->
+      <div class="flex items-center gap-3 text-[#111827] dark:text-white">
+        <a href="index.html" class="font-heading font-bold text-sm tracking-tight text-[#111827] dark:text-white hover:text-[#C25E00] dark:hover:text-[#D95D1E] transition-colors">
+          Nguyen Van An
+        </a>
+        <span>•</span>
+        <span data-i18n="footer_role" class="font-mono text-xs text-[#6B7280] dark:text-slate-400">
+          Human-Centric AI & Systems Hub
+        </span>
+      </div>
+
+      <!-- Footer Navigation Links -->
+      <div class="flex flex-wrap items-center justify-center gap-5 sm:gap-6 font-mono text-xs">
+        <a href="index.html" data-i18n="nav_about" class="hover:text-[#111827] dark:hover:text-white transition-colors py-1">Về Tôi</a>
+        <a href="research.html" data-i18n="nav_research" class="hover:text-[#111827] dark:hover:text-white transition-colors py-1">Nghiên Cứu</a>
+        <a href="projects.html" data-i18n="nav_projects" class="text-[#C25E00] dark:text-[#D95D1E] font-semibold py-1">Dự Án</a>
+        <a href="contact.html" data-i18n="nav_contact" class="hover:text-[#111827] dark:hover:text-white transition-colors py-1">Liên Hệ</a>
+        <a href="https://github.com/Andrew12126" target="_blank" rel="noopener noreferrer" class="hover:text-[#111827] dark:hover:text-white transition-colors py-1">GitHub</a>
+        <a href="https://www.facebook.com/nguyen.an.921002" target="_blank" rel="noopener noreferrer" class="hover:text-[#111827] dark:hover:text-white transition-colors py-1">Facebook</a>
+      </div>
+
+      <!-- Copyright -->
+      <div class="text-center sm:text-right text-[#9CA3AF] dark:text-slate-500 font-mono text-[11px]">
+        © 2026 Nguyen Van An • Swiss Minimalist Strict Light/Dark
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Toast Container -->
+  <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Scripts: i18n -> Main -->
+  <script src="js/i18n.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

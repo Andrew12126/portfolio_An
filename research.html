@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research & Academic Direction | Nguyen Van An</title>
+  <meta name="description" content="Scientific research on Consumer Behavior, literature review methodology, and Pre-Master's aspirations in Human-Centric AI by Nguyen Van An.">
+  <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0B0F17" media="(prefers-color-scheme: dark)">
+
+  <!-- Google Fonts: Playfair Display (Serif), Inter (Sans), JetBrains Mono (Monospace) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            accent: {
+              DEFAULT: '#C25E00',
+              hover: '#A84E00',
+              light: '#FFF8F0',
+              border: '#FBE3CC',
+              dark: '#D95D1E'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+            heading: ['Montserrat', 'Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Stylesheet (Swiss Minimalist + ECC Micro-interactions) -->
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="min-h-screen bg-white dark:bg-[#0B0F17] text-[#111827] dark:text-[#F9FAFB] flex flex-col font-sans antialiased selection:bg-[#FBE3CC] selection:text-[#C25E00] transition-colors duration-200">
+
+  <!-- Accessible Skip Link (WCAG 2.2 AA) -->
+  <a href="#main-content" class="skip-link">Chuyển đến nội dung chính</a>
+
+  <!-- ========================================================================
+       1. TOP NAVIGATION BAR (Fixed Top with Multi-Page Navigation)
+       ======================================================================== -->
+  <header role="banner" class="sticky top-0 z-50 w-full bg-white/95 dark:bg-[#0B0F17]/95 backdrop-blur-md border-b border-[#E5E7EB] dark:border-white/10 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 gap-3 sm:gap-4">
+        
+        <!-- Left: Logo & Identity -->
+        <a href="index.html" class="flex items-center gap-2.5 shrink-0 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C25E00] rounded-lg p-1" aria-label="Nguyen Van An - Personal Hub">
+          <div class="w-8 h-8 rounded-lg bg-[#C25E00] flex items-center justify-center text-white shadow-none group-hover:bg-[#A84E00] transition-colors">
+            <i data-lucide="terminal" class="w-4 h-4"></i>
+          </div>
+          <div class="flex items-baseline gap-1.5">
+            <span class="font-heading font-bold text-base tracking-tight text-[#111827] dark:text-white">
+              Nguyen Van An
+            </span>
+            <span class="text-sm font-normal text-[#6B7280] dark:text-slate-400">
+              AI Hub
+            </span>
+          </div>
+        </a>
+
+        <!-- Middle: Navigation Links -->
+        <nav role="navigation" aria-label="Menu chính" class="hidden md:flex items-center gap-7 lg:gap-8">
+          <a
+            href="index.html"
+            data-i18n="nav_about"
+            class="text-xs font-semibold uppercase tracking-wider text-[#6B7280] dark:text-slate-400 hover:text-[#111827] dark:hover:text-white py-2 transition-colors font-mono"
+          >
+            Về Tôi
+          </a>
+          <a
+            href="research.html"
+            data-i18n="nav_research"
+            class="text-xs font-semibold uppercase tracking-wider text-[#C25E00] dark:text-[#D95D1E] underline underline-offset-8 decoration-2 decoration-[#C25E00] dark:decoration-[#D95D1E] py-2 transition-colors font-mono font-bold"
+            aria-current="page"
+          >
+            Nghiên Cứu
+          </a>
+          <a
+            href="projects.html"
+            data-i18n="nav_projects"
+            class="text-xs font-semibold uppercase tracking-wider text-[#6B7280] dark:text-slate-400 hover:text-[#111827] dark:hover:text-white py-2 transition-colors font-mono"
+          >
+            Dự Án
+          </a>
+          <a
+            href="contact.html"
+            data-i18n="nav_contact"
+            class="text-xs font-semibold uppercase tracking-wider text-[#6B7280] dark:text-slate-400 hover:text-[#111827] dark:hover:text-white py-2 transition-colors font-mono"
+          >
+            Liên Hệ
+          </a>
+        </nav>
+
+        <!-- Right Utility Actions -->
+        <div class="flex items-center gap-2 sm:gap-2.5">
+          
+          <!-- Language Toggle - Min 44x44px touch area -->
+          <button
+            id="lang-toggle-btn"
+            type="button"
+            class="inline-flex items-center gap-1.5 h-10 px-3 rounded-lg border border-[#E5E7EB] dark:border-white/10 bg-[#F9FAFB] dark:bg-[#161D2F] text-xs font-mono font-medium text-[#111827] dark:text-white hover:border-[#C25E00] dark:hover:border-[#D95D1E] transition-colors btn-interactive"
+            aria-label="Chuyển đổi ngôn ngữ Tiếng Việt / English"
+            title="Chuyển đổi ngôn ngữ / Switch language"
+          >
+            <i data-lucide="globe" class="w-3.5 h-3.5 text-[#C25E00]"></i>
+            <span id="lang-indicator-en" class="text-[#C25E00] font-bold">EN</span>
+            <span class="text-[#D1D5DB] dark:text-slate-600">|</span>
+            <span id="lang-indicator-vi" class="text-[#9CA3AF] font-normal">VI</span>
+          </button>
+
+          <!-- Theme Toggle - Min 44x44px touch area -->
+          <button
+            type="button"
+            class="theme-toggle-btn w-10 h-10 rounded-lg border border-[#E5E7EB] dark:border-white/10 bg-[#F9FAFB] dark:bg-[#161D2F] text-[#4B5563] dark:text-slate-300 hover:text-[#C25E00] dark:hover:text-[#D95D1E] hover:border-[#C25E00] dark:hover:border-[#D95D1E] transition-colors flex items-center justify-center btn-interactive"
+            aria-label="Chuyển đổi giao diện Sáng / Tối"
+            title="Chuyển đổi giao diện Sáng / Tối"
+          >
+            <i data-lucide="sun" class="theme-sun-icon w-4 h-4 hidden text-amber-400"></i>
+            <i data-lucide="moon" class="theme-moon-icon w-4 h-4 text-[#4B5563]"></i>
+          </button>
+
+          <!-- Resume Link -->
+          <a
+            href="contact.html#cv"
+            data-i18n="btn_resume"
+            class="hidden sm:inline-flex items-center text-xs font-semibold uppercase tracking-wider text-[#4B5563] dark:text-slate-300 hover:text-[#111827] dark:hover:text-white px-2.5 h-10 transition-colors font-mono"
+          >
+            Hồ Sơ (CV)
+          </a>
+
+          <!-- Primary CTA Button -->
+          <a
+            href="contact.html"
+            data-i18n="btn_contact"
+            class="inline-flex items-center justify-center h-10 px-4 rounded-lg text-xs sm:text-sm font-medium bg-[#C25E00] text-white hover:bg-[#A84E00] active:bg-[#8F4300] transition-colors shadow-sm btn-interactive"
+          >
+            Liên Hệ
+          </a>
+
+          <!-- Mobile Hamburger Toggle - Min 44x44px touch target -->
+          <button
+            id="mobile-menu-btn"
+            type="button"
+            class="md:hidden w-11 h-11 rounded-lg text-[#4B5563] dark:text-slate-300 hover:text-[#111827] dark:hover:text-white hover:bg-[#F3F4F6] dark:hover:bg-white/10 transition-colors flex items-center justify-center btn-interactive"
+            aria-label="Mở menu điều hướng"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+          >
+            <i id="menu-icon-open" data-lucide="menu" class="w-5 h-5"></i>
+            <i id="menu-icon-close" data-lucide="x" class="w-5 h-5 hidden"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-[#E5E7EB] dark:border-white/10 bg-white dark:bg-[#0B0F17] px-4 pt-3 pb-5 space-y-2">
+      <div class="flex flex-col space-y-1.5" role="menu">
+        <a href="index.html" data-i18n="nav_about" role="menuitem" class="min-h-[44px] flex items-center px-3.5 py-2.5 rounded-lg text-sm font-medium text-[#4B5563] dark:text-slate-300 hover:bg-[#F9FAFB] dark:hover:bg-white/5 transition-colors">
+          Về Tôi
+        </a>
+        <a href="research.html" data-i18n="nav_research" role="menuitem" class="min-h-[44px] flex items-center px-3.5 py-2.5 rounded-lg text-sm font-semibold bg-[#FFF8F0] dark:bg-white/5 text-[#C25E00] dark:text-[#D95D1E]">
+          Nghiên Cứu
+        </a>
+        <a href="projects.html" data-i18n="nav_projects" role="menuitem" class="min-h-[44px] flex items-center px-3.5 py-2.5 rounded-lg text-sm font-medium text-[#4B5563] dark:text-slate-300 hover:bg-[#F9FAFB] dark:hover:bg-white/5 transition-colors">
+          Dự Án
+        </a>
+        <a href="contact.html" data-i18n="nav_contact" role="menuitem" class="min-h-[44px] flex items-center px-3.5 py-2.5 rounded-lg text-sm font-medium text-[#4B5563] dark:text-slate-300 hover:bg-[#F9FAFB] dark:hover:bg-white/5 transition-colors">
+          Liên Hệ
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       MAIN CONTENT CONTAINER
+       ======================================================================== -->
+  <main id="main-content" class="flex-1 w-full bg-[#FAF9F6] dark:bg-[#0B0F17] transition-colors">
+
+    <!-- ======================================================================
+         2. RESEARCH PAGE HEADER (Andrew Ng Clean Academic Banner)
+         ====================================================================== -->
+    <section class="w-full bg-[#FFFFFF] dark:bg-[#0B0F17] py-12 sm:py-20 border-b border-[#E5E7EB] dark:border-white/10 transition-colors">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4 reveal-on-scroll">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#FDF3E7] dark:bg-[#C25E00]/15 text-[#C25E00] dark:text-[#D95D1E] border border-[#FBE3CC] dark:border-[#C25E00]/30 text-xs font-mono font-semibold uppercase tracking-wider">
+          <i data-lucide="microscope" class="w-3.5 h-3.5"></i>
+          <span data-i18n="res_badge">02 · NGHIÊN CỨU KHOA HỌC & ĐỊNH HƯỚNG THẠC SĨ</span>
+        </div>
+        <h1 data-i18n="res_title" class="text-3xl sm:text-5xl lg:text-6xl font-bold font-serif text-[#111827] dark:text-white tracking-tight leading-tight">
+          Nghiên Cứu Khoa Học & AI Vị Nhân Sinh
+        </h1>
+        <p data-i18n="res_sub" class="text-base sm:text-lg text-[#4B5563] dark:text-slate-300 leading-relaxed max-w-3xl font-normal">
+          Đưa công nghệ và trí tuệ nhân tạo vào phục vụ đời sống thực tiễn — lấy con người làm trọng tâm để mang lại sự tiện lợi, thoải mái và dễ dàng hơn.
+        </p>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         3. RESEARCH CORE PILLARS (Consumer Behavior & Master's Direction)
+         ====================================================================== -->
+    <section class="w-full py-12 sm:py-20">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        
+        <!-- PILLAR 1: Consumer Behavior Research in Tourism -->
+        <div class="bg-white dark:bg-[#111726] border border-[#E5E7EB] dark:border-white/10 rounded-xl p-6 sm:p-8 space-y-6 transition-colors shadow-none card-interactive reveal-on-scroll">
+          <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-[#E5E7EB] dark:border-white/10">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+              <span data-i18n="res_topic1_badge" class="font-mono text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+                ĐỀ TÀI NCKH CẤP KHOA (CÓ GIẢNG VIÊN HƯỚNG DẪN)
+              </span>
+            </div>
+            <span class="font-mono text-xs text-[#9CA3AF] dark:text-slate-500">
+              COMPLETED · FACULTY LEVEL
+            </span>
+          </div>
+
+          <div>
+            <h2 data-i18n="res_topic1_title" class="font-heading font-bold text-xl sm:text-2xl text-[#111827] dark:text-white">
+              Hành Vi Tiêu Dùng Du Lịch Vào Mùa Đông Tại TP Đà Nẵng
+            </h2>
+            <div data-i18n="res_topic1_role" class="text-xs sm:text-sm font-mono text-[#C25E00] dark:text-[#D95D1E] font-medium mt-1.5">
+              Vai trò: Tra cứu Google Scholar & Perplexity AI, đọc tóm tắt & lập bảng ma trận so sánh các nghiên cứu trước
+            </div>
+          </div>
+
+          <p data-i18n="res_topic1_desc" class="text-xs sm:text-sm text-[#4B5563] dark:text-slate-300 leading-relaxed">
+            Đề tài nghiên cứu khoa học cấp khoa có giảng viên hướng dẫn, đi sâu vào phân tích các biến số tâm lý, nhu cầu trải nghiệm và hành vi chi tiêu của du khách trong mùa đông tại TP Đà Nẵng. Đóng góp trực tiếp vào việc tra cứu học thuật, xây dựng cơ sở lý thuyết và đối chiếu các mô hình nghiên cứu tiền nhiệm.
+          </p>
+
+          <!-- Literature Review Methodology Box -->
+          <div class="p-5 rounded-xl bg-[#FAF9F6] dark:bg-[#161D2F] border border-[#E5E7EB] dark:border-white/10 space-y-3">
+            <div data-i18n="res_topic1_method_heading" class="font-mono text-xs font-semibold uppercase tracking-wider text-[#111827] dark:text-white flex items-center gap-2">
+              <i data-lucide="file-search" class="w-4 h-4 text-[#C25E00]"></i>
+              <span>Phương Pháp & Công Cụ Tra Cứu Khoa Học Thực Tế</span>
+            </div>
+            <ul class="space-y-2.5 text-xs sm:text-sm text-[#4B5563] dark:text-slate-300">
+              <li class="flex items-start gap-2.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#C25E00] mt-2 shrink-0"></span>
+                <span data-i18n="res_topic1_method_1"><strong>Nguồn tra cứu học thuật số:</strong> Khai thác Google Scholar kết hợp Perplexity AI để truy vấn nhanh các nghiên cứu học thuật, bài báo chuyên ngành và kiểm chứng chéo nguồn trích dẫn.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#C25E00] mt-2 shrink-0"></span>
+                <span data-i18n="res_topic1_method_2"><strong>Đọc tóm tắt & Trích xuất ý chính:</strong> Phân tích Abstract và Conclusion của các bài báo khoa học để chắt lọc các biến số tâm lý, thang đo và phát hiện cốt lõi.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#C25E00] mt-2 shrink-0"></span>
+                <span data-i18n="res_topic1_method_3"><strong>Lập bảng ma trận so sánh (Comparative Matrix):</strong> Đối chiếu mục tiêu, phương pháp, kích thước mẫu, bối cảnh và kết quả giữa các nghiên cứu trước, tạo nền tảng vững chắc cho đề tài.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- PILLAR 2: Pre-Master's Aspirations in Human-Centric AI -->
+        <div class="bg-white dark:bg-[#111726] border border-[#E5E7EB] dark:border-white/10 rounded-xl p-6 sm:p-8 space-y-6 transition-colors shadow-none card-interactive reveal-on-scroll">
+          <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-[#E5E7EB] dark:border-white/10">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-[#C25E00] animate-pulse"></span>
+              <span data-i18n="res_topic2_badge" class="font-mono text-xs font-bold uppercase tracking-wider text-[#C25E00] dark:text-[#D95D1E]">
+                ĐỊNH HƯỚNG BẬC THẠC SĨ QUỐC TẾ
+              </span>
+            </div>
+            <span class="font-mono text-xs text-[#9CA3AF] dark:text-slate-500">
+              GLOBAL SCHOLARSHIP ROADMAP
+            </span>
+          </div>
+
+          <div>
+            <h2 data-i18n="res_topic2_title" class="font-heading font-bold text-xl sm:text-2xl text-[#111827] dark:text-white">
+              AI Vị Nhân Sinh: Nâng Tầm Trải Nghiệm Cuộc Sống Thực Tiễn
+            </h2>
+            <p data-i18n="res_topic2_desc" class="text-xs sm:text-sm text-[#4B5563] dark:text-slate-300 leading-relaxed mt-2">
+              Khao khát tìm kiếm học bổng và chương trình Thạc sĩ quốc tế để đi sâu vào con đường nghiên cứu ứng dụng AI, lấy con người làm trọng tâm. Kết hợp tư duy thấu hiểu dịch vụ từ ngành Hospitality với kỹ nghệ ứng dụng AI hiện đại để tạo ra những giải pháp công nghệ giúp cuộc sống tiện lợi, dễ dàng và thoải mái hơn.
+            </p>
+          </div>
+
+          <!-- Technical Focus Highlight (Prompt & RAG) -->
+          <div class="p-5 rounded-xl bg-[#FFF8F0] dark:bg-[#161D2F] border border-[#FBE3CC] dark:border-[#C25E00]/30 space-y-2">
+            <div class="flex items-center gap-2">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-[10px] font-mono font-bold bg-[#C25E00] text-white uppercase tracking-wider">
+                <i data-lucide="cpu" class="w-3.5 h-3.5"></i>
+                <span data-i18n="res_tech_badge">TRỌNG TÂM KỸ NGHỆ KỸ THUẬT</span>
+              </span>
+            </div>
+            <h3 data-i18n="res_tech_title" class="font-heading font-bold text-sm sm:text-base text-[#111827] dark:text-white">
+              Kỹ Nghệ Ứng Dụng AI • Kỹ Nghệ Prompt & Hệ Thống RAG
+            </h3>
+            <p data-i18n="res_tech_desc" class="text-xs text-[#4B5563] dark:text-slate-300 leading-relaxed">
+              Tập trung đào sâu vào Kỹ nghệ Prompt nâng cao (Advanced Prompt Engineering) và kiến trúc Truy xuất Tăng cường Ngữ nghĩa (Retrieval-Augmented Generation - RAG), kết hợp mô hình ngôn ngữ lớn (LLM) với cơ sở dữ liệu chuyên ngành để tạo ra các tác tử AI chuẩn xác, không ảo giác.
+            </p>
+          </div>
+
+          <!-- 4 Areas of Human-Centric AI Applications in Daily Life (Responsive Stacks) -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-1">
+            
+            <!-- Area 1: Smart Home & IoT -->
+            <div class="p-5 rounded-xl bg-[#FAF9F6] dark:bg-[#161D2F] border border-[#E5E7EB] dark:border-white/10 space-y-2 card-interactive">
+              <div class="w-9 h-9 rounded-lg bg-[#FFF8F0] dark:bg-[#C25E00]/20 flex items-center justify-center text-[#C25E00] dark:text-[#D95D1E] mb-2">
+                <i data-lucide="home" class="w-4 h-4"></i>
+              </div>
+              <h3 data-i18n="res_pillar1_title" class="font-heading font-semibold text-sm text-[#111827] dark:text-white">
+                Nhà Thông Minh & IoT Đời Sống
+              </h3>
+              <p data-i18n="res_pillar1_desc" class="text-xs text-[#6B7280] dark:text-slate-400 leading-relaxed">
+                Tự động hóa không gian sống thích ứng linh hoạt với thói quen sinh hoạt thường nhật, tối ưu hóa sự thoải mái và tiện nghi gia đình.
+              </p>
+            </div>
+
+            <!-- Area 2: Daily Intelligent Personal Assistants -->
+            <div class="p-5 rounded-xl bg-[#FAF9F6] dark:bg-[#161D2F] border border-[#E5E7EB] dark:border-white/10 space-y-2 card-interactive">
+              <div class="w-9 h-9 rounded-lg bg-[#EFF6FF] dark:bg-blue-950/40 flex items-center justify-center text-blue-600 dark:text-blue-400 mb-2">
+                <i data-lucide="bot" class="w-4 h-4"></i>
+              </div>
+              <h3 data-i18n="res_pillar2_title" class="font-heading font-semibold text-sm text-[#111827] dark:text-white">
+                Trợ Lý Ảo Cá Nhân Thông Minh Hàng Ngày
+              </h3>
+              <p data-i18n="res_pillar2_desc" class="text-xs text-[#6B7280] dark:text-slate-400 leading-relaxed">
+                Xây dựng các tác tử AI hỗ trợ quản lý công việc, lập lịch trình và giải quyết các tác vụ hàng ngày với giao diện trực quan, không áp lực công nghệ.
+              </p>
+            </div>
+
+            <!-- Area 3: Sentiment & Hospitality Recommendations -->
+            <div class="p-5 rounded-xl bg-[#FAF9F6] dark:bg-[#161D2F] border border-[#E5E7EB] dark:border-white/10 space-y-2 card-interactive">
+              <div class="w-9 h-9 rounded-lg bg-[#FDF4FF] dark:bg-fuchsia-950/40 flex items-center justify-center text-fuchsia-600 dark:text-fuchsia-400 mb-2">
+                <i data-lucide="sparkles" class="w-4 h-4"></i>
+              </div>
+              <h3 data-i18n="res_pillar3_title" class="font-heading font-semibold text-sm text-[#111827] dark:text-white">
+                Gợi Ý Thấu Hiểu Tâm Lý (Tư Duy Hospitality)
+              </h3>
+              <p data-i18n="res_pillar3_desc" class="text-xs text-[#6B7280] dark:text-slate-400 leading-relaxed">
+                Kế thừa tư duy chăm sóc khách hàng từ 3 học kỳ HUIT để phát triển hệ thống gợi ý đồng cảm, tinh tế và thấu hiểu đúng cảm xúc người dùng.
+              </p>
+            </div>
+
+            <!-- Area 4: Assistive Care for Elderly & Medical Needs -->
+            <div class="p-5 rounded-xl bg-[#FAF9F6] dark:bg-[#161D2F] border border-[#E5E7EB] dark:border-white/10 space-y-2 card-interactive">
+              <div class="w-9 h-9 rounded-lg bg-[#F0FDF4] dark:bg-emerald-950/40 flex items-center justify-center text-[#16A34A] dark:text-emerald-400 mb-2">
+                <i data-lucide="heart-pulse" class="w-4 h-4"></i>
+              </div>
+              <h3 data-i18n="res_pillar4_title" class="font-heading font-semibold text-sm text-[#111827] dark:text-white">
+                Hỗ Trợ Người Cao Tuổi & Bệnh Lý Đặc Biệt
+              </h3>
+              <p data-i18n="res_pillar4_desc" class="text-xs text-[#6B7280] dark:text-slate-400 leading-relaxed">
+                Ứng dụng công nghệ trợ năng theo dõi sức khỏe, cảnh báo an toàn và giao tiếp thông minh với giao diện đơn giản nhất cho người cần chăm sóc đặc biệt.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- PILLAR 3: Scholarly Reading Methodology & Human-Centric Focus -->
+        <div class="bg-white dark:bg-[#111726] border border-[#E5E7EB] dark:border-white/10 rounded-xl p-6 sm:p-8 space-y-6 transition-colors shadow-none card-interactive reveal-on-scroll">
+          <div class="border-b border-[#E5E7EB] dark:border-white/10 pb-4">
+            <h2 data-i18n="res_notes_heading" class="font-serif font-bold text-2xl text-[#111827] dark:text-white">
+              Phương Pháp Luận Đọc & Trọng Tâm Báo Cáo Khoa Học
+            </h2>
+            <p data-i18n="res_notes_sub" class="text-xs sm:text-sm text-[#6B7280] dark:text-slate-400 font-mono mt-1">
+              Cam kết học thuật minh bạch: Tập trung phân tích các công trình khoa học lấy con người làm trọng tâm
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            
+            <!-- Card 1 -->
+            <div class="p-5 rounded-xl bg-[#FAF9F6] dark:bg-[#161D2F] border border-[#E5E7EB] dark:border-white/10 space-y-2.5 card-interactive reveal-on-scroll reveal-delay-1">
+              <div class="flex items-center gap-2 text-xs font-mono text-[#C25E00] dark:text-[#D95D1E] font-semibold">
+                <i data-lucide="search" class="w-3.5 h-3.5"></i>
+                <span>DIGITAL DISCOVERY</span>
+              </div>
+              <h3 data-i18n="res_read1_title" class="font-heading font-semibold text-sm text-[#111827] dark:text-white">
+                Khai Thác Công Cụ Số: Google Scholar & Perplexity AI
+              </h3>
+              <div data-i18n="res_read1_meta" class="text-[11px] font-mono text-[#9CA3AF] dark:text-slate-500">
+                Phương pháp tra cứu học thuật số · Trọng tâm: Tốc độ & Tính chính xác của trích dẫn
+              </div>
+              <p data-i18n="res_read1_desc" class="text-xs text-[#4B5563] dark:text-slate-300 leading-relaxed">
+                Tận dụng Perplexity AI để tổng hợp nhanh các góc nhìn nghiên cứu và Google Scholar để thẩm định các công trình bình duyệt (peer-reviewed), nắm bắt các xu hướng khoa học mới nhất.
+              </p>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="p-5 rounded-xl bg-[#FAF9F6] dark:bg-[#161D2F] border border-[#E5E7EB] dark:border-white/10 space-y-2.5 card-interactive reveal-on-scroll reveal-delay-2">
+              <div class="flex items-center gap-2 text-xs font-mono text-[#16A34A] dark:text-emerald-400 font-semibold">
+                <i data-lucide="table" class="w-3.5 h-3.5"></i>
+                <span>LITERATURE MATRIX</span>
+              </div>
+              <h3 data-i18n="res_read2_title" class="font-heading font-semibold text-sm text-[#111827] dark:text-white">
+                Kỹ Năng Đọc Tóm Tắt & Lập Ma Trận So Sánh (Literature Matrix)
+              </h3>
+              <div data-i18n="res_read2_meta" class="text-[11px] font-mono text-[#9CA3AF] dark:text-slate-500">
+                Kỹ năng tổng hợp tài liệu · Trọng tâm: Trích xuất biến số & So sánh đa chiều
+              </div>
+              <p data-i18n="res_read2_desc" class="text-xs text-[#4B5563] dark:text-slate-300 leading-relaxed">
+                Phân rã Abstract và kết luận của bài báo để rút trích các luận điểm cốt lõi, sau đó đưa vào ma trận so sánh theo phương pháp nghiên cứu, giả thuyết và phát hiện thực nghiệm.
+              </p>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="p-5 rounded-xl bg-[#FAF9F6] dark:bg-[#161D2F] border border-[#E5E7EB] dark:border-white/10 space-y-2.5 card-interactive reveal-on-scroll reveal-delay-3">
+              <div class="flex items-center gap-2 text-xs font-mono text-blue-600 dark:text-blue-400 font-semibold">
+                <i data-lucide="heart" class="w-3.5 h-3.5"></i>
+                <span>HUMAN-CENTRIC FOCUS</span>
+              </div>
+              <h3 data-i18n="res_read3_title" class="font-heading font-semibold text-sm text-[#111827] dark:text-white">
+                Tiêu Chí Lựa Chọn: Báo Cáo Khoa Học Lấy Con Người Làm Trọng Tâm
+              </h3>
+              <div data-i18n="res_read3_meta" class="text-[11px] font-mono text-[#9CA3AF] dark:text-slate-500">
+                Triết lý học thuật · Trọng tâm: Human-Centric AI & Công nghệ trợ năng
+              </div>
+              <p data-i18n="res_read3_desc" class="text-xs text-[#4B5563] dark:text-slate-300 leading-relaxed">
+                Định hướng tiếp cận chuyên sâu vào các báo cáo khoa học về tương tác người - máy (HCI), công nghệ hỗ trợ người cao tuổi/người có bệnh lý, và các mô hình AI giảm thiểu tải nhận thức cho người dùng phổ thông.
+              </p>
+            </div>
+
+          </div>
+
+          <!-- Academic Lab Mentorship Collaboration Banner -->
+          <div class="pt-6 border-t border-[#E5E7EB] dark:border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
+            <div class="space-y-1 max-w-2xl">
+              <h4 data-i18n="res_collab_heading" class="font-heading font-bold text-sm sm:text-base text-[#111827] dark:text-white">
+                Sẵn Sàng Tham Gia Phòng Lab & Tìm Kiếm Người Hướng Dẫn Thạc Sĩ
+              </h4>
+              <p data-i18n="res_collab_desc" class="text-xs text-[#6B7280] dark:text-slate-400 leading-relaxed">
+                Tôi luôn sẵn sàng đón nhận cơ hội tham gia hỗ trợ các dự án tại phòng lab nghiên cứu, kết nối với các Thầy/Cô hướng dẫn Thạc sĩ quốc tế và trao đổi học thuật — để từng ngày tiến gần hơn đến mục tiêu bản thân: tạo ra giá trị thiết thực cho mọi người xung quanh.
+              </p>
+            </div>
+            <a
+              href="contact.html"
+              data-i18n="res_collab_btn"
+              class="inline-flex items-center justify-center gap-2 min-h-[44px] px-5 py-2.5 rounded-lg text-xs font-semibold bg-[#C25E00] text-white hover:bg-[#A84E00] transition-colors shrink-0 shadow-sm btn-interactive w-full md:w-auto"
+            >
+              Kết Nối Trao Đổi Học Thuật →
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================================
+       4. MINIMALIST ACADEMIC FOOTER
+       ======================================================================== -->
+  <footer role="contentinfo" class="w-full bg-[#FFFFFF] dark:bg-[#0B0F17] py-12 px-4 sm:px-6 lg:px-8 border-t border-[#E5E7EB] dark:border-white/10 text-xs text-[#6B7280] dark:text-slate-400 transition-colors">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      
+      <!-- Brand & Tagline -->
+      <div class="flex items-center gap-3 text-[#111827] dark:text-white">
+        <a href="index.html" class="font-heading font-bold text-sm tracking-tight text-[#111827] dark:text-white hover:text-[#C25E00] dark:hover:text-[#D95D1E] transition-colors">
+          Nguyen Van An
+        </a>
+        <span>•</span>
+        <span data-i18n="footer_role" class="font-mono text-xs text-[#6B7280] dark:text-slate-400">
+          Human-Centric AI & Systems Hub
+        </span>
+      </div>
+
+      <!-- Footer Navigation Links -->
+      <div class="flex flex-wrap items-center justify-center gap-5 sm:gap-6 font-mono text-xs">
+        <a href="index.html" data-i18n="nav_about" class="hover:text-[#111827] dark:hover:text-white transition-colors py-1">Về Tôi</a>
+        <a href="research.html" data-i18n="nav_research" class="text-[#C25E00] dark:text-[#D95D1E] font-semibold py-1">Nghiên Cứu</a>
+        <a href="projects.html" data-i18n="nav_projects" class="hover:text-[#111827] dark:hover:text-white transition-colors py-1">Dự Án</a>
+        <a href="contact.html" data-i18n="nav_contact" class="hover:text-[#111827] dark:hover:text-white transition-colors py-1">Liên Hệ</a>
+        <a href="https://github.com/Andrew12126" target="_blank" rel="noopener noreferrer" class="hover:text-[#111827] dark:hover:text-white transition-colors py-1">GitHub</a>
+        <a href="https://www.facebook.com/nguyen.an.921002" target="_blank" rel="noopener noreferrer" class="hover:text-[#111827] dark:hover:text-white transition-colors py-1">Facebook</a>
+      </div>
+
+      <!-- Copyright -->
+      <div class="text-center sm:text-right text-[#9CA3AF] dark:text-slate-500 font-mono text-[11px]">
+        © 2026 Nguyen Van An • Swiss Minimalist Strict Light/Dark
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Toast Container -->
+  <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Scripts: i18n -> Main -->
+  <script src="js/i18n.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
