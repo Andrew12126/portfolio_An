@@ -12,7 +12,7 @@ export interface Project {
   techStack: string[];
   featured: boolean;
   domain: string;
-  level: "Production" | "Academic R&D" | "Open Source";
+  level: "Production" | "Academic R&D" | "Academic Research" | "Open Source";
   
   // Case study specific details
   caseStudy?: {
