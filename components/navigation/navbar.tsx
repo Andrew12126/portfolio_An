@@ -28,29 +28,29 @@ export function Navbar() {
             </div>
           </Link>
 
-          {/* Navigation Links (Center) */}
+          {/* Navigation Links (Center - Andrew Ng academic uppercase tracking-widest) */}
           <nav className="hidden md:flex items-center gap-7">
             <Link
               href="#projects"
-              className="text-sm font-medium text-[#111827] hover:text-[#C25E00] transition-colors"
+              className="text-xs font-medium uppercase tracking-widest text-[#0f0f23] hover:text-[#C25E00] transition-colors"
             >
               Projects
             </Link>
             <Link
               href="#architecture"
-              className="text-sm font-medium text-[#6B7280] hover:text-[#111827] transition-colors"
+              className="text-xs font-medium uppercase tracking-widest text-[#6B7280] hover:text-[#0f0f23] transition-colors"
             >
               Architecture & Skills
             </Link>
             <Link
               href="#casestudy"
-              className="text-sm font-medium text-[#6B7280] hover:text-[#111827] transition-colors"
+              className="text-xs font-medium uppercase tracking-widest text-[#6B7280] hover:text-[#0f0f23] transition-colors"
             >
               Case Studies
             </Link>
             <Link
               href="#about"
-              className="text-sm font-medium text-[#6B7280] hover:text-[#111827] transition-colors"
+              className="text-xs font-medium uppercase tracking-widest text-[#6B7280] hover:text-[#0f0f23] transition-colors"
             >
               About
             </Link>

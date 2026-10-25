@@ -1,4 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Montserrat:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&display=swap');
+
+/* Optional Local Font: ABCSynt (Dinamo) */
+@font-face {
+  font-family: 'ABCSynt';
+  src: url('/fonts/ABCSynt-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 
 @tailwind base;
 @tailwind components;
@@ -7,7 +16,7 @@
 :root {
   /* Strict Swiss Minimalist Light Palette */
   --background: #FFFFFF;
-  --foreground: #111827;
+  --foreground: #0f0f23; /* Andrew Ng signature deep charcoal */
   --surface: #FFFFFF;
   --surface-subtle: #F9FAFB;
   --surface-muted: #F8F7F4;
@@ -21,9 +30,9 @@
   --accent-border: #FBE3CC;
 
   /* Typography tokens */
-  --font-serif: 'Playfair Display', Georgia, serif;
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-heading: 'Montserrat', sans-serif;
+  --font-serif: 'ABCSynt', 'Instrument Serif', 'Newsreader', Georgia, serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 }
 
@@ -33,6 +42,31 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Base Headings - Andrew Ng Academic Elegance (Regular 400) */
+h1, h2, h3, h4, h5, h6, .font-serif {
+  font-family: var(--font-serif);
+  font-weight: 400 !important;
+  color: var(--foreground);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+h1 {
+  font-size: clamp(2.75rem, 5vw + 1rem, 4.5rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+p {
+  font-family: var(--font-sans);
+  line-height: 1.625;
+}
+
+nav a {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 /* Subtle border utility */

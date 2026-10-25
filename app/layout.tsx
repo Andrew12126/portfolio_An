@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Montserrat, Playfair_Display, JetBrains_Mono } from "next/font/google";
+import { Inter, Instrument_Serif, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/navigation/navbar";
 import { Footer } from "@/components/footer/footer";
@@ -10,13 +10,8 @@ const inter = Inter({
   display: "swap",
 });
 
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  variable: "--font-heading",
-  display: "swap",
-});
-
-const playfair = Playfair_Display({
+const instrumentSerif = Instrument_Serif({
+  weight: "400",
   subsets: ["latin"],
   variable: "--font-serif",
   display: "swap",
@@ -50,9 +45,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${montserrat.variable} ${playfair.variable} ${jetbrainsMono.variable} scroll-smooth`}
+      className={`${inter.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable} scroll-smooth`}
     >
-      <body className="min-h-screen bg-white text-[#111827] flex flex-col font-sans antialiased">
+      <body className="min-h-screen bg-white text-[#0f0f23] flex flex-col font-sans antialiased">
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />

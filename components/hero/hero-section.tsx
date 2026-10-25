@@ -18,10 +18,10 @@ export function HeroSection() {
               <span>{portfolioData.badge}</span>
             </div>
 
-            {/* Headline with Sharp High-Contrast Serif / Architectural typography */}
-            <h1 className="text-4xl sm:text-5xl lg:text-[54px] font-bold tracking-tight text-[#111827] leading-[1.12] font-serif">
+            {/* Headline with Sharp Academic Serif (Andrew Ng style: font-normal, 48px/72px) */}
+            <h1 className="text-5xl md:text-7xl font-normal tracking-tight text-[#0f0f23] leading-[1.15] font-serif">
               Build Real Expertise in <br className="hidden sm:inline" />
-              <span className="text-[#111827]">AI & Computer Systems</span>
+              <span className="text-[#0f0f23]">AI & Computer Systems</span>
             </h1>
 
             {/* Description */}
