@@ -1,10 +1,17 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+  darkMode: "class",
   content: [
+    "./index.html",
+    "./projects.html",
+    "./research.html",
+    "./contact.html",
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./js/**/*.js",
+    "./data/**/*.json",
   ],
   theme: {
     extend: {
@@ -20,8 +27,10 @@ const config: Config = {
         accent: {
           DEFAULT: "#C25E00",
           hover: "#A84E00",
+          light: "#FFF8F0",
           subtle: "#FFF8F0",
           border: "#FBE3CC",
+          dark: "#D95D1E",
         },
         muted: {
           DEFAULT: "#6B7280",

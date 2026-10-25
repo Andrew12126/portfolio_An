@@ -60,18 +60,16 @@ d:\adley/
 ├── contact.html                     # Trang liên hệ học thuật & kết nối chuyên môn
 ├── README.md                        # Tài liệu kiến trúc dự án & hướng dẫn vận hành
 ├── css/
-│   └── styles.css                   # Stylesheet chuẩn Swiss Minimalist, Design Tokens & A11y
+│   ├── tailwind.min.css         # Tailwind CSS tĩnh đã biên dịch & tối ưu hóa production (37KB)
+│   └── styles.css               # Stylesheet chuẩn Swiss Minimalist, Design Tokens & A11y
 ├── js/
-│   ├── main.js                      # Core JS module: Theme, Nav, Reveal, Accordion, Toast, Form
-│   └── i18n.js                      # Song ngữ VI/EN (Internationalization Engine)
+│   ├── main.js                  # Core JS module: Theme, Nav, Reveal, Accordion, Toast, Form
+│   └── i18n.js                  # Song ngữ VI/EN (Internationalization Engine)
 └── assets/
-    ├── images/
-    │   ├── avarta.jpg               # Chân dung thực tế của tác giả
-    │   └── hero_avatar.jpg          # Ảnh hiển thị dự phòng
-    ├── css/style.css                # Bản đồng bộ tương thích ngược (fallback)
-    └── js/                          # Bản đồng bộ tương thích ngược (fallback)
-        ├── main.js
-        └── i18n.js
+    └── images/
+        ├── favicon.svg          # Vector favicon biểu tượng terminal (>_) chuẩn thương hiệu
+        ├── avarta.jpg           # Chân dung thực tế của tác giả
+        └── hero_avatar.jpg      # Ảnh hiển thị dự phòng
 ```
 
 ---

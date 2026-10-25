@@ -483,6 +483,11 @@ function setLanguage(lang) {
   activeLanguage = lang;
   persistLanguage(lang);
 
+  // Synchronize HTML document language attribute for A11y & SEO
+  if (document.documentElement) {
+    document.documentElement.setAttribute('lang', lang);
+  }
+
   const dictionary = i18nTranslations[lang];
 
   // Update text nodes
