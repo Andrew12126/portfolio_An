@@ -39,10 +39,10 @@ const config: Config = {
         charcoal: "#0f0f23",
       },
       fontFamily: {
-        serif: ["var(--font-serif)", "ABCSynt", '"Instrument Serif"', "Newsreader", "Georgia", "serif"],
-        sans: ["var(--font-sans)", "Inter", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif"],
-        heading: ["var(--font-heading)", "Inter", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
-        mono: ["var(--font-mono)", "JetBrains Mono", "monospace"],
+        serif: ["var(--font-serif)", "Roboto", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "sans-serif"],
+        sans: ["var(--font-sans)", "Roboto", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "sans-serif"],
+        heading: ["var(--font-heading)", "Roboto", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "sans-serif"],
+        mono: ["var(--font-mono)", '"Roboto Mono"', "ui-monospace", "monospace"],
       },
       letterSpacing: {
         tighter: "-0.04em",
