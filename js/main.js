@@ -5,19 +5,21 @@
  * - Accessible Navigation & Mobile Drawer
  * - Hardware-accelerated Scroll Reveal Micro-interactions
  * - Accessible Accordion Controllers
+ * - Interactive Project Category Filter
+ * - Printable Academic CV Modal Controller
+ * - Mailto & Clipboard Inquiry Form Dispatcher
  * - Clipboard Utilities & Toast Notifications
  *
- * @author Principal Software Architect
- * @version 2.0.0
+ * @version 2.1.0
  */
 
 'use strict';
 
 /**
  * Application Configuration & Frozen Constants
- * Eliminates all magic numbers and strings.
  */
 const APP_CONFIG = Object.freeze({
+  CONTACT_EMAIL: 'nguyenvanan722006@gmail.com',
   STORAGE_KEYS: Object.freeze({
     THEME: 'adley_theme',
     LANG: 'adley_lang'
@@ -30,7 +32,7 @@ const APP_CONFIG = Object.freeze({
     DESKTOP_BREAKPOINT_PX: 768
   }),
   TOAST: Object.freeze({
-    DURATION_MS: 3200,
+    DURATION_MS: 3400,
     FADE_OUT_MS: 260
   }),
   SCROLL_REVEAL: Object.freeze({
@@ -41,15 +43,10 @@ const APP_CONFIG = Object.freeze({
 
 /* ==========================================================================
    MODULE 1: THEME MANAGEMENT
-   Single Responsibility: Controls light/dark state, persistence & icons.
    ========================================================================== */
 const ThemeManager = (() => {
   const rootElement = document.documentElement;
 
-  /**
-   * Safely reads saved theme or falls back to system color scheme.
-   * @returns {string} 'light' or 'dark'
-   */
   function resolveInitialTheme() {
     try {
       const saved = localStorage.getItem(APP_CONFIG.STORAGE_KEYS.THEME);
@@ -64,10 +61,6 @@ const ThemeManager = (() => {
     return prefersDark ? APP_CONFIG.THEMES.DARK : APP_CONFIG.THEMES.LIGHT;
   }
 
-  /**
-   * Updates visibility of sun and moon icons across the DOM.
-   * @param {boolean} isDark
-   */
   function syncThemeIcons(isDark) {
     const sunIcons = document.querySelectorAll('.theme-sun-icon');
     const moonIcons = document.querySelectorAll('.theme-moon-icon');
@@ -76,10 +69,6 @@ const ThemeManager = (() => {
     moonIcons.forEach((icon) => icon.classList.toggle('hidden', isDark));
   }
 
-  /**
-   * Applies the theme to the document and synchronizes state.
-   * @param {string} theme - 'light' or 'dark'
-   */
   function applyTheme(theme) {
     const isDark = theme === APP_CONFIG.THEMES.DARK;
     rootElement.classList.toggle(APP_CONFIG.THEMES.DARK, isDark);
@@ -92,15 +81,13 @@ const ThemeManager = (() => {
     }
   }
 
-  /**
-   * Toggles between light and dark modes and triggers user feedback toast.
-   */
   function toggleTheme() {
     const currentlyDark = rootElement.classList.contains(APP_CONFIG.THEMES.DARK);
     const newTheme = currentlyDark ? APP_CONFIG.THEMES.LIGHT : APP_CONFIG.THEMES.DARK;
     applyTheme(newTheme);
 
-    const activeLang = typeof window.getCurrentLang === 'function' ? window.getCurrentLang() : 'vi';
+    const getLangFn = globalThis['getCurrentLang'];
+    const activeLang = typeof getLangFn === 'function' ? getLangFn() : 'en';
     const notification = newTheme === APP_CONFIG.THEMES.DARK
       ? (activeLang === 'vi' ? '🌙 Đã chuyển sang giao diện Tối' : '🌙 Switched to Dark Mode')
       : (activeLang === 'vi' ? '☀️ Đã chuyển sang giao diện Sáng' : '☀️ Switched to Light Mode');
@@ -122,7 +109,6 @@ const ThemeManager = (() => {
 
 /* ==========================================================================
    MODULE 2: NAVIGATION & ACCESSIBLE MOBILE DRAWER
-   Single Responsibility: Drawer state, keyboard navigation, outside clicks.
    ========================================================================== */
 const NavigationManager = (() => {
   const elements = {
@@ -132,10 +118,6 @@ const NavigationManager = (() => {
     closeIcon: null
   };
 
-  /**
-   * Sets menu drawer open or closed with proper ARIA attributes.
-   * @param {boolean} [forceState]
-   */
   function toggle(forceState) {
     if (!elements.button || !elements.drawer) return;
 
@@ -155,12 +137,10 @@ const NavigationManager = (() => {
       toggle();
     });
 
-    // Close when any link inside drawer is clicked
     elements.drawer.querySelectorAll('a').forEach((link) => {
       link.addEventListener('click', () => toggle(false));
     });
 
-    // Close on outside click
     document.addEventListener('click', (event) => {
       if (!elements.drawer.contains(event.target) && !elements.button.contains(event.target)) {
         if (!elements.drawer.classList.contains('hidden')) {
@@ -169,7 +149,6 @@ const NavigationManager = (() => {
       }
     });
 
-    // Close on Escape key
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape' && !elements.drawer.classList.contains('hidden')) {
         toggle(false);
@@ -177,7 +156,6 @@ const NavigationManager = (() => {
       }
     });
 
-    // Auto-close when resized to desktop viewport
     window.addEventListener('resize', () => {
       if (window.innerWidth >= APP_CONFIG.VIEWPORT.DESKTOP_BREAKPOINT_PX) {
         if (!elements.drawer.classList.contains('hidden')) {
@@ -203,7 +181,6 @@ const NavigationManager = (() => {
 
 /* ==========================================================================
    MODULE 3: SCROLL REVEAL (Micro-interactions)
-   Single Responsibility: Reveals elements on scroll while respecting a11y.
    ========================================================================== */
 const ScrollRevealManager = (() => {
   function init() {
@@ -236,13 +213,8 @@ const ScrollRevealManager = (() => {
 
 /* ==========================================================================
    MODULE 4: ACCORDION CONTROLLER
-   Single Responsibility: Toggles accordion items with ARIA compliance.
    ========================================================================== */
 const AccordionController = (() => {
-  /**
-   * Toggles visibility and aria state for an accordion trigger.
-   * @param {HTMLButtonElement} trigger
-   */
   function toggleItem(trigger) {
     const targetId = trigger.getAttribute('data-accordion-target');
     if (!targetId) return;
@@ -273,14 +245,8 @@ const AccordionController = (() => {
 
 /* ==========================================================================
    MODULE 5: CLIPBOARD SERVICE
-   Single Responsibility: Safe clipboard copying with modern & fallback APIs.
    ========================================================================== */
 const ClipboardService = (() => {
-  /**
-   * Fallback copy mechanism for legacy or non-secure contexts.
-   * @param {string} text
-   * @returns {Promise<void>}
-   */
   function fallbackCopy(text) {
     return new Promise((resolve, reject) => {
       try {
@@ -301,15 +267,12 @@ const ClipboardService = (() => {
     });
   }
 
-  /**
-   * Copies text to clipboard and displays user feedback.
-   * @param {string} text
-   */
-  async function copy(text) {
+  async function copy(text, customSuccessMessage) {
     if (!text) return;
 
-    const activeLang = typeof window.getCurrentLang === 'function' ? window.getCurrentLang() : 'vi';
-    const successMessage = activeLang === 'vi' ? `Đã sao chép: "${text}"` : `Copied: "${text}"`;
+    const getLangFn = globalThis['getCurrentLang'];
+    const activeLang = typeof getLangFn === 'function' ? getLangFn() : 'en';
+    const successMessage = customSuccessMessage || (activeLang === 'vi' ? `Đã sao chép: "${text}"` : `Copied: "${text}"`);
     const errorMessage = activeLang === 'vi' ? 'Không thể sao chép tự động' : 'Could not copy automatically';
 
     try {
@@ -339,29 +302,36 @@ const ClipboardService = (() => {
 })();
 
 /* ==========================================================================
-   MODULE 6: PROJECT QUICK FILTER
-   Single Responsibility: Handles quick filtering submission and feedback.
+   MODULE 6: INTERACTIVE PROJECT CATEGORY FILTER (projects.html)
    ========================================================================== */
 const ProjectFilterController = (() => {
   function init() {
-    const form = document.getElementById('quick-filter-form');
-    if (!form) return;
+    const filterButtons = document.querySelectorAll('[data-filter-btn]');
+    const projectCards = document.querySelectorAll('[data-project-category]');
+    if (!filterButtons.length || !projectCards.length) return;
 
-    form.addEventListener('submit', (event) => {
-      event.preventDefault();
+    filterButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const selectedCategory = btn.getAttribute('data-filter-btn') || 'all';
 
-      const subject = document.getElementById('filter-subject')?.value || 'All';
-      const skill = document.getElementById('filter-skill')?.value || 'All';
+        // Update active button state
+        filterButtons.forEach((b) => {
+          const isActive = b === btn;
+          b.setAttribute('aria-pressed', String(isActive));
+          if (isActive) {
+            b.className = 'px-3.5 py-2 rounded-lg text-xs font-mono font-semibold bg-[#C25E00] text-white border border-[#C25E00] transition-colors btn-interactive';
+          } else {
+            b.className = 'px-3.5 py-2 rounded-lg text-xs font-mono font-medium bg-white dark:bg-[#111726] text-[#4B5563] dark:text-slate-300 border border-[#E5E7EB] dark:border-white/10 hover:border-[#C25E00] dark:hover:border-[#D95D1E] transition-colors btn-interactive';
+          }
+        });
 
-      const activeLang = typeof window.getCurrentLang === 'function' ? window.getCurrentLang() : 'vi';
-      const feedback = activeLang === 'vi'
-        ? `Đã lọc dự án: ${subject} • ${skill}`
-        : `Applied filters: ${subject} • ${skill}`;
-
-      ToastService.show(feedback, 'info');
-
-      const targetSection = document.getElementById('projects') || document.querySelector('main');
-      targetSection?.scrollIntoView({ behavior: 'smooth' });
+        // Filter project cards
+        projectCards.forEach((card) => {
+          const cardCat = card.getAttribute('data-project-category') || '';
+          const shouldShow = selectedCategory === 'all' || cardCat.split(' ').includes(selectedCategory);
+          card.classList.toggle('hidden', !shouldShow);
+        });
+      });
     });
   }
 
@@ -370,15 +340,10 @@ const ProjectFilterController = (() => {
 
 /* ==========================================================================
    MODULE 7: TOAST NOTIFICATION SERVICE
-   Single Responsibility: Creation, rendering, and lifecycle of toast alerts.
    ========================================================================== */
 const ToastService = (() => {
   const CONTAINER_ID = 'toast-container';
 
-  /**
-   * Retrieves or lazily creates the toast container.
-   * @returns {HTMLElement}
-   */
   function getContainer() {
     let container = document.getElementById(CONTAINER_ID);
     if (!container) {
@@ -391,11 +356,6 @@ const ToastService = (() => {
     return container;
   }
 
-  /**
-   * Resolves CSS color styling based on alert type.
-   * @param {'info' | 'success' | 'error'} type
-   * @returns {{ borderClass: string, dotClass: string }}
-   */
   function resolveToastStyles(type) {
     if (type === 'success') {
       return { borderClass: 'border-[#16A34A] text-[#16A34A]', dotClass: 'bg-[#16A34A]' };
@@ -406,22 +366,21 @@ const ToastService = (() => {
     return { borderClass: 'border-[#C25E00] text-[#111827] dark:text-white', dotClass: 'bg-[#C25E00]' };
   }
 
-  /**
-   * Dispatches a toast alert to the screen with entrance and exit animations.
-   * @param {string} message - Content to display
-   * @param {'info' | 'success' | 'error'} [type='info']
-   */
   function show(message, type = 'info') {
     const container = getContainer();
     const { borderClass, dotClass } = resolveToastStyles(type);
 
     const toast = document.createElement('div');
     toast.className = `toast px-4 py-2.5 rounded-lg border text-xs font-mono font-medium shadow-sm flex items-center gap-2.5 backdrop-blur-md bg-white dark:bg-[#111726] ${borderClass}`;
-    toast.innerHTML = `
-      <span class="w-1.5 h-1.5 rounded-full ${dotClass}"></span>
-      <span>${message}</span>
-    `;
 
+    const dot = document.createElement('span');
+    dot.className = `w-1.5 h-1.5 rounded-full shrink-0 ${dotClass}`;
+
+    const textSpan = document.createElement('span');
+    textSpan.textContent = message;
+
+    toast.appendChild(dot);
+    toast.appendChild(textSpan);
     container.appendChild(toast);
 
     requestAnimationFrame(() => {
@@ -437,30 +396,292 @@ const ToastService = (() => {
   return { show };
 })();
 
-// Expose toast service globally for backward compatibility with inline triggers
-window.showToast = ToastService.show;
+Object.assign(window, { showToast: ToastService.show });
 
 /* ==========================================================================
-   MODULE 8: CONTACT FORM CONTROLLER
-   Single Responsibility: Intercepts academic contact form and provides instant toast feedback.
+   MODULE 8: CONTACT FORM CONTROLLER (Mailto & Clipboard Dispatcher)
    ========================================================================== */
 const ContactFormController = (() => {
+  function buildInquiryPayload(form) {
+    const nameInput = /** @type {HTMLInputElement | null} */ (form.querySelector('#contact-name'));
+    const emailInput = /** @type {HTMLInputElement | null} */ (form.querySelector('#contact-email'));
+    const subjectSelect = /** @type {HTMLSelectElement | null} */ (form.querySelector('#contact-subject'));
+    const messageInput = /** @type {HTMLTextAreaElement | null} */ (form.querySelector('#contact-message'));
+
+    const name = nameInput?.value?.trim() || 'Academic Colleague';
+    const email = emailInput?.value?.trim() || '';
+    const subjectText = subjectSelect?.options[subjectSelect.selectedIndex]?.text?.trim() || 'Academic Inquiry';
+    const message = messageInput?.value?.trim() || '';
+
+    const fullSubject = `[Portfolio Inquiry - ${subjectText}] from ${name}`;
+    const fullBody = [
+      `Dear Nguyen Van An,`,
+      ``,
+      message,
+      ``,
+      `---`,
+      `Sender Name: ${name}`,
+      `Reply-To Email: ${email}`,
+      `Category: ${subjectText}`
+    ].join('\n');
+
+    return { fullSubject, fullBody, message };
+  }
+
   function init() {
     const form = document.getElementById('academic-contact-form');
     if (!form) return;
 
     form.addEventListener('submit', (event) => {
       event.preventDefault();
-      const currentLang = typeof window.getCurrentLang === 'function' ? window.getCurrentLang() : 'vi';
+      const { fullSubject, fullBody } = buildInquiryPayload(form);
+      const getLangFn = globalThis['getCurrentLang'];
+      const currentLang = typeof getLangFn === 'function' ? getLangFn() : 'en';
+
+      const mailtoUrl = `mailto:${APP_CONFIG.CONTACT_EMAIL}?subject=${encodeURIComponent(fullSubject)}&body=${encodeURIComponent(fullBody)}`;
+      window.location.href = mailtoUrl;
+
       const msg = currentLang === 'vi'
-        ? '✓ Cảm ơn bạn! Tin nhắn trao đổi học thuật đã được ghi nhận thành công.'
-        : '✓ Thank you! Your academic inquiry has been recorded successfully.';
+        ? '✉️ Đang mở trình gửi Email với nội dung thư đã được định dạng sẵn!'
+        : '✉️ Opening your email client with your pre-formatted academic inquiry!';
       ToastService.show(msg, 'success');
-      form.reset();
     });
+
+    const copyInquiryBtn = document.getElementById('copy-inquiry-btn');
+    if (copyInquiryBtn) {
+      copyInquiryBtn.addEventListener('click', () => {
+        const { fullSubject, fullBody, message } = buildInquiryPayload(form);
+        const getLangFn = globalThis['getCurrentLang'];
+        const currentLang = typeof getLangFn === 'function' ? getLangFn() : 'en';
+        if (!message) {
+          ToastService.show(
+            currentLang === 'vi' ? 'Vui lòng nhập nội dung tin nhắn trước khi sao chép.' : 'Please enter your message content before copying.',
+            'error'
+          );
+          return;
+        }
+        const formattedText = `To: ${APP_CONFIG.CONTACT_EMAIL}\nSubject: ${fullSubject}\n\n${fullBody}`;
+        const toastMsg = currentLang === 'vi'
+          ? '✓ Đã sao chép toàn bộ nội dung thư vào bộ nhớ tạm!'
+          : '✓ Copied formatted inquiry to clipboard!';
+        ClipboardService.copy(formattedText, toastMsg);
+      });
+    }
   }
 
   return { init };
+})();
+
+/* ==========================================================================
+   MODULE 9: PRINTABLE ACADEMIC CV MODAL CONTROLLER (Global Multi-Page)
+   ========================================================================== */
+const AcademicCvModalController = (() => {
+  const CV_MODAL_TEMPLATE = `
+    <div
+      id="cv-modal-content"
+      class="w-full max-w-4xl bg-white dark:bg-[#111726] border border-[#E5E7EB] dark:border-white/10 rounded-xl shadow-xl max-h-[90vh] overflow-y-auto p-6 sm:p-10 space-y-6 text-[#111827] dark:text-white"
+    >
+      <!-- Top Action Bar (Hidden when printing) -->
+      <div class="no-print flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-[#E5E7EB] dark:border-white/10">
+        <span data-i18n="cv_modal_badge" class="font-mono text-xs font-semibold uppercase tracking-wider text-[#C25E00] dark:text-[#D95D1E]">
+          ACADEMIC CURRICULUM VITAE (PRINT-READY PDF FORMAT)
+        </span>
+        <div class="flex items-center gap-2">
+          <button
+            type="button"
+            id="print-cv-btn"
+            class="inline-flex items-center gap-2 min-h-[40px] px-4 py-2 rounded-lg text-xs font-mono font-semibold bg-[#C25E00] text-white hover:bg-[#A84E00] transition-colors cursor-pointer"
+          >
+            <i data-lucide="printer" class="w-3.5 h-3.5"></i>
+            <span data-i18n="cv_modal_print_btn">Print / Save as PDF (Ctrl+P)</span>
+          </button>
+          <button
+            type="button"
+            data-close-cv-modal="true"
+            class="inline-flex items-center gap-1.5 min-h-[40px] px-3 py-2 rounded-lg text-xs font-mono border border-[#E5E7EB] dark:border-white/10 hover:bg-[#FAF9F6] dark:hover:bg-white/5 transition-colors cursor-pointer"
+          >
+            <i data-lucide="x" class="w-4 h-4"></i>
+            <span data-i18n="cv_modal_close_btn">Close</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Printable CV Document Body -->
+      <div class="space-y-6 text-xs sm:text-sm leading-relaxed">
+        <!-- CV Header -->
+        <div class="border-b-2 border-[#111827] dark:border-white/20 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+          <div>
+            <h2 id="cv-modal-title" class="text-2xl sm:text-3xl font-serif font-normal tracking-tight">
+              NGUYEN VAN AN (Nguyễn Văn An)
+            </h2>
+            <p class="font-mono text-xs text-[#C25E00] dark:text-[#D95D1E] mt-1">
+              Undergraduate in Information Technology • Aspiring Human-Centric AI Researcher
+            </p>
+          </div>
+          <div class="font-mono text-xs text-[#4B5563] dark:text-slate-300 sm:text-right space-y-0.5">
+            <div>Bien Hoa City, Dong Nai, Vietnam</div>
+            <div>Email: nguyenvanan722006@gmail.com | Tel: +84 336 554 428</div>
+            <div>GitHub: github.com/Andrew12126</div>
+          </div>
+        </div>
+
+        <!-- 1. Education -->
+        <div class="space-y-2.5">
+          <h3 class="font-mono text-xs font-bold uppercase tracking-widest text-[#C25E00] dark:text-[#D95D1E] border-b border-[#E5E7EB] dark:border-white/10 pb-1">
+            1. Education &amp; Academic Transition
+          </h3>
+          <div class="flex flex-col sm:flex-row sm:items-baseline justify-between">
+            <div class="font-semibold">Lac Hong University (LHU) — Faculty of Information Technology</div>
+            <div class="font-mono text-xs text-[#6B7280] dark:text-slate-400">2025 — Present</div>
+          </div>
+          <p class="text-xs text-[#4B5563] dark:text-slate-300">
+            • First-Year Undergraduate in Information Technology (B.Sc. Track). Coursework focus: Discrete Mathematics, Programming Foundations, Data Structures &amp; Algorithms, and Applied AI Systems.
+          </p>
+
+          <div class="flex flex-col sm:flex-row sm:items-baseline justify-between pt-1">
+            <div class="font-semibold">Ho Chi Minh City University of Industry and Trade (HUIT)</div>
+            <div class="font-mono text-xs text-[#6B7280] dark:text-slate-400">2024 — 2025 (3 Semesters)</div>
+          </div>
+          <p class="text-xs text-[#4B5563] dark:text-slate-300">
+            • Completed 3 semesters in Hospitality Management prior to transferring into Information Technology at LHU. Cultivated deep training in user psychology, service touchpoint optimization, and public communication.
+          </p>
+        </div>
+
+        <!-- 2. Early Research Experience -->
+        <div class="space-y-2">
+          <h3 class="font-mono text-xs font-bold uppercase tracking-widest text-[#C25E00] dark:text-[#D95D1E] border-b border-[#E5E7EB] dark:border-white/10 pb-1">
+            2. Early Research &amp; Literature Cataloging Experience
+          </h3>
+          <div class="flex flex-col sm:flex-row sm:items-baseline justify-between">
+            <div class="font-semibold">Faculty Research Topic: Winter Tourism Consumer Behavior in Da Nang City</div>
+            <div class="font-mono text-xs text-[#6B7280] dark:text-slate-400">Stage-1 Contribution @ HUIT</div>
+          </div>
+          <ul class="list-disc list-inside text-xs text-[#4B5563] dark:text-slate-300 space-y-1">
+            <li>Participated in Stage 1 (Literature Discovery &amp; Cataloging) under faculty supervision prior to transferring majors to LHU.</li>
+            <li>Executed targeted queries across <strong>Google Scholar</strong> and <strong>Perplexity AI</strong> to retrieve related academic papers on tourism seasonality, push-pull motivations, and weather sensitivity.</li>
+            <li>Screened paper abstracts and systematically logged findings into a structured <strong>Excel Literature Database</strong> for the research group.</li>
+          </ul>
+        </div>
+
+        <!-- 3. Applied Technical Projects -->
+        <div class="space-y-2">
+          <h3 class="font-mono text-xs font-bold uppercase tracking-widest text-[#C25E00] dark:text-[#D95D1E] border-b border-[#E5E7EB] dark:border-white/10 pb-1">
+            3. Applied Engineering &amp; Technical Systems
+          </h3>
+          <div class="flex flex-col sm:flex-row sm:items-baseline justify-between">
+            <div class="font-semibold">Smart Gesture Slide Controller (On-Device Computer Vision)</div>
+            <div class="font-mono text-xs text-[#6B7280] dark:text-slate-400">JavaScript • MediaPipe Hands • HTML5 Canvas</div>
+          </div>
+          <ul class="list-disc list-inside text-xs text-[#4B5563] dark:text-slate-300 space-y-1">
+            <li>Engineered a touchless browser-based presentation controller tracking 21 3D hand joints at <strong>30–60 FPS (&lt;25ms latency)</strong> with 100% client-side privacy.</li>
+            <li>Designed a scale-invariant <strong>Euclidean Geometric Classifier</strong> and a <strong>3-Layer Finite State Machine (FSM) Anti-False-Positive Engine</strong> (1.0s Master Lock, 800ms Dwell Hold-to-Trigger with SVG progress ring, 1.2s Cooldown Buffer).</li>
+            <li>Live Demo: <span class="font-mono">andrew12126.github.io/Smart_Gesture_Slide_Controller/</span></li>
+          </ul>
+        </div>
+
+        <!-- 4. Skills, Languages & Leadership -->
+        <div class="space-y-2">
+          <h3 class="font-mono text-xs font-bold uppercase tracking-widest text-[#C25E00] dark:text-[#D95D1E] border-b border-[#E5E7EB] dark:border-white/10 pb-1">
+            4. Technical Skills, Languages &amp; Public Speaking
+          </h3>
+          <ul class="list-disc list-inside text-xs text-[#4B5563] dark:text-slate-300 space-y-1">
+            <li><strong>Technical Focus:</strong> JavaScript (ES6+), HTML5/CSS3, Tailwind CSS, MediaPipe Hands (Computer Vision), Git/GitHub, Prompt Engineering, RAG Architecture Design, Structured Excel Literature Logging.</li>
+            <li><strong>English Proficiency:</strong> IELTS 5.5 (Current Baseline) — Actively preparing toward IELTS 7.0+ for International Master's Scholarship admissions.</li>
+            <li><strong>Public Speaking &amp; Event MC:</strong> Hosted 4–5 community and cultural events (Charity drives, Mid-Autumn Festival, Dong Ho Folk Art Exhibition, Mini Gameshows).</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  `;
+
+  function ensureModalExists() {
+    let modal = document.getElementById('cv-modal');
+    if (modal) return modal;
+
+    modal = document.createElement('div');
+    modal.id = 'cv-modal';
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-labelledby', 'cv-modal-title');
+    modal.setAttribute('aria-hidden', 'true');
+    modal.className = 'hidden fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 overflow-y-auto';
+    modal.innerHTML = CV_MODAL_TEMPLATE;
+    document.body.appendChild(modal);
+
+    // Sync active language for newly injected modal labels
+    const setLangFn = globalThis['setLanguage'];
+    const getLangFn = globalThis['getCurrentLang'];
+    if (typeof setLangFn === 'function' && typeof getLangFn === 'function') {
+      setLangFn(getLangFn());
+    }
+
+    return modal;
+  }
+
+  function openModal() {
+    const modal = ensureModalExists();
+    if (!modal) return;
+    NavigationManager.toggle(false);
+    modal.classList.remove('hidden');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+
+    const lucideInstance = globalThis['lucide'];
+    if (lucideInstance && typeof lucideInstance.createIcons === 'function') {
+      lucideInstance.createIcons();
+    }
+  }
+
+  function closeModal() {
+    const modal = document.getElementById('cv-modal');
+    if (!modal) return;
+    modal.classList.add('hidden');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  function init() {
+    const modal = ensureModalExists();
+    if (!modal) return;
+
+    const openButtons = document.querySelectorAll('[data-open-cv-modal]');
+    openButtons.forEach((btn) => {
+      btn.addEventListener('click', (event) => {
+        event.preventDefault();
+        openModal();
+      });
+    });
+
+    const closeButtons = modal.querySelectorAll('[data-close-cv-modal]');
+    closeButtons.forEach((btn) => {
+      btn.addEventListener('click', closeModal);
+    });
+
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        closeModal();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !modal.classList.contains('hidden')) {
+        closeModal();
+      }
+    });
+
+    const printBtn = document.getElementById('print-cv-btn');
+    if (printBtn) {
+      printBtn.addEventListener('click', () => {
+        window.print();
+      });
+    }
+
+    if (window.location.hash === '#cv') {
+      openModal();
+    }
+  }
+
+  return { init, openModal, closeModal };
 })();
 
 /* ==========================================================================
@@ -474,8 +695,10 @@ document.addEventListener('DOMContentLoaded', () => {
   ClipboardService.init();
   ProjectFilterController.init();
   ContactFormController.init();
+  AcademicCvModalController.init();
 
-  if (window.lucide && typeof window.lucide.createIcons === 'function') {
-    window.lucide.createIcons();
+  const lucideInstance = globalThis['lucide'];
+  if (lucideInstance && typeof lucideInstance.createIcons === 'function') {
+    lucideInstance.createIcons();
   }
 });

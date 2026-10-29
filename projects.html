@@ -1,13 +1,11 @@
 <!DOCTYPE html>
-<html lang="vi" class="scroll-smooth">
+<html lang="en" data-i18n-title="page_title_projects" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projects & Engineering Systems | Nguyen Van An</title>
-  <meta name="description" content="Applied software engineering, distributed systems, and AI tooling projects by Nguyen Van An.">
+  <title>Applied Engineering & Technical Systems | Nguyen Van An</title>
+  <meta name="description" content="Applied software engineering, On-Device Computer Vision (Smart Gesture Slide Controller), and academic research workflows by Nguyen Van An.">
   <link rel="canonical" href="https://andrew12126.github.io/portfolio_An/projects.html">
-  <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#0B0F17" media="(prefers-color-scheme: dark)">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
@@ -16,28 +14,45 @@
   <!-- Open Graph / Facebook / LinkedIn -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://andrew12126.github.io/portfolio_An/projects.html">
-  <meta property="og:title" content="Projects & Engineering Systems | Nguyen Van An">
-  <meta property="og:description" content="Applied software engineering, distributed systems, and AI tooling projects by Nguyen Van An.">
+  <meta property="og:title" content="Applied Engineering & Technical Systems | Nguyen Van An">
+  <meta property="og:description" content="Smart Gesture Slide Controller (MediaPipe Hands + 3-Layer FSM) and applied systems engineering by Nguyen Van An.">
   <meta property="og:image" content="https://andrew12126.github.io/portfolio_An/assets/images/avarta.jpg">
   <meta property="og:site_name" content="Nguyen Van An Portfolio">
-  <meta property="og:locale" content="vi_VN">
+  <meta property="og:locale" content="en_US">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://andrew12126.github.io/portfolio_An/projects.html">
-  <meta name="twitter:title" content="Projects & Engineering Systems | Nguyen Van An">
-  <meta name="twitter:description" content="Applied software engineering, distributed systems, and AI tooling projects by Nguyen Van An.">
+  <meta name="twitter:title" content="Applied Engineering & Technical Systems | Nguyen Van An">
+  <meta name="twitter:description" content="Smart Gesture Slide Controller (MediaPipe Hands + 3-Layer FSM) and applied systems engineering by Nguyen Van An.">
   <meta name="twitter:image" content="https://andrew12126.github.io/portfolio_An/assets/images/avarta.jpg">
 
-  <!-- Google Fonts: Roboto (Primary Sans/Heading/Serif) & Roboto Mono (Technical/Monospace) -->
+  <!-- Schema.org SoftwareSourceCode JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareSourceCode",
+    "name": "Smart Gesture Slide Controller",
+    "author": {
+      "@type": "Person",
+      "name": "Nguyen Van An"
+    },
+    "codeRepository": "https://github.com/Andrew12126/Smart_Gesture_Slide_Controller",
+    "programmingLanguage": ["JavaScript", "HTML5", "CSS3"],
+    "runtimePlatform": "Web Browser (MediaPipe Hands On-Device)",
+    "description": "Touchless slide navigation system powered by On-Device Computer Vision (MediaPipe Hands 21 3D landmarks) with a 3-layer Finite State Machine Anti-False-Positive Engine."
+  }
+  </script>
+
+  <!-- Google Fonts: Roboto (Unified Primary Typography) & Roboto Mono (Technical/Monospace) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
 
-  <!-- Precompiled Static Tailwind CSS (High-Performance, Zero Runtime JIT) -->
+  <!-- Precompiled Static Tailwind CSS -->
   <link rel="stylesheet" href="css/tailwind.min.css">
 
-  <!-- Anti-FOUC: Synchronous Early Theme Resolution (Prevents white flash in Dark Mode) -->
+  <!-- Anti-FOUC: Synchronous Early Theme Resolution -->
   <script>
     (function() {
       try {
@@ -52,21 +67,21 @@
     })();
   </script>
 
-  <!-- Custom Stylesheet (Swiss Minimalist + ECC Micro-interactions) -->
+  <!-- Custom Stylesheet -->
   <link rel="stylesheet" href="css/styles.css">
 
-  <!-- Lucide Icons (Pinned for Production Reliability) -->
-  <script src="https://unpkg.com/lucide@0.453.0/dist/umd/lucide.min.js"></script>
+  <!-- Lucide Icons (Deferred) -->
+  <script defer src="https://unpkg.com/lucide@0.453.0/dist/umd/lucide.min.js"></script>
 </head>
 <body class="min-h-screen bg-white dark:bg-[#0B0F17] text-[#0f0f23] dark:text-[#F9FAFB] flex flex-col font-sans antialiased selection:bg-[#FBE3CC] selection:text-[#C25E00] transition-colors duration-200">
 
   <!-- Accessible Skip Link (WCAG 2.2 AA) -->
-  <a href="#main-content" class="skip-link">Chuyển đến nội dung chính</a>
+  <a href="#main-content" data-i18n="skip_to_main" class="skip-link">Skip to main content</a>
 
   <!-- ========================================================================
-       1. TOP NAVIGATION BAR (Fixed Top with Multi-Page Navigation)
+       1. TOP NAVIGATION BAR (Unified Multi-Page Header)
        ======================================================================== -->
-  <header role="banner" class="sticky top-0 z-50 w-full bg-white/95 dark:bg-[#0B0F17]/95 backdrop-blur-md border-b border-[#E5E7EB] dark:border-white/10 transition-colors">
+  <header class="sticky top-0 z-50 w-full bg-white/95 dark:bg-[#0B0F17]/95 backdrop-blur-md border-b border-[#E5E7EB] dark:border-white/10 transition-colors">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16 gap-3 sm:gap-4">
         
@@ -79,27 +94,27 @@
             <span class="font-heading font-bold text-base tracking-tight text-[#111827] dark:text-white">
               Nguyen Van An
             </span>
-            <span class="text-sm font-normal text-[#6B7280] dark:text-slate-400">
+            <span class="text-xs font-mono uppercase tracking-wider text-[#6B7280] dark:text-slate-400">
               AI Hub
             </span>
           </div>
         </a>
 
         <!-- Middle: Navigation Links -->
-        <nav role="navigation" aria-label="Menu chính" class="hidden md:flex items-center gap-7 lg:gap-8">
+        <nav aria-label="Primary Navigation" class="hidden md:flex items-center gap-7 lg:gap-8">
           <a
             href="index.html"
             data-i18n="nav_about"
             class="text-xs font-semibold uppercase tracking-widest text-[#6B7280] dark:text-slate-400 hover:text-[#0f0f23] dark:hover:text-white py-2 transition-colors font-sans"
           >
-            Về Tôi
+            About
           </a>
           <a
             href="research.html"
             data-i18n="nav_research"
             class="text-xs font-semibold uppercase tracking-widest text-[#6B7280] dark:text-slate-400 hover:text-[#0f0f23] dark:hover:text-white py-2 transition-colors font-sans"
           >
-            Nghiên Cứu
+            Research
           </a>
           <a
             href="projects.html"
@@ -107,27 +122,27 @@
             class="text-xs font-semibold uppercase tracking-widest text-[#C25E00] dark:text-[#D95D1E] underline underline-offset-8 decoration-2 decoration-[#C25E00] dark:decoration-[#D95D1E] py-2 transition-colors font-sans"
             aria-current="page"
           >
-            Dự Án
+            Projects
           </a>
           <a
             href="contact.html"
             data-i18n="nav_contact"
             class="text-xs font-semibold uppercase tracking-widest text-[#6B7280] dark:text-slate-400 hover:text-[#0f0f23] dark:hover:text-white py-2 transition-colors font-sans"
           >
-            Liên Hệ
+            Contact
           </a>
         </nav>
 
         <!-- Right Utility Actions -->
         <div class="flex items-center gap-2 sm:gap-2.5">
           
-          <!-- Language Toggle - Min 44x44px touch area -->
+          <!-- Language Toggle -->
           <button
             id="lang-toggle-btn"
             type="button"
             class="inline-flex items-center gap-1.5 h-10 px-3 rounded-lg border border-[#E5E7EB] dark:border-white/10 bg-[#F9FAFB] dark:bg-[#161D2F] text-xs font-mono font-medium text-[#111827] dark:text-white hover:border-[#C25E00] dark:hover:border-[#D95D1E] transition-colors btn-interactive"
-            aria-label="Chuyển đổi ngôn ngữ Tiếng Việt / English"
-            title="Chuyển đổi ngôn ngữ / Switch language"
+            aria-label="Switch language English / Vietnamese"
+            title="Switch language / Chuyển đổi ngôn ngữ"
           >
             <i data-lucide="globe" class="w-3.5 h-3.5 text-[#C25E00]"></i>
             <span id="lang-indicator-en" class="text-[#C25E00] font-bold">EN</span>
@@ -135,25 +150,26 @@
             <span id="lang-indicator-vi" class="text-[#9CA3AF] font-normal">VI</span>
           </button>
 
-          <!-- Theme Toggle - Min 44x44px touch area -->
+          <!-- Theme Toggle -->
           <button
             type="button"
-            class="theme-toggle-btn w-10 h-10 rounded-lg border border-[#E5E7EB] dark:border-white/10 bg-[#F9FAFB] dark:bg-[#161D2F] text-[#4B5563] dark:text-slate-300 hover:text-[#C25E00] dark:hover:text-[#D95D1E] hover:border-[#C25E00] dark:hover:border-[#D95D1E] transition-colors flex items-center justify-center btn-interactive"
-            aria-label="Chuyển đổi giao diện Sáng / Tối"
-            title="Chuyển đổi giao diện Sáng / Tối"
+            class="theme-toggle-btn w-10 h-10 rounded-lg border border-[#E5E7EB] dark:border-white/10 bg-[#F9FAFB] dark:bg-[#161D2F] text-[#4B5563] dark:text-slate-300 hover:text-[#C25E00] dark:hover:border-[#D95D1E] hover:border-[#C25E00] transition-colors flex items-center justify-center btn-interactive"
+            aria-label="Toggle Light / Dark theme"
+            title="Toggle Light / Dark theme"
           >
             <i data-lucide="sun" class="theme-sun-icon w-4 h-4 hidden text-amber-400"></i>
             <i data-lucide="moon" class="theme-moon-icon w-4 h-4 text-[#4B5563]"></i>
           </button>
 
-          <!-- Resume Link -->
-          <a
-            href="contact.html#cv"
+          <!-- Resume Modal Trigger (Instant Anywhere) -->
+          <button
+            type="button"
+            data-open-cv-modal="true"
             data-i18n="btn_resume"
-            class="hidden sm:inline-flex items-center text-xs font-semibold uppercase tracking-wider text-[#4B5563] dark:text-slate-300 hover:text-[#111827] dark:hover:text-white px-2.5 h-10 transition-colors font-mono"
+            class="hidden sm:inline-flex items-center text-xs font-semibold uppercase tracking-wider text-[#4B5563] dark:text-slate-300 hover:text-[#C25E00] dark:hover:text-[#D95D1E] px-2.5 h-10 transition-colors font-mono cursor-pointer"
           >
-            Hồ Sơ (CV)
-          </a>
+            Academic CV
+          </button>
 
           <!-- Primary CTA Button -->
           <a
@@ -161,15 +177,15 @@
             data-i18n="btn_contact"
             class="inline-flex items-center justify-center h-10 px-4 rounded-lg text-xs sm:text-sm font-medium bg-[#C25E00] text-white hover:bg-[#A84E00] active:bg-[#8F4300] transition-colors shadow-sm btn-interactive"
           >
-            Liên Hệ
+            Contact Me
           </a>
 
-          <!-- Mobile Hamburger Toggle - Min 44x44px touch target -->
+          <!-- Mobile Hamburger Toggle -->
           <button
             id="mobile-menu-btn"
             type="button"
             class="md:hidden w-11 h-11 rounded-lg text-[#4B5563] dark:text-slate-300 hover:text-[#111827] dark:hover:text-white hover:bg-[#F3F4F6] dark:hover:bg-white/10 transition-colors flex items-center justify-center btn-interactive"
-            aria-label="Mở menu điều hướng"
+            aria-label="Toggle navigation menu"
             aria-expanded="false"
             aria-controls="mobile-menu"
           >
@@ -182,19 +198,22 @@
 
     <!-- Mobile Drawer -->
     <div id="mobile-menu" class="hidden md:hidden border-t border-[#E5E7EB] dark:border-white/10 bg-white dark:bg-[#0B0F17] px-4 pt-3 pb-5 space-y-2">
-      <div class="flex flex-col space-y-1.5" role="menu">
-        <a href="index.html" data-i18n="nav_about" role="menuitem" class="min-h-[44px] flex items-center px-3.5 py-2.5 rounded-lg text-sm font-medium text-[#4B5563] dark:text-slate-300 hover:bg-[#F9FAFB] dark:hover:bg-white/5 transition-colors">
-          Về Tôi
+      <div class="flex flex-col space-y-1.5">
+        <a href="index.html" data-i18n="nav_about" class="min-h-[44px] flex items-center px-3.5 py-2.5 rounded-lg text-sm font-medium text-[#4B5563] dark:text-slate-300 hover:bg-[#F9FAFB] dark:hover:bg-white/5 transition-colors">
+          About
         </a>
-        <a href="research.html" data-i18n="nav_research" role="menuitem" class="min-h-[44px] flex items-center px-3.5 py-2.5 rounded-lg text-sm font-medium text-[#4B5563] dark:text-slate-300 hover:bg-[#F9FAFB] dark:hover:bg-white/5 transition-colors">
-          Nghiên Cứu
+        <a href="research.html" data-i18n="nav_research" class="min-h-[44px] flex items-center px-3.5 py-2.5 rounded-lg text-sm font-medium text-[#4B5563] dark:text-slate-300 hover:bg-[#F9FAFB] dark:hover:bg-white/5 transition-colors">
+          Research
         </a>
-        <a href="projects.html" data-i18n="nav_projects" role="menuitem" class="min-h-[44px] flex items-center px-3.5 py-2.5 rounded-lg text-sm font-semibold bg-[#FFF8F0] dark:bg-white/5 text-[#C25E00] dark:text-[#D95D1E]">
-          Dự Án
+        <a href="projects.html" data-i18n="nav_projects" class="min-h-[44px] flex items-center px-3.5 py-2.5 rounded-lg text-sm font-semibold bg-[#FFF8F0] dark:bg-white/5 text-[#C25E00] dark:text-[#D95D1E]">
+          Projects
         </a>
-        <a href="contact.html" data-i18n="nav_contact" role="menuitem" class="min-h-[44px] flex items-center px-3.5 py-2.5 rounded-lg text-sm font-medium text-[#4B5563] dark:text-slate-300 hover:bg-[#F9FAFB] dark:hover:bg-white/5 transition-colors">
-          Liên Hệ
+        <a href="contact.html" data-i18n="nav_contact" class="min-h-[44px] flex items-center px-3.5 py-2.5 rounded-lg text-sm font-medium text-[#4B5563] dark:text-slate-300 hover:bg-[#F9FAFB] dark:hover:bg-white/5 transition-colors">
+          Contact
         </a>
+        <button type="button" data-open-cv-modal="true" data-i18n="btn_resume" class="w-full min-h-[44px] flex items-center px-3.5 py-2.5 rounded-lg text-sm font-mono font-semibold text-[#C25E00] dark:text-[#D95D1E] hover:bg-[#F9FAFB] dark:hover:bg-white/5 transition-colors text-left cursor-pointer">
+          Academic CV
+        </button>
       </div>
     </div>
   </header>
@@ -209,174 +228,232 @@
          ====================================================================== -->
     <section class="w-full bg-[#FFFFFF] dark:bg-[#0B0F17] py-12 sm:py-20 border-b border-[#E5E7EB] dark:border-white/10 transition-colors">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4 reveal-on-scroll">
-        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#FDF3E7] dark:bg-[#C25E00]/15 text-[#C25E00] dark:text-[#D95D1E] border border-[#FBE3CC] dark:border-[#C25E00]/30 text-xs font-mono font-semibold uppercase tracking-wider">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-[#FAF9F6] dark:bg-[#161D2F] text-[#C25E00] dark:text-[#D95D1E] border border-[#E5E7EB] dark:border-white/10 text-xs font-mono font-semibold uppercase tracking-wider">
           <i data-lucide="layers" class="w-3.5 h-3.5"></i>
-          <span data-i18n="proj_page_badge">03 · DỰ ÁN CÔNG NGHỆ & KỸ NGHỆ HỆ THỐNG</span>
+          <span data-i18n="proj_page_badge">03 · APPLIED ENGINEERING & TECHNICAL SYSTEMS</span>
         </div>
-        <h1 data-i18n="proj_page_title" class="text-4xl sm:text-5xl md:text-6xl lg:text-[72px] font-normal font-serif text-[#0f0f23] dark:text-white tracking-tight leading-[1.15]">
-          Dự Án Công Nghệ & Kỹ Nghệ Ứng Dụng
+        <h1 data-i18n="proj_page_title" class="font-normal font-serif text-[#0f0f23] dark:text-white tracking-tight leading-[1.14]">
+          Applied Projects & Engineering Hub
         </h1>
         <p data-i18n="proj_page_sub" class="text-base sm:text-lg text-[#4B5563] dark:text-slate-300 leading-relaxed max-w-3xl font-normal">
-          Hiện thực hóa ý tưởng qua mã nguồn, kiến trúc hệ thống và giao diện người dùng tối giản lấy con người làm trọng tâm.
+          Every project is documented with engineering clarity: Real-world Problem → System Methodology & Architecture → Quantifiable Metrics.
         </p>
       </div>
     </section>
 
     <!-- ======================================================================
-         3. FEATURED PROJECTS GRID (4 Columns - Stacks on mobile)
+         3. STRUCTURED PROJECTS DIRECTORY (With Interactive Filter Bar)
          ====================================================================== -->
     <section class="w-full py-12 sm:py-16">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         
-        <!-- Section Header -->
-        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-4 border-b border-[#E5E7EB] dark:border-white/10 reveal-on-scroll">
+        <!-- Section Header & Category Filter Pills -->
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4 pb-5 border-b border-[#E5E7EB] dark:border-white/10 reveal-on-scroll">
           <div>
             <h2 data-i18n="featured_heading" class="text-2xl sm:text-3xl font-normal font-serif text-[#0f0f23] dark:text-white tracking-tight">
-              Dự Án Tiêu Biểu
+              Project Directory & Research Artifacts
             </h2>
-            <p data-i18n="featured_sub" class="text-sm text-[#6B7280] dark:text-slate-400 mt-1 font-normal">
-              Tuyển chọn các đồ án kỹ thuật và công cụ ứng dụng
+            <p data-i18n="featured_sub" class="text-xs sm:text-sm text-[#6B7280] dark:text-slate-400 mt-1 font-mono">
+              Filter by domain to inspect problem statements, system architectures, and live deployments
             </p>
           </div>
 
-          <a
-            href="https://github.com/Andrew12126"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 text-sm font-medium text-[#C25E00] dark:text-[#D95D1E] hover:underline self-start sm:self-auto group btn-interactive py-1"
-          >
-            <span data-i18n="view_all_projects">Xem GitHub @Andrew12126</span>
-            <i data-lucide="arrow-up-right" class="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
-          </a>
+          <!-- Filter Buttons Bar -->
+          <div class="flex flex-wrap items-center gap-2" role="group" aria-label="Filter projects by category">
+            <button type="button" data-filter-btn="all" aria-pressed="true" data-i18n="filter_all" class="px-3.5 py-2 rounded-lg text-xs font-mono font-semibold bg-[#C25E00] text-white border border-[#C25E00] transition-colors btn-interactive">
+              All Work (04)
+            </button>
+            <button type="button" data-filter-btn="ai" aria-pressed="false" data-i18n="filter_ai" class="px-3.5 py-2 rounded-lg text-xs font-mono font-medium bg-white dark:bg-[#111726] text-[#4B5563] dark:text-slate-300 border border-[#E5E7EB] dark:border-white/10 hover:border-[#C25E00] dark:hover:border-[#D95D1E] transition-colors btn-interactive">
+              AI & Computer Vision
+            </button>
+            <button type="button" data-filter-btn="research" aria-pressed="false" data-i18n="filter_research" class="px-3.5 py-2 rounded-lg text-xs font-mono font-medium bg-white dark:bg-[#111726] text-[#4B5563] dark:text-slate-300 border border-[#E5E7EB] dark:border-white/10 hover:border-[#C25E00] dark:hover:border-[#D95D1E] transition-colors btn-interactive">
+              Literature & R&D
+            </button>
+            <button type="button" data-filter-btn="web" aria-pressed="false" data-i18n="filter_web" class="px-3.5 py-2 rounded-lg text-xs font-mono font-medium bg-white dark:bg-[#111726] text-[#4B5563] dark:text-slate-300 border border-[#E5E7EB] dark:border-white/10 hover:border-[#C25E00] dark:hover:border-[#D95D1E] transition-colors btn-interactive">
+              Web Systems
+            </button>
+          </div>
         </div>
 
-        <!-- 4-Column Grid: Stacks cleanly to 1 col on mobile, 2 on tablet, 4 on desktop -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- 2-Column Structured Engineering Cards Grid (High Scannability for Lead Engineers & Professors) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-          <!-- CARD 1: AI (Smart Gesture Slide Controller) -->
-          <div class="group flex flex-col bg-white dark:bg-[#111726] border border-[#E5E7EB] dark:border-white/10 rounded-xl overflow-hidden card-interactive reveal-on-scroll reveal-delay-1 select-none">
-            <div class="relative h-44 w-full bg-[#FFF8F0] dark:bg-[#C25E00]/15 flex items-center justify-center p-6 border-b border-[#E5E7EB]/80 dark:border-white/10">
-              <div class="absolute top-3.5 left-3.5">
-                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-[#C25E00] text-white">
-                  AI • COMPUTER VISION
+          <!-- CARD 1: Smart Gesture Slide Controller -->
+          <article data-project-category="ai web" class="flex flex-col justify-between bg-white dark:bg-[#111726] border border-[#E5E7EB] dark:border-white/10 rounded-xl p-6 space-y-5 card-interactive reveal-on-scroll">
+            <div class="space-y-4">
+              <div class="flex items-center justify-between gap-2 pb-3 border-b border-[#F3F4F6] dark:border-white/5">
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-[#C25E00] text-white">
+                  <i data-lucide="scan" class="w-3 h-3"></i>
+                  <span>01 · AI & COMPUTER VISION</span>
+                </span>
+                <span class="text-[11px] font-mono text-[#16A34A] dark:text-emerald-400 font-semibold">
+                  ● PRODUCTION LIVE DEMO
                 </span>
               </div>
-              <div class="transition-transform duration-200 group-hover:scale-110">
-                <i data-lucide="scan" class="w-12 h-12 stroke-[1.5] text-[#C25E00]"></i>
-              </div>
-            </div>
-            <div class="p-5 flex flex-col justify-between flex-1 bg-white dark:bg-[#111726]">
-              <div>
-                <div class="flex items-start justify-between gap-2">
-                  <h3 data-i18n="proj1_title" class="font-heading font-semibold text-base text-[#111827] dark:text-white group-hover:text-[#C25E00] dark:group-hover:text-[#D95D1E] transition-colors line-clamp-1">
-                    Smart Gesture Slide Controller
-                  </h3>
-                  <a href="https://andrew12126.github.io/Smart_Gesture_Slide_Controller/" target="_blank" rel="noopener noreferrer" title="Mở Live Web Demo" class="text-[#C25E00] dark:text-[#D95D1E] hover:opacity-80 transition-opacity">
-                    <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
-                  </a>
+
+              <h3 data-i18n="proj1_title" class="font-heading font-bold text-lg sm:text-xl text-[#111827] dark:text-white">
+                Smart Gesture Slide Controller
+              </h3>
+
+              <!-- Structured Problem / Architecture / Metrics Breakdown -->
+              <dl class="space-y-2.5 text-xs sm:text-sm">
+                <div class="grid grid-cols-1 sm:grid-cols-12 gap-1 sm:gap-3">
+                  <dt data-i18n="proj_label_problem" class="sm:col-span-3 font-mono text-xs font-semibold text-[#6B7280] dark:text-slate-400">Problem:</dt>
+                  <dd data-i18n="proj1_prob" class="sm:col-span-9 text-[#374151] dark:text-slate-300">Presenters are tethered to physical clickers or keyboards, restricting natural stage movement.</dd>
                 </div>
-                <p data-i18n="proj1_desc" class="text-xs text-[#6B7280] dark:text-slate-400 leading-relaxed line-clamp-3 mt-2 mb-4">
-                  Hệ thống điều khiển slide không chạm On-Device bằng AI Computer Vision (MediaPipe Hands), tích hợp Cơ chế Chống Bấm Nhầm (Anti-False-Positive) 3 lớp thông minh.
-                </p>
-              </div>
-              <div class="pt-3 border-t border-[#F3F4F6] dark:border-white/5 flex items-center justify-between text-[11px] font-mono">
-                <span class="text-[#16A34A] font-semibold uppercase">LIVE DEMO</span>
-                <span class="text-[#6B7280] dark:text-slate-400 font-medium uppercase tracking-widest text-[10px]">
-                  MEDIAPIPE • VISION • JS
-                </span>
-              </div>
+                <div class="grid grid-cols-1 sm:grid-cols-12 gap-1 sm:gap-3">
+                  <dt data-i18n="proj_label_method" class="sm:col-span-3 font-mono text-xs font-semibold text-[#6B7280] dark:text-slate-400">Architecture:</dt>
+                  <dd data-i18n="proj1_meth" class="sm:col-span-9 text-[#374151] dark:text-slate-300">MediaPipe Hands (21 3D joints) + Euclidean Geometric Classifier + 3-Layer FSM Anti-False-Positive Engine.</dd>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-12 gap-1 sm:gap-3">
+                  <dt data-i18n="proj_label_metric" class="sm:col-span-3 font-mono text-xs font-semibold text-[#C25E00] dark:text-[#D95D1E]">Metrics:</dt>
+                  <dd data-i18n="proj1_metr" class="sm:col-span-9 font-mono text-xs font-medium text-[#111827] dark:text-white">30–60 FPS On-Device • &lt; 25ms Latency • 100% Client-side Privacy</dd>
+                </div>
+              </dl>
             </div>
-          </div>
 
-          <!-- CARD 2: WEB (Swiss Minimalist Portfolio) -->
-          <div class="group flex flex-col bg-white dark:bg-[#111726] border border-[#E5E7EB] dark:border-white/10 rounded-xl overflow-hidden card-interactive reveal-on-scroll reveal-delay-2 select-none">
-            <div class="relative h-44 w-full bg-[#F0FDF4] dark:bg-[#16A34A]/15 flex items-center justify-center p-6 border-b border-[#E5E7EB]/80 dark:border-white/10">
-              <div class="absolute top-3.5 left-3.5">
-                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-[#16A34A] text-white">
-                  PORTFOLIO
-                </span>
+            <div class="pt-4 border-t border-[#E5E7EB] dark:border-white/10 flex flex-wrap items-center justify-between gap-3">
+              <div class="flex flex-wrap items-center gap-2">
+                <a href="https://andrew12126.github.io/Smart_Gesture_Slide_Controller/" target="_blank" rel="noopener noreferrer" data-i18n="proj1_btn_demo" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-mono font-semibold bg-[#C25E00] text-white hover:bg-[#A84E00] transition-colors btn-interactive">
+                  Live Demo ↗
+                </a>
+                <a href="#casestudy" data-i18n="proj1_btn_case" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-mono font-medium bg-[#FAF9F6] dark:bg-[#161D2F] text-[#111827] dark:text-white border border-[#E5E7EB] dark:border-white/10 hover:border-[#C25E00] transition-colors btn-interactive">
+                  Read Case Study ↓
+                </a>
               </div>
-              <div class="transition-transform duration-200 group-hover:scale-110">
-                <i data-lucide="globe" class="w-12 h-12 stroke-[1.5] text-[#16A34A]"></i>
-              </div>
+              <a href="https://github.com/Andrew12126/Smart_Gesture_Slide_Controller" target="_blank" rel="noopener noreferrer" class="text-xs font-mono text-[#6B7280] dark:text-slate-400 hover:text-[#C25E00] underline underline-offset-4">
+                GitHub Repo
+              </a>
             </div>
-            <div class="p-5 flex flex-col justify-between flex-1 bg-white dark:bg-[#111726]">
-              <div>
-                <h3 data-i18n="proj2_title" class="font-heading font-semibold text-base text-[#111827] dark:text-white group-hover:text-[#C25E00] dark:group-hover:text-[#D95D1E] transition-colors line-clamp-1">
-                  Personal Portfolio & Academic Hub
-                </h3>
-                <p data-i18n="proj2_desc" class="text-xs text-[#6B7280] dark:text-slate-400 leading-relaxed line-clamp-3 mt-2 mb-4">
-                  Website cá nhân chuẩn Swiss Minimalist lấy cảm hứng từ Andrew Ng: Tích hợp song ngữ EN/VI, chuyển đổi Dark/Light mode và kiến trúc đa trang học thuật.
-                </p>
-              </div>
-              <div class="pt-3 border-t border-[#F3F4F6] dark:border-white/5 flex items-center justify-between text-[11px] font-mono">
-                <span class="text-[#9CA3AF] uppercase">PRODUCTION</span>
-                <span class="text-[#6B7280] dark:text-slate-400 font-medium uppercase tracking-widest text-[10px]">
-                  HTML5 • CSS3 • JS • i18n
-                </span>
-              </div>
-            </div>
-          </div>
+          </article>
 
-          <!-- CARD 3: NCKH (Da Nang Winter Tourism Research) -->
-          <div class="group flex flex-col bg-white dark:bg-[#111726] border border-[#E5E7EB] dark:border-white/10 rounded-xl overflow-hidden card-interactive reveal-on-scroll reveal-delay-3 select-none">
-            <div class="relative h-44 w-full bg-[#FFFBEB] dark:bg-[#F59E0B]/15 flex items-center justify-center p-6 border-b border-[#E5E7EB]/80 dark:border-white/10">
-              <div class="absolute top-3.5 left-3.5">
-                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-[#F59E0B] text-white">
-                  NCKH KHOA
+          <!-- CARD 2: Swiss Minimalist Academic Portfolio Hub -->
+          <article data-project-category="web" class="flex flex-col justify-between bg-white dark:bg-[#111726] border border-[#E5E7EB] dark:border-white/10 rounded-xl p-6 space-y-5 card-interactive reveal-on-scroll">
+            <div class="space-y-4">
+              <div class="flex items-center justify-between gap-2 pb-3 border-b border-[#F3F4F6] dark:border-white/5">
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-[#FAF9F6] dark:bg-[#161D2F] text-[#111827] dark:text-white border border-[#E5E7EB] dark:border-white/10">
+                  <i data-lucide="globe" class="w-3 h-3 text-[#C25E00]"></i>
+                  <span>02 · WEB SYSTEMS ARCHITECTURE</span>
+                </span>
+                <span class="text-[11px] font-mono text-[#6B7280] dark:text-slate-400">
+                  PRODUCTION v2.1
                 </span>
               </div>
-              <div class="transition-transform duration-200 group-hover:scale-110">
-                <i data-lucide="book-open" class="w-12 h-12 stroke-[1.5] text-[#F59E0B]"></i>
-              </div>
-            </div>
-            <div class="p-5 flex flex-col justify-between flex-1 bg-white dark:bg-[#111726]">
-              <div>
-                <h3 data-i18n="proj3_title" class="font-heading font-semibold text-base text-[#111827] dark:text-white group-hover:text-[#C25E00] dark:group-hover:text-[#D95D1E] transition-colors line-clamp-1">
-                  Đề Tài NCKH: Hành Vi Du Lịch Mùa Đông Đà Nẵng
-                </h3>
-                <p data-i18n="proj3_desc" class="text-xs text-[#6B7280] dark:text-slate-400 leading-relaxed line-clamp-3 mt-2 mb-4">
-                  Đề tài nghiên cứu khoa học cấp Khoa: Ứng dụng Google Scholar & Perplexity AI rà soát tài liệu học thuật, bóc tách biến số tâm lý và lập bảng ma trận so sánh đa chiều.
-                </p>
-              </div>
-              <div class="pt-3 border-t border-[#F3F4F6] dark:border-white/5 flex items-center justify-between text-[11px] font-mono">
-                <span class="text-[#9CA3AF] uppercase">ACADEMIC R&D</span>
-                <span class="text-[#6B7280] dark:text-slate-400 font-medium uppercase tracking-widest text-[10px]">
-                  SCHOLAR • PERPLEXITY
-                </span>
-              </div>
-            </div>
-          </div>
 
-          <!-- CARD 4: RESEARCH PIPELINE (Human-Centric AI Ideation) -->
-          <div class="group flex flex-col bg-white dark:bg-[#111726] border border-[#E5E7EB] dark:border-white/10 rounded-xl overflow-hidden card-interactive reveal-on-scroll reveal-delay-4 select-none">
-            <div class="relative h-44 w-full bg-[#F0F9FF] dark:bg-sky-500/15 flex items-center justify-center p-6 border-b border-[#E5E7EB]/80 dark:border-white/10">
-              <div class="absolute top-3.5 left-3.5">
-                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-sky-600 text-white">
-                  IDEATION
+              <h3 data-i18n="proj2_title" class="font-heading font-bold text-lg sm:text-xl text-[#111827] dark:text-white">
+                Swiss Minimalist Academic Portfolio Hub
+              </h3>
+
+              <dl class="space-y-2.5 text-xs sm:text-sm">
+                <div class="grid grid-cols-1 sm:grid-cols-12 gap-1 sm:gap-3">
+                  <dt data-i18n="proj_label_problem" class="sm:col-span-3 font-mono text-xs font-semibold text-[#6B7280] dark:text-slate-400">Problem:</dt>
+                  <dd data-i18n="proj2_prob" class="sm:col-span-9 text-[#374151] dark:text-slate-300">Need a fast, accessible, bilingual academic portfolio free of heavy runtime bloat and compliant with WCAG 2.2 AA.</dd>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-12 gap-1 sm:gap-3">
+                  <dt data-i18n="proj_label_method" class="sm:col-span-3 font-mono text-xs font-semibold text-[#6B7280] dark:text-slate-400">Architecture:</dt>
+                  <dd data-i18n="proj2_meth" class="sm:col-span-9 text-[#374151] dark:text-slate-300">Static Multi-Page HTML5, Precompiled Tailwind CSS (37KB), SOLID Vanilla JS Modules &amp; Printable LaTeX-style CV.</dd>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-12 gap-1 sm:gap-3">
+                  <dt data-i18n="proj_label_metric" class="sm:col-span-3 font-mono text-xs font-semibold text-[#C25E00] dark:text-[#D95D1E]">Metrics:</dt>
+                  <dd data-i18n="proj2_metr" class="sm:col-span-9 font-mono text-xs font-medium text-[#111827] dark:text-white">Zero-FOUC EN/VI i18n • WCAG 2.2 AA Compliant • Built-in Print-to-PDF CV</dd>
+                </div>
+              </dl>
+            </div>
+
+            <div class="pt-4 border-t border-[#E5E7EB] dark:border-white/10 flex flex-wrap items-center justify-between gap-3">
+              <div class="flex flex-wrap items-center gap-2">
+                <a href="https://github.com/Andrew12126/portfolio_An" target="_blank" rel="noopener noreferrer" data-i18n="proj2_btn_repo" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-mono font-medium bg-[#FAF9F6] dark:bg-[#161D2F] text-[#111827] dark:text-white border border-[#E5E7EB] dark:border-white/10 hover:border-[#C25E00] transition-colors btn-interactive">
+                  GitHub Source ↗
+                </a>
+                <button type="button" data-open-cv-modal="true" data-i18n="proj2_btn_cv" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-mono font-medium text-[#C25E00] dark:text-[#D95D1E] hover:underline cursor-pointer">
+                  View Printable CV →
+                </button>
+              </div>
+              <span class="text-[10px] font-mono uppercase tracking-widest text-[#9CA3AF]">HTML5 • TAILWIND • JS</span>
+            </div>
+          </article>
+
+          <!-- CARD 3: Stage-1 Literature Log (Da Nang Winter Tourism) -->
+          <article data-project-category="research" class="flex flex-col justify-between bg-white dark:bg-[#111726] border border-[#E5E7EB] dark:border-white/10 rounded-xl p-6 space-y-5 card-interactive reveal-on-scroll">
+            <div class="space-y-4">
+              <div class="flex items-center justify-between gap-2 pb-3 border-b border-[#F3F4F6] dark:border-white/5">
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-[#FAF9F6] dark:bg-[#161D2F] text-[#111827] dark:text-white border border-[#E5E7EB] dark:border-white/10">
+                  <i data-lucide="file-spreadsheet" class="w-3 h-3 text-[#C25E00]"></i>
+                  <span>03 · LITERATURE CATALOGING</span>
+                </span>
+                <span class="text-[11px] font-mono text-[#6B7280] dark:text-slate-400">
+                  STAGE 1 @ HUIT
                 </span>
               </div>
-              <div class="transition-transform duration-200 group-hover:scale-110">
-                <i data-lucide="compass" class="w-12 h-12 stroke-[1.5] text-sky-600"></i>
-              </div>
+
+              <h3 data-i18n="proj3_title" class="font-heading font-bold text-lg sm:text-xl text-[#111827] dark:text-white">
+                Stage-1 Literature Log: Da Nang Winter Tourism
+              </h3>
+
+              <dl class="space-y-2.5 text-xs sm:text-sm">
+                <div class="grid grid-cols-1 sm:grid-cols-12 gap-1 sm:gap-3">
+                  <dt data-i18n="proj_label_problem" class="sm:col-span-3 font-mono text-xs font-semibold text-[#6B7280] dark:text-slate-400">Problem:</dt>
+                  <dd data-i18n="proj3_prob" class="sm:col-span-9 text-[#374151] dark:text-slate-300">Required rapid discovery and structured cataloging of prior seasonal tourism behavior studies for a faculty topic.</dd>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-12 gap-1 sm:gap-3">
+                  <dt data-i18n="proj_label_method" class="sm:col-span-3 font-mono text-xs font-semibold text-[#6B7280] dark:text-slate-400">Architecture:</dt>
+                  <dd data-i18n="proj3_meth" class="sm:col-span-9 text-[#374151] dark:text-slate-300">Targeted queries via Google Scholar &amp; Perplexity AI, abstract screening, and structured Excel cataloging.</dd>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-12 gap-1 sm:gap-3">
+                  <dt data-i18n="proj_label_metric" class="sm:col-span-3 font-mono text-xs font-semibold text-[#C25E00] dark:text-[#D95D1E]">Metrics:</dt>
+                  <dd data-i18n="proj3_metr" class="sm:col-span-9 font-mono text-xs font-medium text-[#111827] dark:text-white">Stage-1 Contribution @ HUIT • Structured Excel Literature Database</dd>
+                </div>
+              </dl>
             </div>
-            <div class="p-5 flex flex-col justify-between flex-1 bg-white dark:bg-[#111726]">
-              <div>
-                <h3 data-i18n="proj4_title" class="font-heading font-semibold text-base text-[#111827] dark:text-white group-hover:text-[#C25E00] dark:group-hover:text-[#D95D1E] transition-colors line-clamp-1">
-                  Human-Centric AI Ideation Lab
-                </h3>
-                <p data-i18n="proj4_desc" class="text-xs text-[#6B7280] dark:text-slate-400 leading-relaxed line-clamp-3 mt-2 mb-4">
-                  Không gian ấp ủ ý tưởng nghiên cứu AI vị nhân sinh: Thử nghiệm các bài toán Smart Home, công nghệ hỗ trợ người cao tuổi/bệnh lý để tìm đề tài Thạc sĩ đột phá.
-                </p>
-              </div>
-              <div class="pt-3 border-t border-[#F3F4F6] dark:border-white/5 flex items-center justify-between text-[11px] font-mono">
-                <span class="text-[#9CA3AF] uppercase">PIPELINE</span>
-                <span class="text-[#6B7280] dark:text-slate-400 font-medium uppercase tracking-widest text-[10px]">
-                  SMART HOME • HEALTHCARE
+
+            <div class="pt-4 border-t border-[#E5E7EB] dark:border-white/10 flex flex-wrap items-center justify-between gap-3">
+              <a href="research.html#danang-literature-log" data-i18n="proj3_btn_detail" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-mono font-medium bg-[#FAF9F6] dark:bg-[#161D2F] text-[#111827] dark:text-white border border-[#E5E7EB] dark:border-white/10 hover:border-[#C25E00] transition-colors btn-interactive">
+                View Workflow &amp; Excel Log →
+              </a>
+              <span class="text-[10px] font-mono uppercase tracking-widest text-[#9CA3AF]">SCHOLAR • EXCEL • AI</span>
+            </div>
+          </article>
+
+          <!-- CARD 4: RFC Blueprint: Citation-Grounded Academic RAG Assistant -->
+          <article data-project-category="ai research" class="flex flex-col justify-between bg-white dark:bg-[#111726] border border-[#E5E7EB] dark:border-white/10 rounded-xl p-6 space-y-5 card-interactive reveal-on-scroll">
+            <div class="space-y-4">
+              <div class="flex items-center justify-between gap-2 pb-3 border-b border-[#F3F4F6] dark:border-white/5">
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-[#FAF9F6] dark:bg-[#161D2F] text-[#111827] dark:text-white border border-[#E5E7EB] dark:border-white/10">
+                  <i data-lucide="compass" class="w-3 h-3 text-[#C25E00]"></i>
+                  <span>04 · R&amp;D ARCHITECTURE RFC</span>
+                </span>
+                <span class="text-[11px] font-mono text-[#C25E00] dark:text-[#D95D1E]">
+                  LHU R&amp;D PIPELINE
                 </span>
               </div>
+
+              <h3 data-i18n="proj4_title" class="font-heading font-bold text-lg sm:text-xl text-[#111827] dark:text-white">
+                RFC Blueprint: Citation-Grounded Academic RAG Assistant
+              </h3>
+
+              <dl class="space-y-2.5 text-xs sm:text-sm">
+                <div class="grid grid-cols-1 sm:grid-cols-12 gap-1 sm:gap-3">
+                  <dt data-i18n="proj_label_problem" class="sm:col-span-3 font-mono text-xs font-semibold text-[#6B7280] dark:text-slate-400">Problem:</dt>
+                  <dd data-i18n="proj4_prob" class="sm:col-span-9 text-[#374151] dark:text-slate-300">Students and researchers face LLM hallucinations when synthesizing multi-paper literature logs.</dd>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-12 gap-1 sm:gap-3">
+                  <dt data-i18n="proj_label_method" class="sm:col-span-3 font-mono text-xs font-semibold text-[#6B7280] dark:text-slate-400">Architecture:</dt>
+                  <dd data-i18n="proj4_meth" class="sm:col-span-9 text-[#374151] dark:text-slate-300">Retrieval-Augmented Generation (RAG) architecture with semantic chunking and strict citation verification.</dd>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-12 gap-1 sm:gap-3">
+                  <dt data-i18n="proj_label_metric" class="sm:col-span-3 font-mono text-xs font-semibold text-[#C25E00] dark:text-[#D95D1E]">Metrics:</dt>
+                  <dd data-i18n="proj4_metr" class="sm:col-span-9 font-mono text-xs font-medium text-[#111827] dark:text-white">Pre-Master's R&amp;D Design Specification @ LHU</dd>
+                </div>
+              </dl>
             </div>
-          </div>
+
+            <div class="pt-4 border-t border-[#E5E7EB] dark:border-white/10 flex flex-wrap items-center justify-between gap-3">
+              <a href="research.html#masters-roadmap" data-i18n="proj4_btn_roadmap" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-mono font-medium bg-[#FAF9F6] dark:bg-[#161D2F] text-[#111827] dark:text-white border border-[#E5E7EB] dark:border-white/10 hover:border-[#C25E00] transition-colors btn-interactive">
+                View Research Direction →
+              </a>
+              <span class="text-[10px] font-mono uppercase tracking-widest text-[#9CA3AF]">PROMPT • RAG • LLM</span>
+            </div>
+          </article>
 
         </div>
 
@@ -384,75 +461,108 @@
     </section>
 
     <!-- ======================================================================
-         4. CASE STUDY DETAIL VIEW
+         4. CASE STUDY DETAIL VIEW (With 4-Stage Visual Pipeline & Trade-off Analysis)
          ====================================================================== -->
-    <section id="casestudy" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-24">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+    <section id="casestudy" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-24 scroll-mt-20">
+      <div class="pt-8 border-t border-[#E5E7EB] dark:border-white/10 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
         
-        <!-- Left Column (col-span-8): Case Study Details & Curriculum -->
+        <!-- Left Column (col-span-8): Case Study Details, Pipeline & Modules -->
         <div class="lg:col-span-8 space-y-8">
           
           <!-- Header & Title Block -->
           <div class="space-y-4 reveal-on-scroll">
             <div class="flex flex-wrap items-center gap-2.5">
               <span class="inline-flex items-center px-2.5 py-1 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-[#C25E00] text-white">
-                AI & COMPUTER VISION SPECIFICATION
+                AI &amp; COMPUTER VISION SPECIFICATION
               </span>
-              <span data-i18n="cs_level_badge" class="inline-flex items-center px-2.5 py-1 rounded text-[10px] font-mono font-semibold uppercase tracking-wider bg-[#F3F4F6] dark:bg-white/10 text-[#4B5563] dark:text-slate-300 border border-[#E5E7EB] dark:border-white/10">
-                BẢN THIẾT KẾ KIẾN TRÚC & PRODUCTION DEMO
+              <span data-i18n="cs_level_badge" class="inline-flex items-center px-2.5 py-1 rounded text-[10px] font-mono font-semibold uppercase tracking-wider bg-white dark:bg-[#111726] text-[#4B5563] dark:text-slate-300 border border-[#E5E7EB] dark:border-white/10">
+                ARCHITECTURE SPECIFICATION &amp; PRODUCTION DEMO
               </span>
             </div>
 
             <h2 data-i18n="cs_title" class="text-2xl sm:text-4xl lg:text-[40px] font-normal font-serif text-[#0f0f23] dark:text-white tracking-tight leading-[1.18]">
-              Smart Gesture Slide Controller (Điều Khiển Slide Bằng Cử Chỉ Tay AI)
+              Smart Gesture Slide Controller (Touchless AI Presentation System)
             </h2>
 
             <p data-i18n="cs_tagline" class="text-base text-[#4B5563] dark:text-slate-300 leading-relaxed font-normal">
-              Kiến trúc Computer Vision On-Device đột phá: Ứng dụng MediaPipe Hands nhận diện 21 khớp xương 3D thời gian thực, tích hợp Động cơ Chống Bấm Nhầm (Anti-False-Positive) 3 lớp độc quyền giúp diễn giả hoàn toàn tự do làm chủ sân khấu.
+              Practical On-Device Computer Vision architecture: Utilizing MediaPipe Hands for real-time 3D landmark tracking paired with a 3-layer Anti-False-Positive Finite State Machine, empowering presenters with complete stage freedom.
             </p>
           </div>
 
+          <!-- NEW: 4-Stage Visual System Architecture Pipeline -->
+          <div class="p-6 rounded-xl bg-white dark:bg-[#111726] border border-[#E5E7EB] dark:border-white/10 space-y-4 reveal-on-scroll">
+            <div class="flex items-center justify-between gap-2">
+              <span data-i18n="cs_pipeline_heading" class="font-mono text-xs font-semibold uppercase tracking-wider text-[#111827] dark:text-white">
+                4-STAGE END-TO-END SYSTEM ARCHITECTURE PIPELINE
+              </span>
+              <span class="font-mono text-[11px] text-[#C25E00] dark:text-[#D95D1E]">&lt; 25ms Total Frame Time</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+              <div class="p-3.5 rounded-lg bg-[#FAF9F6] dark:bg-[#161D2F] border border-[#E5E7EB] dark:border-white/10 space-y-1">
+                <div data-i18n="cs_pipe1_step" class="font-mono text-[10px] font-bold text-[#C25E00] dark:text-[#D95D1E]">STAGE 01 · INGESTION</div>
+                <div data-i18n="cs_pipe1_title" class="font-heading font-semibold text-xs text-[#111827] dark:text-white">Webcam HTML5 Stream</div>
+                <p data-i18n="cs_pipe1_desc" class="text-[11px] text-[#6B7280] dark:text-slate-400 leading-snug">60FPS video capture &amp; mirrored Canvas HUD rendering</p>
+              </div>
+              <div class="p-3.5 rounded-lg bg-[#FAF9F6] dark:bg-[#161D2F] border border-[#E5E7EB] dark:border-white/10 space-y-1">
+                <div data-i18n="cs_pipe2_step" class="font-mono text-[10px] font-bold text-[#C25E00] dark:text-[#D95D1E]">STAGE 02 · EXTRACTION</div>
+                <div data-i18n="cs_pipe2_title" class="font-heading font-semibold text-xs text-[#111827] dark:text-white">MediaPipe 21-Joint 3D</div>
+                <p data-i18n="cs_pipe2_desc" class="text-[11px] text-[#6B7280] dark:text-slate-400 leading-snug">Extracts normalized 3D coordinates (X, Y, Z) per hand</p>
+              </div>
+              <div class="p-3.5 rounded-lg bg-[#FAF9F6] dark:bg-[#161D2F] border border-[#E5E7EB] dark:border-white/10 space-y-1">
+                <div data-i18n="cs_pipe3_step" class="font-mono text-[10px] font-bold text-[#C25E00] dark:text-[#D95D1E]">STAGE 03 · GEOMETRY</div>
+                <div data-i18n="cs_pipe3_title" class="font-heading font-semibold text-xs text-[#111827] dark:text-white">Euclidean Classifier</div>
+                <p data-i18n="cs_pipe3_desc" class="text-[11px] text-[#6B7280] dark:text-slate-400 leading-snug">Computes Tip-to-Wrist vs. PIP-to-Wrist distance ratios</p>
+              </div>
+              <div class="p-3.5 rounded-lg bg-[#FAF9F6] dark:bg-[#161D2F] border border-[#E5E7EB] dark:border-white/10 space-y-1">
+                <div data-i18n="cs_pipe4_step" class="font-mono text-[10px] font-bold text-[#C25E00] dark:text-[#D95D1E]">STAGE 04 · DEBOUNCER</div>
+                <div data-i18n="cs_pipe4_title" class="font-heading font-semibold text-xs text-[#111827] dark:text-white">3-Layer FSM Engine</div>
+                <p data-i18n="cs_pipe4_desc" class="text-[11px] text-[#6B7280] dark:text-slate-400 leading-snug">Master Lock 1.0s → Dwell 800ms → Cooldown 1.2s</p>
+              </div>
+            </div>
+          </div>
+
           <!-- Highlight Box: Key Achievements -->
-          <div class="p-6 rounded-xl bg-white dark:bg-[#111726] border border-[#E5E7EB] dark:border-white/10 space-y-3.5 card-interactive reveal-on-scroll">
+          <div class="p-6 rounded-xl bg-white dark:bg-[#111726] border border-[#E5E7EB] dark:border-white/10 space-y-3.5 reveal-on-scroll">
             <div class="font-mono text-xs font-semibold uppercase tracking-wider text-[#111827] dark:text-white flex items-center gap-2">
               <i data-lucide="check-circle-2" class="w-4 h-4 text-[#16A34A]"></i>
-              <span data-i18n="cs_achievements_heading">MỤC TIÊU & ĐỘT PHÁ KIẾN TRÚC CỐT LÕI</span>
+              <span data-i18n="cs_achievements_heading">CORE OBJECTIVES &amp; ARCHITECTURAL BREAKTHROUGHS</span>
             </div>
             
             <ul class="space-y-2.5 text-xs sm:text-sm text-[#374151] dark:text-slate-300">
               <li class="flex items-start gap-2.5">
                 <span class="w-1.5 h-1.5 rounded-full bg-[#C25E00] mt-2 shrink-0"></span>
-                <span data-i18n="cs_achieve_1">Xử lý On-Device siêu tốc (30-60 FPS): Nhận diện 21 khớp tay 3D trực tiếp trên trình duyệt bằng Webcam qua MediaPipe Hands, không gửi video lên Cloud, bảo mật 100% và phản hồi tức thì dưới 25ms.</span>
+                <span data-i18n="cs_achieve_1">Ultra-fast On-Device Processing (30–60 FPS): Tracks 21 3D hand joints directly in the browser via WebCam with MediaPipe Hands, zero cloud video transmission, 100% privacy, and sub-25ms response latency.</span>
               </li>
               <li class="flex items-start gap-2.5">
                 <span class="w-1.5 h-1.5 rounded-full bg-[#C25E00] mt-2 shrink-0"></span>
-                <span data-i18n="cs_achieve_2">Cơ chế Chống Bấm Nhầm (Anti-False-Positive Engine) 3 Lớp: Giải quyết triệt để vấn đề nhảy slide khi vung tay tự nhiên nhờ Master Lock (xòe 5 ngón 1.0s), Hold-to-Trigger (giữ 800ms với vòng tiến trình SVG) và Cooldown Buffer (1.2s chống nhảy liên hoàn).</span>
+                <span data-i18n="cs_achieve_2">3-Layer Anti-False-Positive Engine: Eliminates accidental slide jumps during natural speaking gestures via Master Lock (Open Palm 1.0s), Hold-to-Trigger (800ms dwell with SVG progress ring), and a 1.2s Cooldown Buffer.</span>
               </li>
               <li class="flex items-start gap-2.5">
                 <span class="w-1.5 h-1.5 rounded-full bg-[#C25E00] mt-2 shrink-0"></span>
-                <span data-i18n="cs_achieve_3">Trải nghiệm thuyết trình không chạm tự do: Hỗ trợ Con Trỏ Laser Ảo phát sáng (chụm ngón cái & trỏ) và Phóng to/Thu nhỏ slide 2 tay (Two-Hand Zoom 1.0x - 2.5x), diễn giả không còn phụ thuộc vào clicker cầm tay hay trợ lý bấm hộ.</span>
+                <span data-i18n="cs_achieve_3">Touchless Stage Experience: Features glowing Virtual Laser Pointer (Pinch gesture) and Global Two-Hand Zoom (1.0x – 2.5x), removing dependency on handheld hardware clickers.</span>
               </li>
             </ul>
           </div>
 
-          <!-- Architecture Breakdown: Accordion Modules -->
+          <!-- Architecture Breakdown: Accordion Modules (Module 1 Open by Default) -->
           <div class="space-y-4 pt-2 reveal-on-scroll">
             <div class="border-b border-[#E5E7EB] dark:border-white/10 pb-3">
-              <h3 data-i18n="cs_curriculum_heading" class="text-xl sm:text-2xl font-bold font-serif text-[#111827] dark:text-white">
-                Kiến Trúc Kỹ Nghệ & Luồng Xử Lý Hệ Thống
+              <h3 data-i18n="cs_curriculum_heading" class="text-xl sm:text-2xl font-normal font-serif text-[#111827] dark:text-white">
+                Technical Module Specifications
               </h3>
               <p data-i18n="cs_curriculum_sub" class="text-xs sm:text-sm text-[#6B7280] dark:text-slate-400 font-mono mt-1">
-                Đặc tả kỹ thuật của luồng nhận diện cử chỉ On-Device và cơ chế chống bấm nhầm
+                Mathematical geometry and Finite State Machine (FSM) breakdown behind the system
               </p>
             </div>
 
-            <!-- Accordion Module 1 -->
-            <div class="border border-[#E5E7EB] dark:border-white/10 rounded-xl overflow-hidden bg-white dark:bg-[#111726] card-interactive">
+            <!-- Accordion Module 1 (Expanded by Default for Immediate Technical Review) -->
+            <div class="border border-[#E5E7EB] dark:border-white/10 rounded-xl overflow-hidden bg-white dark:bg-[#111726]">
               <button
                 type="button"
                 data-accordion-target="acc-mod-1"
-                aria-expanded="false"
-                class="w-full p-4 sm:p-5 text-left flex items-center justify-between gap-4 hover:bg-[#F9FAFB] dark:hover:bg-[#161D2F] transition-colors min-h-[44px]"
+                aria-expanded="true"
+                class="w-full p-4 sm:p-5 text-left flex items-center justify-between gap-4 bg-[#F9FAFB] dark:bg-[#161D2F] hover:bg-[#F9FAFB] dark:hover:bg-[#161D2F] transition-colors min-h-[44px]"
               >
                 <div class="flex items-center gap-3">
                   <span class="w-7 h-7 rounded-lg bg-[#FDF3E7] dark:bg-[#C25E00]/20 text-[#C25E00] dark:text-[#D95D1E] text-xs font-mono font-bold flex items-center justify-center shrink-0">
@@ -460,22 +570,22 @@
                   </span>
                   <div>
                     <h4 data-i18n="cs_mod1_title" class="font-heading font-semibold text-sm sm:text-base text-[#111827] dark:text-white">
-                      Module 1: Tiếp Nhận Luồng Video & Định Vị Khung Xương 21 Điểm (Camera Stream & 3D Landmarks)
+                      Module 1: Video Ingestion &amp; 21-Joint Hand Skeleton Tracking (Camera Stream &amp; 3D Landmarks)
                     </h4>
                     <p data-i18n="cs_mod1_sub" class="text-xs text-[#6B7280] dark:text-slate-400 mt-0.5">
-                      Thu nạp khung hình Webcam, tự động lật gương và trích xuất tọa độ 21 mốc xương bàn tay qua MediaPipe
+                      Captures webcam frames, mirrors the viewport, and extracts 21 3D spatial hand coordinates via MediaPipe
                     </p>
                   </div>
                 </div>
-                <i data-lucide="chevron-down" class="accordion-icon w-4 h-4 text-[#9CA3AF] transition-transform duration-200 shrink-0"></i>
+                <i data-lucide="chevron-down" class="accordion-icon w-4 h-4 text-[#C25E00] rotate-180 transition-transform duration-200 shrink-0"></i>
               </button>
 
-              <div id="acc-mod-1" class="hidden p-4 sm:p-5 pt-0 border-t border-[#F3F4F6] dark:border-white/5 text-xs sm:text-sm text-[#4B5563] dark:text-slate-300 leading-relaxed space-y-3">
+              <div id="acc-mod-1" class="p-4 sm:p-5 pt-0 border-t border-[#F3F4F6] dark:border-white/5 text-xs sm:text-sm text-[#4B5563] dark:text-slate-300 leading-relaxed space-y-3">
                 <p data-i18n="cs_mod1_content" class="pt-3">
-                  Khởi tạo luồng Webcam HTML5, render trực tiếp lên Canvas với hiệu ứng Cyber Neon. Pipeline MediaPipe Hands On-Device phân tách lòng bàn tay (Palm Detector) và định vị chính xác tọa độ không gian 3D (X, Y, Z) của 21 mốc xương bàn tay với tần số 30-60 FPS.
+                  Initializes HTML5 webcam streams rendered directly onto an HTML5 Canvas. The MediaPipe Hands on-device pipeline separates palm bounding boxes and accurately tracks 21 spatial landmarks (X, Y, Z) at 30–60 FPS.
                 </p>
                 <div class="bg-[#FAF9F6] dark:bg-[#161D2F] p-3 rounded-lg font-mono text-xs border border-[#E5E7EB] dark:border-white/10 space-y-1 overflow-x-auto">
-                  <div class="text-[#C25E00] font-semibold">// On-Device Computer Vision & Skeleton Tracking:</div>
+                  <div class="text-[#C25E00] font-semibold">// On-Device Computer Vision &amp; Skeleton Tracking:</div>
                   <div>Webcam Video (HTML5) &rarr; MediaPipe Hands (Palm Detection) &rarr; 21 3D Landmarks (X, Y, Z)</div>
                   <div>Render: Mirrored Canvas HUD (30-60 FPS) &bull; Latency &lt; 25ms &bull; 100% Client-side Privacy</div>
                 </div>
@@ -483,7 +593,7 @@
             </div>
 
             <!-- Accordion Module 2 -->
-            <div class="border border-[#E5E7EB] dark:border-white/10 rounded-xl overflow-hidden bg-white dark:bg-[#111726] card-interactive">
+            <div class="border border-[#E5E7EB] dark:border-white/10 rounded-xl overflow-hidden bg-white dark:bg-[#111726]">
               <button
                 type="button"
                 data-accordion-target="acc-mod-2"
@@ -496,10 +606,10 @@
                   </span>
                   <div>
                     <h4 data-i18n="cs_mod2_title" class="font-heading font-semibold text-sm sm:text-base text-[#111827] dark:text-white">
-                      Module 2: Giải Thuật Phân Loại Cử Chỉ & Khoảng Cách Euclid (Geometric Gesture Classification)
+                      Module 2: Geometric Gesture Classification &amp; Euclidean Distance Logic
                     </h4>
                     <p data-i18n="cs_mod2_sub" class="text-xs text-[#6B7280] dark:text-slate-400 mt-0.5">
-                      Tính toán khoảng cách hình học giữa các khớp ngón tay để nhận diện chuẩn xác từng cử chỉ điều khiển
+                      Calculates Euclidean geometric distances between finger joints to reliably classify presentation gestures
                     </p>
                   </div>
                 </div>
@@ -508,7 +618,7 @@
 
               <div id="acc-mod-2" class="hidden p-4 sm:p-5 pt-0 border-t border-[#F3F4F6] dark:border-white/5 text-xs sm:text-sm text-[#4B5563] dark:text-slate-300 leading-relaxed space-y-3">
                 <p data-i18n="cs_mod2_content" class="pt-3">
-                  Sử dụng khoảng cách Euclid (Euclidean Distance) giữa đầu ngón tay (Tip) và khớp đốt (PIP/MCP) để xác định trạng thái co/duỗi của từng ngón: 1 ngón trỏ (☝️ Next), 2 ngón chữ V (✌️ Prev), Chụm ngón cái - trỏ (🤏 Laser Pointer) và Khoảng cách 2 lòng bàn tay (👐 Zoom 1.0x - 2.5x).
+                  Computes Euclidean distances between fingertips (Tip) and intermediate joints (PIP/MCP) relative to the wrist to determine finger extension states: Single Index (☝️ Next), Peace Sign (✌️ Prev), Pinch (🤏 Virtual Laser), and Inter-palm distance (👐 Zoom 1.0x – 2.5x).
                 </p>
                 <div class="bg-[#FAF9F6] dark:bg-[#161D2F] p-3 rounded-lg font-mono text-xs border border-[#E5E7EB] dark:border-white/10 space-y-1 overflow-x-auto">
                   <div class="text-[#C25E00] font-semibold">// Geometric Gesture Classification Logic:</div>
@@ -519,7 +629,7 @@
             </div>
 
             <!-- Accordion Module 3 -->
-            <div class="border border-[#E5E7EB] dark:border-white/10 rounded-xl overflow-hidden bg-white dark:bg-[#111726] card-interactive">
+            <div class="border border-[#E5E7EB] dark:border-white/10 rounded-xl overflow-hidden bg-white dark:bg-[#111726]">
               <button
                 type="button"
                 data-accordion-target="acc-mod-3"
@@ -532,10 +642,10 @@
                   </span>
                   <div>
                     <h4 data-i18n="cs_mod3_title" class="font-heading font-semibold text-sm sm:text-base text-[#111827] dark:text-white">
-                      Module 3: Động Cơ Chống Bấm Nhầm 3 Lớp & Máy Trạng Thái (3-Layer Anti-False-Positive Engine)
+                      Module 3: 3-Layer Anti-False-Positive Engine &amp; Slide Controller State Machine
                     </h4>
                     <p data-i18n="cs_mod3_sub" class="text-xs text-[#6B7280] dark:text-slate-400 mt-0.5">
-                      Máy trạng thái hữu hạn (FSM) kết hợp bộ đếm Dwell 800ms và Cooldown Buffer chống rung giật
+                      Finite State Machine (FSM) combining 800ms dwell time verification and cooldown debouncing
                     </p>
                   </div>
                 </div>
@@ -544,7 +654,7 @@
 
               <div id="acc-mod-3" class="hidden p-4 sm:p-5 pt-0 border-t border-[#F3F4F6] dark:border-white/5 text-xs sm:text-sm text-[#4B5563] dark:text-slate-300 leading-relaxed space-y-3">
                 <p data-i18n="cs_mod3_content" class="pt-3">
-                  Cơ chế 3 lớp độc quyền: Lớp 1 - Master Lock (xòe 5 ngón giữ 1.0s) chuyển đổi trạng thái ACTIVE ⟷ LOCKED; Lớp 2 - Hold-to-Trigger yêu cầu giữ cử chỉ ổn định 800ms kèm vòng tiến trình SVG (nếu quơ tay lướt qua sẽ lập tức hủy đếm); Lớp 3 - Cooldown Buffer 1.2s khóa lệnh tạm thời sau khi nhảy trang để chống lặp slide.
+                  3-layer protection: Layer 1 - Master Lock (Open Palm held for 1.0s) toggles ACTIVE ⟷ LOCKED state; Layer 2 - Hold-to-Trigger requires 800ms continuous dwell with an animated SVG charge ring (accidental hand waves immediately cancel); Layer 3 - 1.2s Cooldown Buffer locks transition events to prevent slide bounce.
                 </p>
                 <div class="bg-[#FAF9F6] dark:bg-[#161D2F] p-3 rounded-lg font-mono text-xs border border-[#E5E7EB] dark:border-white/10 space-y-1 overflow-x-auto">
                   <div class="text-[#C25E00] font-semibold">// 3-Layer Anti-False-Positive State Machine:</div>
@@ -557,15 +667,41 @@
 
           </div>
 
+          <!-- NEW: Engineering Trade-offs & Empirical Constraints -->
+          <div class="p-6 rounded-xl bg-[#FAF9F6] dark:bg-[#111726] border border-[#E5E7EB] dark:border-white/10 space-y-4 reveal-on-scroll">
+            <div class="font-mono text-xs font-semibold uppercase tracking-wider text-[#C25E00] dark:text-[#D95D1E] flex items-center gap-2">
+              <i data-lucide="sliders" class="w-4 h-4"></i>
+              <span data-i18n="cs_tradeoff_heading">ENGINEERING TRADE-OFFS &amp; EMPIRICAL CONSTRAINTS</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+              <div class="p-4 rounded-lg bg-white dark:bg-[#161D2F] border border-[#E5E7EB] dark:border-white/10 space-y-1.5">
+                <h4 data-i18n="cs_tradeoff_1_title" class="font-heading font-semibold text-[#111827] dark:text-white">
+                  Why Euclidean Geometric Heuristics instead of a Deep Classifier (MLP/CNN)?
+                </h4>
+                <p data-i18n="cs_tradeoff_1_desc" class="text-[#4B5563] dark:text-slate-300 leading-relaxed">
+                  Once MediaPipe extracts 21 3D landmarks, scale-invariant Euclidean distance ratios require near-zero CPU overhead (&lt;0.2ms), preserving a smooth 30–60 FPS on standard student/classroom laptops without dedicated GPUs.
+                </p>
+              </div>
+              <div class="p-4 rounded-lg bg-white dark:bg-[#161D2F] border border-[#E5E7EB] dark:border-white/10 space-y-1.5">
+                <h4 data-i18n="cs_tradeoff_2_title" class="font-heading font-semibold text-[#111827] dark:text-white">
+                  Empirical Operating Constraints &amp; Future Work:
+                </h4>
+                <p data-i18n="cs_tradeoff_2_desc" class="text-[#4B5563] dark:text-slate-300 leading-relaxed">
+                  Operates reliably at 0.5m – 2.2m camera distance under standard indoor lighting. Future iterations will integrate a 1€ Filter (One-Euro Filter) to further reduce jitter on the virtual laser pointer under low-light webcam sensor noise.
+                </p>
+              </div>
+            </div>
+          </div>
+
         </div>
 
         <!-- Right Column (col-span-4): Sticky Card with Specs & CTAs -->
         <div class="lg:col-span-4 lg:sticky lg:top-24 space-y-6">
-          <div class="bg-white dark:bg-[#111726] border border-[#E5E7EB] dark:border-white/10 rounded-xl p-6 space-y-6 shadow-none card-interactive reveal-on-scroll">
+          <div class="bg-white dark:bg-[#111726] border border-[#E5E7EB] dark:border-white/10 rounded-xl p-6 space-y-6 shadow-none reveal-on-scroll">
             
             <div>
               <h3 data-i18n="cs_specs_heading" class="font-mono text-xs font-semibold uppercase tracking-widest text-[#6B7280] dark:text-slate-400 mb-4">
-                THÔNG SỐ KỸ NGHỆ HỆ THỐNG
+                SYSTEM SPECIFICATIONS
               </h3>
 
               <div class="space-y-3">
@@ -576,7 +712,7 @@
                   class="w-full min-h-[44px] rounded-lg text-xs sm:text-sm font-medium bg-[#C25E00] text-white hover:bg-[#A84E00] active:bg-[#8F4300] flex items-center justify-center gap-2 transition-colors shadow-sm btn-interactive"
                 >
                   <i data-lucide="play-circle" class="w-4 h-4"></i>
-                  <span data-i18n="cs_btn_demo">Trải Nghiệm Live Web Demo</span>
+                  <span data-i18n="cs_btn_demo">Experience Live Web Demo</span>
                 </a>
 
                 <a
@@ -586,7 +722,7 @@
                   class="w-full min-h-[44px] rounded-lg text-xs sm:text-sm font-medium bg-white dark:bg-[#161D2F] border border-[#E5E7EB] dark:border-white/10 text-[#111827] dark:text-white hover:bg-[#F9FAFB] dark:hover:bg-white/5 flex items-center justify-center gap-2 transition-colors btn-interactive"
                 >
                   <i data-lucide="github" class="w-4 h-4"></i>
-                  <span data-i18n="cs_btn_repo">Mã Nguồn GitHub (@Andrew12126)</span>
+                  <span data-i18n="cs_btn_repo">GitHub Repository (@Andrew12126)</span>
                 </a>
               </div>
             </div>
@@ -608,7 +744,7 @@
                 </div>
                 <div class="py-2.5 flex items-center justify-between">
                   <dt class="text-[#6B7280] dark:text-slate-400 font-normal">Frame Rate / Latency</dt>
-                  <dd class="font-mono font-medium text-[#111827] dark:text-white">30-60 FPS • &lt; 25ms</dd>
+                  <dd class="font-mono font-medium text-[#111827] dark:text-white">30–60 FPS • &lt; 25ms</dd>
                 </div>
                 <div class="py-2.5 flex items-center justify-between">
                   <dt class="text-[#6B7280] dark:text-slate-400 font-normal">Anti-False-Positive</dt>
@@ -621,15 +757,15 @@
               </dl>
             </div>
 
-            <!-- Peer Review Badge -->
+            <!-- Philosophy Badge -->
             <div class="pt-1">
               <div class="p-3.5 rounded-xl bg-[#FAF9F6] dark:bg-[#161D2F] border border-[#E5E7EB] dark:border-white/10 text-xs text-[#6B7280] dark:text-slate-400 space-y-1">
                 <div class="font-semibold text-[#111827] dark:text-white flex items-center gap-1.5">
                   <i data-lucide="sparkles" class="w-3.5 h-3.5 text-[#C25E00] dark:text-[#D95D1E]"></i>
-                  <span data-i18n="cs_peer_reviewed">Định Hướng Kiến Trúc Vị Nhân Sinh</span>
+                  <span data-i18n="cs_peer_reviewed">Human-Centric Engineering Philosophy</span>
                 </div>
                 <p data-i18n="cs_peer_desc" class="text-[11px] leading-relaxed">
-                  Thiết kế nhằm giải phóng đôi tay và thăng hoa cảm xúc cho diễn giả, sinh viên và giảng viên khi thuyết trình, hướng tới ứng dụng AI thiết thực không rào cản phần cứng.
+                  Engineered to liberate presenters, students, and educators from physical presentation remotes, advancing accessible, human-centric AI with zero hardware overhead.
                 </p>
               </div>
             </div>
@@ -645,7 +781,7 @@
   <!-- ========================================================================
        5. MINIMALIST ACADEMIC FOOTER
        ======================================================================== -->
-  <footer role="contentinfo" class="w-full bg-[#FFFFFF] dark:bg-[#0B0F17] py-12 px-4 sm:px-6 lg:px-8 border-t border-[#E5E7EB] dark:border-white/10 text-xs text-[#6B7280] dark:text-slate-400 transition-colors">
+  <footer class="w-full bg-[#FFFFFF] dark:bg-[#0B0F17] py-12 px-4 sm:px-6 lg:px-8 border-t border-[#E5E7EB] dark:border-white/10 text-xs text-[#6B7280] dark:text-slate-400 transition-colors">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
       
       <!-- Brand & Tagline -->
@@ -655,23 +791,23 @@
         </a>
         <span>•</span>
         <span data-i18n="footer_role" class="font-mono text-xs text-[#6B7280] dark:text-slate-400">
-          Human-Centric AI & Systems Hub
+          Human-Centric AI & Applied Systems Hub
         </span>
       </div>
 
       <!-- Footer Navigation Links -->
       <div class="flex flex-wrap items-center justify-center gap-5 sm:gap-6 font-mono text-xs">
-        <a href="index.html" data-i18n="nav_about" class="hover:text-[#111827] dark:hover:text-white transition-colors py-1">Về Tôi</a>
-        <a href="research.html" data-i18n="nav_research" class="hover:text-[#111827] dark:hover:text-white transition-colors py-1">Nghiên Cứu</a>
-        <a href="projects.html" data-i18n="nav_projects" class="text-[#C25E00] dark:text-[#D95D1E] font-semibold py-1">Dự Án</a>
-        <a href="contact.html" data-i18n="nav_contact" class="hover:text-[#111827] dark:hover:text-white transition-colors py-1">Liên Hệ</a>
+        <a href="index.html" data-i18n="nav_about" class="hover:text-[#111827] dark:hover:text-white transition-colors py-1">About</a>
+        <a href="research.html" data-i18n="nav_research" class="hover:text-[#111827] dark:hover:text-white transition-colors py-1">Research</a>
+        <a href="projects.html" data-i18n="nav_projects" class="text-[#C25E00] dark:text-[#D95D1E] font-semibold py-1">Projects</a>
+        <a href="contact.html" data-i18n="nav_contact" class="hover:text-[#111827] dark:hover:text-white transition-colors py-1">Contact</a>
         <a href="https://github.com/Andrew12126" target="_blank" rel="noopener noreferrer" class="hover:text-[#111827] dark:hover:text-white transition-colors py-1">GitHub</a>
         <a href="https://www.facebook.com/nguyen.an.921002" target="_blank" rel="noopener noreferrer" class="hover:text-[#111827] dark:hover:text-white transition-colors py-1">Facebook</a>
       </div>
 
       <!-- Copyright -->
       <div class="text-center sm:text-right text-[#9CA3AF] dark:text-slate-500 font-mono text-[11px]">
-        © 2026 Nguyen Van An • Swiss Minimalist Strict Light/Dark
+        © 2026 Nguyen Van An • Swiss Minimalist Edition
       </div>
 
     </div>
@@ -683,8 +819,5 @@
   <!-- Scripts: i18n -> Main -->
   <script src="js/i18n.js"></script>
   <script src="js/main.js"></script>
-  <script>
-    lucide.createIcons();
-  </script>
 </body>
 </html>

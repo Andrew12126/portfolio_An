@@ -1,79 +1,81 @@
-# Adley | Technical Hub & Systems Portfolio
+# Nguyen Van An | Human-Centric AI & Applied Systems Portfolio
 
-> **Định vị:** Giao thoa giữa Công nghệ (Tech), Systems Architecture, Nghiên cứu Ứng dụng AI và Tư duy Vị Nhân Sinh (Human-Centric AI) kế thừa từ nền tảng 3 học kỳ Hospitality tại HUIT.
-
----
-
-## 🎨 STYLE & TONE (Swiss Minimalist & Strict Light Mode)
-
-Dự án được xây dựng tuân thủ tuyệt đối các nguyên tắc thiết kế **Swiss Minimalist** (lấy cảm hứng từ hệ sinh thái Apple, Stripe và DLLT Learning Hub):
-
-### 1. Bảng màu (Color Palette)
-- **Strict Light Mode (Bắt buộc nền sáng):**
-  - Nền chính: Trắng tinh khiết (`#FFFFFF`).
-  - Nền phụ / Khối nổi: Xám kem cực nhạt (`#F9FAFB` và `#F8F7F4` - màu giấy học thuật).
-- **Màu chủ đạo (Primary Accent):** Cam đất / Hổ phách đậm (**Deep Burnt Orange** - `#C25E00` / hover `#A84E00`, màu nền mờ `#FFF8F0`, viền nhấn `#FBE3CC`).
-- **Màu chữ:**
-  - Chữ chính: Đen than (`#111827`).
-  - Chữ phụ / Muted: Xám trung tính (`#6B7280`).
-- **Đường viền:** Xám mảnh (`#E5E7EB`, độ dày `1px solid`).
-
-### 2. Typography (Phông chữ)
-- **Tiêu đề chính (Headings):** **Playfair Display** (Serif học thuật sắc nét) và **Montserrat** (Heading kiến trúc hiện đại).
-- **Nội dung thân (Body):** **Inter** – Nét chữ trung tính, dễ đọc.
-- **Metadata / Badges / Tags:** **JetBrains Mono** – In hoa (`uppercase`), khoảng cách chữ rộng (`tracking-widest`), cỡ chữ nhỏ (`text-xs`).
-
-### 3. Ràng buộc chống "AI Slop" (Tuân thủ nghiêm ngặt)
-- ❌ KHÔNG dùng Dark Mode.
-- ❌ KHÔNG dùng màu gradient lòe loẹt tím/hồng/xanh neon.
-- ❌ KHÔNG dùng hiệu ứng đổ bóng nặng (heavy drop shadow) hay phát sáng (neon glow).
-- ❌ KHÔNG bo tròn quá đà (chỉ dùng chuẩn `rounded-md: 6px` hoặc `rounded-lg: 8px`).
-- 💎 Ưu tiên tối đa khoảng trắng (generous whitespace) và phân tách các khối bằng đường kẻ viền mảnh 1px.
+> **Academic & Engineering Positioning:** Bridging human service empathy (3 semesters in Hospitality Management at HUIT, 2024–2025) with rigorous Computer Science & Applied AI Engineering (1st-Year IT Undergraduate at Lac Hong University - LHU). Aspiring International Master's Candidate in Human-Centric AI.
 
 ---
 
-## 🏛️ Cấu Trúc Bố Cục (Information Architecture)
+## 🎨 Design Philosophy (Swiss Minimalist & Academic Editorial)
 
-1. **Top Navigation Bar:** Cố định phía trên, nền trắng mờ nhẹ (`bg-white/95 dark:bg-[#0B0F17]/95 backdrop-blur-sm`), Logo cam đất với icon Terminal, các liên kết điều hướng (Projects, Case Studies, Now & Research, About), thanh tìm kiếm nhỏ gọn, nút CTA "Contact Me" nổi bật cùng **2 nút chức năng ở phía trên cùng bên phải**:
-   - **Nút Chuyển Đổi Ngôn Ngữ (EN / VI):** Mặc định khi người khác vừa truy cập trang web là **Tiếng Anh (English)**. Nhấp để chuyển đổi mượt mà sang Tiếng Việt và ngược lại (ghi nhớ tùy chọn vào `localStorage`).
-   - **Nút Chuyển Đổi Giao Diện (Dark / Light Mode):** Chuyển đổi giữa chế độ Sáng (Swiss Minimalist White/Cream) và chế độ Tối (Charcoal Obsidian `#0B0F17` với viền mảnh 1px).
-2. **Hero Section (2 cột bất đối xứng):**
-   - **Cột trái (60%):** Badge nhỏ phía trên (`AI & SYSTEMS ARCHITECTURE`), Tiêu đề Serif sắc nét, đoạn tuyên ngôn sứ mệnh, dải thống kê (24+ Projects, 6 Certifications, University Grade) đóng khung viền mảnh.
-   - **Cột phải (40%):** Khung hồ sơ định danh cá nhân với ảnh chân dung phóng to thực tế (Portrait Showcase Card), huy hiệu AI Application Engineer, quá trình chuyển ngành (HUIT Hospitality → LHU 1st-Year IT) và trạng thái sẵn sàng kết nối.
-3. **Featured Projects Grid (Bố cục lưới 4 cột):**
-   - Nửa trên: Thumbnail màu pastel cực nhạt tương ứng với từng mảng (AI: `#FFF8F0`, Systems: `#F0FDF4`, Cloud: `#FFFBEB`, OS: `#F0F9FF`), Badge phân loại góc trái và icon trung tâm.
-   - Nửa dưới: Tiêu đề dự án, mô tả ngắn gọn và hàng metadata thời gian + tech stack tags viết hoa ở đáy.
-4. **Project Detail / Case Study View (Giao diện chi tiết):**
-   - **Cột trái (2/3):** Breadcrumb, tiêu đề, thẻ tags, khung "Key Achievements" (nền kem `#FAF9F6` viền mảnh kèm checkmark xanh), danh mục cấu trúc dự án dạng Accordion (Course Curriculum style).
-   - **Cột phải (1/3):** Sticky Card chứa nút Demo cam đất, GitHub Repo và bảng thông số hệ thống (SLA 99.999%, Jepsen Verified).
-5. **Thẻ "Now" Thời Gian Thực:** Đồng hồ thời gian thực UTC+7 TP. Biên Hòa, lời chào động và tab cập nhật tiến độ nghiên cứu Thạc sĩ.
+This portfolio is engineered following **Swiss Minimalist** and **Academic Editorial** principles (inspired by Stanford AI Lab, Distill.pub, and Andrew Ng's personal hub):
+
+### 1. Color System (Monochromatic Discipline + Single Accent)
+
+- **Light Mode (Academic Paper Palette):**
+  - Primary Surface: Pure White (`#FFFFFF`)
+  - Secondary / Editorial Surface: Warm Academic Paper (`#FAF9F6` & `#F9FAFB`)
+  - Typography: Deep Charcoal (`#0f0f23` / `#111827`) & Neutral Slate (`#4B5563` / `#6B7280`)
+  - Hairline Borders: Crisp 1px solid (`#E5E7EB`)
+- **Dark Mode (Obsidian Research Theme):**
+  - Primary Surface: Deep Obsidian (`#0B0F17`) & Elevated Slate (`#111726`)
+- **Primary Accent:** Deep Burnt Orange (`#C25E00` in Light Mode / `#D95D1E` in Dark Mode, subtle tint `#FFF8F0`, border `#FBE3CC`).
+
+### 2. Typography Hierarchy (Unified Roboto Stack)
+
+- **Display & Academic Headings (`--font-serif` / `--font-heading`):** **Roboto** — Clean, unified neo-grotesque typography across all headings and editorial statements.
+- **UI & Body Prose (`--font-sans`):** **Roboto** — Crisp, high-legibility geometric proportions for technical specifications, cards, and long-form reading.
+- **Technical Metadata & Code (`--font-mono`):** **Roboto Mono** — Tabular numerals, uppercase badges, latency benchmarks, and pipeline specifications.
 
 ---
 
-## 📁 Cấu Trúc Mã Nguồn
+## 🏛️ Information Architecture (Multi-Page Academic Hub)
 
-```
+1. **[index.html](file:///d:/adley/index.html) — About & Academic Vision:**
+   - Asymmetric Hero section with executive positioning, core academic milestones, and portrait showcase.
+   - Detailed narrative of the transition from **HUIT Hospitality (2024–2025)** to **LHU Information Technology (2025–Present)**.
+   - Structured Academic Quick-Facts & 4 Transferable Competencies.
+2. **[research.html](file:///d:/adley/research.html) — Scientific Research & Pre-Master's Direction:**
+   - **Stage 1 Faculty Research Contribution (HUIT, 2024–2025):** *Winter Tourism Consumer Behavior in Da Nang City* — Transparent documentation of literature retrieval (Google Scholar & AI discovery tools), abstract extraction, and systematic **Excel Literature Cataloging** prior to transitioning into Computer Science at LHU.
+   - **Pre-Master's Research Roadmap:** Focus on Human-Centric Applied AI, Prompt Engineering, Retrieval-Augmented Generation (RAG), Smart Home IoT, and Assistive Technologies.
+3. **[projects.html](file:///d:/adley/projects.html) — Applied Engineering & Case Studies:**
+   - Interactive category filtering (`All`, `AI & Computer Vision`, `Academic R&D`, `Web Systems`).
+   - Structured project cards displaying **Problem → Architecture → Key Metrics → Direct Action Links**.
+   - **In-Depth Engineering Case Study:** *Smart Gesture Slide Controller* featuring a 4-stage visual architecture pipeline, Euclidean distance gesture classification specs, 3-layer Finite State Machine (FSM) debouncer analysis, and empirical engineering trade-offs.
+4. **[contact.html](file:///d:/adley/contact.html) — Academic Inquiries, Speaking Profile & Printable CV:**
+   - Direct communication channels with one-click copy utilities (`WCAG 2.2 AA` 44×44px touch targets).
+   - Interactive **Academic CV Preview & Print-to-PDF Modal** alongside a functional `mailto:` inquiry dispatcher.
+
+---
+
+## 📁 Repository Structure
+
+```text
 d:\adley/
-├── index.html                       # Trang chủ portfolio chính (Bento Grid, About, Pillars)
-├── projects.html                    # Danh mục dự án nghiên cứu & ứng dụng
-├── research.html                    # Hoạt động nghiên cứu khoa học (NCKH) & Học thuật
-├── contact.html                     # Trang liên hệ học thuật & kết nối chuyên môn
-├── README.md                        # Tài liệu kiến trúc dự án & hướng dẫn vận hành
+├── index.html                  # Pillar 01: About, Transition Story & Academic Roadmap
+├── research.html               # Pillar 02: Literature Cataloging (Excel Matrix) & Pre-Master's AI Focus
+├── projects.html               # Pillar 03: Applied Engineering Systems & Case Study Deep-Dive
+├── contact.html                # Pillar 04: Academic Inquiries, MC Profile & Printable Academic CV
+├── README.md                   # Project documentation & architectural specifications
+├── package.json                # Tailwind CSS build scripts (zero runtime bloat)
+├── tailwind.config.js          # Design tokens & typography configuration
 ├── css/
-│   ├── tailwind.min.css         # Tailwind CSS tĩnh đã biên dịch & tối ưu hóa production (37KB)
-│   └── styles.css               # Stylesheet chuẩn Swiss Minimalist, Design Tokens & A11y
+│   ├── tailwind.min.css        # Precompiled & minified production Tailwind CSS
+│   └── styles.css              # Custom Swiss Minimalist tokens, print stylesheet & A11y rules
 ├── js/
-│   ├── main.js                  # Core JS module: Theme, Nav, Reveal, Accordion, Toast, Form
-│   └── i18n.js                  # Song ngữ VI/EN (Internationalization Engine)
+│   ├── i18n.js                 # Bilingual (EN/VI) engine with zero-FOUC early resolution
+│   └── main.js                 # Modular controllers: Theme, Nav, Filter, Accordion, CV Modal, Mailto Form
 └── assets/
     └── images/
-        ├── favicon.svg          # Vector favicon biểu tượng terminal (>_) chuẩn thương hiệu
-        ├── avarta.jpg           # Chân dung thực tế của tác giả
-        └── hero_avatar.jpg      # Ảnh hiển thị dự phòng
+        ├── favicon.svg         # Branded terminal (>_) vector icon
+        └── avarta.jpg          # Author portrait
 ```
 
 ---
 
-## 🚀 Trải Nghiệm & Kiểm Thử
-- **Cách 1 (Mở ngay):** Nhấp đúp chuột vào tệp [index.html](file:///d:/adley/index.html) để xem trực tiếp trên trình duyệt.
-- **Cách 2 (Next.js):** Chạy `npm install` và `npm run dev` nếu có môi trường Node.js.
+## 🚀 Local Usage & Build Commands
+
+- **Direct Preview:** Open [index.html](file:///d:/adley/index.html) directly in any modern browser, or serve via VS Code Live Server.
+- **Rebuild Production CSS:**
+
+```bash
+npm run build:css
+```

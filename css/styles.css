@@ -1,7 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
-
 /* ==========================================================================
-   DESIGN TOKENS & SYSTEM VARIABLES (Swiss Minimalist / Bento Grid)
+   DESIGN TOKENS & SYSTEM VARIABLES (Swiss Minimalist / Academic Editorial)
    ========================================================================== */
 :root {
   /* Swiss Minimalist Light Mode Palette */
@@ -15,7 +13,7 @@
   --border-hover: #D1D5DB;
   --border-subtle: #F3F4F6;
   
-  --text-primary: #0f0f23; /* Andrew Ng signature deep charcoal */
+  --text-primary: #0f0f23; /* Deep academic charcoal */
   --text-muted: #4B5563;
   --text-subtle: #6B7280;
   --text-placeholder: #9CA3AF;
@@ -76,7 +74,7 @@
 }
 
 /* ==========================================================================
-   BASE RESETS & TYPOGRAPHY STANDARDS (ECC Polish)
+   BASE RESETS & TYPOGRAPHY STANDARDS
    ========================================================================== */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -87,8 +85,8 @@ html {
   font-family: var(--font-sans);
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
   overflow-x: hidden;
 }
 
@@ -108,27 +106,35 @@ body {
   transition-timing-function: var(--ease-spring);
 }
 
-/* Headings: Andrew Ng Academic Elegance (Regular 400, no aggressive bold) */
-h1, h2, h3, h4, h5, h6, .font-serif, .heading-balanced {
+/* Editorial Serif Headings (H1, H2, Blockquote) - Distinguished & Scholarly */
+h1, .font-serif {
   font-family: var(--font-serif);
-  font-weight: 400 !important;
+  font-weight: 400;
   color: var(--text-primary);
-  letter-spacing: -0.02em; /* ~ -1.44px ratio */
+  letter-spacing: -0.02em;
   line-height: 1.15;
   text-wrap: balance;
 }
 
-/* H1 Specific Responsive Scale (Mobile 48px, Desktop 72px, line-height 82.8px) */
+/* H1 Responsive Scale (40px mobile -> 64px desktop for optimal editorial balance) */
 h1 {
-  font-size: clamp(2.75rem, 5vw + 1rem, 4.5rem); /* 44px - 72px smooth scale */
-  line-height: 1.15;
+  font-size: clamp(2.35rem, 4.2vw + 1rem, 4rem);
+  line-height: 1.14;
   letter-spacing: -0.02em;
+}
+
+/* UI & Card Headings (H3, H4, H5, H6) - Crisp Sans-Serif Hierarchy */
+h3, h4, h5, h6, .font-heading {
+  font-family: var(--font-heading);
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+  text-wrap: balance;
 }
 
 /* Paragraphs & Reading Experience */
 p, li, .prose-pretty {
   font-family: var(--font-sans);
-  line-height: 1.625; /* leading-relaxed */
+  line-height: 1.65;
   text-wrap: pretty;
 }
 
@@ -136,23 +142,19 @@ p, li, .prose-pretty {
 nav a, .nav-link {
   font-family: var(--font-sans);
   text-transform: uppercase;
-  letter-spacing: 0.1em; /* tracking-widest */
-}
-
-.font-heading {
-  font-family: var(--font-heading);
+  letter-spacing: 0.08em;
 }
 
 code, pre, .font-mono {
   font-family: var(--font-mono);
 }
 
-/* Tabular numerals for dynamic numbers/counters/timestamps */
+/* Tabular numerals for dynamic numbers/counters/metrics */
 .tabular-nums, .font-mono {
   font-variant-numeric: tabular-nums;
 }
 
-/* Subtle image outlines (ECC principle: prevents edges blurring into surfaces) */
+/* Subtle image outlines (prevents edges blurring into surfaces) */
 img {
   outline: 1px solid rgba(0, 0, 0, 0.08);
   outline-offset: -1px;
@@ -162,7 +164,7 @@ img {
 }
 
 /* ==========================================================================
-   A11Y: SKIP LINK & FOCUS VISIBILITY
+   A11Y: SKIP LINK & FOCUS VISIBILITY (WCAG 2.2 AA)
    ========================================================================== */
 .skip-link {
   position: absolute;
@@ -192,7 +194,7 @@ img {
 }
 
 /* ==========================================================================
-   TOUCH TARGET UTILITY (WCAG 2.2 Level AA: Min 44x44px on Mobile)
+   TOUCH TARGET UTILITY (WCAG 2.2 Level AA: Min 44x44px)
    ========================================================================== */
 .touch-target {
   min-width: 44px;
@@ -202,54 +204,31 @@ img {
   justify-content: center;
 }
 
-/* Expanded invisible hit area for small visible controls */
-.hit-area-44 {
-  position: relative;
-}
-.hit-area-44::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  min-width: 44px;
-  min-height: 44px;
-  width: 100%;
-  height: 100%;
-  pointer-events: auto;
-}
-
 /* ==========================================================================
    MICRO-INTERACTIONS: CARDS, BUTTONS & ELEVATION
-   (Hardware-accelerated, No 'transition: all')
    ========================================================================== */
-
-/* Card Interactive Elevation */
 .card-interactive {
   transition-property: transform, border-color, box-shadow, background-color;
   transition-duration: var(--duration-normal);
   transition-timing-function: var(--ease-spring);
-  will-change: transform, box-shadow;
 }
 
 @media (hover: hover) and (pointer: fine) {
   .card-interactive:hover {
-    transform: translateY(-3px);
+    transform: translateY(-2px);
     border-color: var(--border-hover);
     box-shadow: var(--shadow-card-hover);
   }
 }
 
 .card-interactive:active {
-  transform: translateY(-1px) scale(0.99);
+  transform: translateY(-1px) scale(0.995);
 }
 
-/* Button Micro-interactions */
 .btn-interactive {
   transition-property: transform, background-color, border-color, box-shadow, color;
   transition-duration: var(--duration-fast);
   transition-timing-function: var(--ease-spring);
-  will-change: transform;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -260,27 +239,18 @@ img {
 }
 
 .btn-interactive:active {
-  transform: translateY(0) scale(0.97);
-}
-
-/* Concentric Radius Helper: optical coherence */
-.radius-outer-lg {
-  border-radius: 12px;
-}
-.radius-inner-md {
-  border-radius: 8px;
+  transform: translateY(0) scale(0.98);
 }
 
 /* ==========================================================================
-   SCROLL REVEAL (Subtle Fade-in on Scroll via IntersectionObserver)
+   SCROLL REVEAL (Subtle Fade-in via IntersectionObserver)
    ========================================================================== */
 .reveal-on-scroll {
   opacity: 0;
-  transform: translateY(18px);
+  transform: translateY(14px);
   transition-property: opacity, transform;
   transition-duration: var(--duration-reveal);
   transition-timing-function: var(--ease-spring);
-  will-change: opacity, transform;
 }
 
 .reveal-on-scroll.is-revealed {
@@ -288,11 +258,10 @@ img {
   transform: translateY(0);
 }
 
-/* Stagger animation utilities for grids */
-.reveal-delay-1 { transition-delay: 60ms; }
-.reveal-delay-2 { transition-delay: 120ms; }
-.reveal-delay-3 { transition-delay: 180ms; }
-.reveal-delay-4 { transition-delay: 240ms; }
+.reveal-delay-1 { transition-delay: 50ms; }
+.reveal-delay-2 { transition-delay: 100ms; }
+.reveal-delay-3 { transition-delay: 150ms; }
+.reveal-delay-4 { transition-delay: 200ms; }
 
 /* ==========================================================================
    NAVBAR & MOBILE DRAWER ANIMATION
@@ -310,13 +279,13 @@ img {
 
 #mobile-menu:not(.hidden) {
   display: block;
-  animation: slideDownMenu 240ms var(--ease-spring) forwards;
+  animation: slideDownMenu 220ms var(--ease-spring) forwards;
 }
 
 @keyframes slideDownMenu {
   from {
     opacity: 0;
-    transform: translateY(-8px);
+    transform: translateY(-6px);
   }
   to {
     opacity: 1;
@@ -379,7 +348,44 @@ img {
 }
 
 /* ==========================================================================
-   PREFERS-REDUCED-MOTION (Critical Accessibility & Human-Centric Constraint)
+   PRINTABLE ACADEMIC CV STYLES (@media print)
+   ========================================================================== */
+@media print {
+  header,
+  main,
+  footer,
+  .skip-link,
+  #toast-container,
+  .no-print,
+  button:not(.print-keep) {
+    display: none !important;
+  }
+
+  html, body {
+    background: #FFFFFF !important;
+    color: #111827 !important;
+    font-size: 11pt;
+  }
+
+  #cv-modal {
+    position: static !important;
+    display: block !important;
+    background: transparent !important;
+    padding: 0 !important;
+  }
+
+  #cv-modal-content {
+    box-shadow: none !important;
+    border: none !important;
+    max-width: 100% !important;
+    max-height: none !important;
+    overflow: visible !important;
+    padding: 0 !important;
+  }
+}
+
+/* ==========================================================================
+   PREFERS-REDUCED-MOTION (Accessibility Constraint)
    ========================================================================== */
 @media (prefers-reduced-motion: reduce) {
   html {

@@ -1,33 +1,15 @@
 {
-  "name": "adley-technical-hub",
-  "version": "1.0.0",
+  "name": "nguyen-van-an-academic-portfolio",
+  "version": "2.0.0",
   "private": true,
+  "description": "Personal Academic & Applied AI Engineering Portfolio of Nguyen Van An (Swiss Minimalist Architecture)",
   "scripts": {
-    "dev": "next dev",
-    "dev:css": "tailwindcss -i app/globals.css -o css/tailwind.min.css --watch",
-    "build:css": "tailwindcss -i app/globals.css -o css/tailwind.min.css --minify",
-    "build": "npm run build:css && next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@radix-ui/react-accordion": "^1.2.0",
-    "@radix-ui/react-slot": "^1.1.0",
-    "class-variance-authority": "^0.7.0",
-    "clsx": "^2.1.1",
-    "lucide-react": "^0.453.0",
-    "next": "^14.2.15",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "tailwind-merge": "^2.5.4"
+    "dev:css": "tailwindcss -o css/tailwind.min.css --watch",
+    "build:css": "tailwindcss -o css/tailwind.min.css --minify",
+    "build": "npm run build:css"
   },
   "devDependencies": {
-    "@types/node": "^20.16.11",
-    "@types/react": "^18.3.11",
-    "@types/react-dom": "^18.3.0",
     "autoprefixer": "^10.4.20",
-    "eslint": "^8.57.0",
-    "eslint-config-next": "^14.2.15",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.13",
     "typescript": "^5.6.3"
