@@ -37,7 +37,7 @@ This portfolio is engineered following **Swiss Minimalist** and **Academic Edito
    - **Stage 1 Faculty Research Contribution (HUIT, 2024–2025):** *Winter Tourism Consumer Behavior in Da Nang City* — Transparent documentation of literature retrieval (Google Scholar & AI discovery tools), abstract extraction, and systematic **Excel Literature Cataloging** prior to transitioning into Computer Science at LHU.
    - **Pre-Master's Research Roadmap:** Focus on Human-Centric Applied AI, Prompt Engineering, Retrieval-Augmented Generation (RAG), Smart Home IoT, and Assistive Technologies.
 3. **[projects.html](file:///d:/adley/projects.html) — Applied Engineering & Case Studies:**
-   - Interactive category filtering (`All`, `AI & Computer Vision`, `Academic R&D`, `Web Systems`).
+   - Interactive category filtering (`All (02)`, `AI & Computer Vision`, `Literature & R&D`).
    - Structured project cards displaying **Problem → Architecture → Key Metrics → Direct Action Links**.
    - **In-Depth Engineering Case Study:** *Smart Gesture Slide Controller* featuring a 4-stage visual architecture pipeline, Euclidean distance gesture classification specs, 3-layer Finite State Machine (FSM) debouncer analysis, and empirical engineering trade-offs.
 4. **[contact.html](file:///d:/adley/contact.html) — Academic Inquiries, Speaking Profile & Printable CV:**
