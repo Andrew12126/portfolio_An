@@ -6,6 +6,8 @@ module.exports = {
     "./projects.html",
     "./research.html",
     "./contact.html",
+    "./admin.html",
+    "./data/**/*.js",
     "./js/**/*.js",
   ],
   theme: {

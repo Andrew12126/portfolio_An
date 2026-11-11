@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Studio | Quản Trị Nội Dung Portfolio Nguyễn Văn An</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+
+  <!-- Precompiled Tailwind CSS -->
+  <link rel="stylesheet" href="css/tailwind.min.css">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root {
+      --bg-primary: #FAF9F6;
+      --bg-card: #FFFFFF;
+      --bg-secondary: #F3F4F6;
+      --text-primary: #111827;
+      --border-color: #E5E7EB;
+    }
+    .dark {
+      --bg-primary: #0B0F19;
+      --bg-card: #111726;
+      --bg-secondary: #161D2F;
+      --text-primary: #F9FAFB;
+      --border-color: rgba(255, 255, 255, 0.1);
+    }
+  </style>
+</head>
+<body class="bg-background text-foreground font-sans min-h-screen antialiased flex flex-col transition-colors duration-200">
+
+  <!-- ========================================================================
+       1. AUTHENTICATION GATE (LOGIN SCREEN)
+       ======================================================================== -->
+  <div id="auth-gate" class="flex-1 flex items-center justify-center p-4 sm:p-6 min-h-screen bg-[#FAF9F6] dark:bg-[#0B0F19]">
+    <div class="w-full max-w-md bg-white dark:bg-[#111726] border border-[#E5E7EB] dark:border-white/10 rounded-2xl shadow-xl p-6 sm:p-8 space-y-6">
+      
+      <div class="text-center space-y-2">
+        <div class="w-12 h-12 mx-auto rounded-xl bg-[#FFF8F0] dark:bg-[#D95D1E]/10 border border-[#FBE3CC] dark:border-[#D95D1E]/30 flex items-center justify-center text-[#C25E00] dark:text-[#D95D1E]">
+          <i data-lucide="shield-lock" class="w-6 h-6"></i>
+        </div>
+        <h1 class="text-xl font-heading font-bold text-[#111827] dark:text-white tracking-tight">
+          Admin Content Studio
+        </h1>
+        <p class="text-xs text-[#6B7280] dark:text-slate-400">
+          Hệ thống quản trị nội dung độc lập của Nguyễn Văn An
+        </p>
+      </div>
+
+      <form id="login-form" class="space-y-4">
+        <div>
+          <label for="admin-username" class="block text-xs font-mono font-medium text-[#374151] dark:text-slate-300 mb-1">
+            Tên Đăng Nhập (Username)
+          </label>
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-[#9CA3AF]">
+              <i data-lucide="user" class="w-4 h-4"></i>
+            </span>
+            <input
+              type="text"
+              id="admin-username"
+              required
+              autocomplete="username"
+              class="w-full pl-9 pr-3 py-2.5 text-xs rounded-lg border border-[#E5E7EB] dark:border-white/10 bg-[#FAF9F6] dark:bg-[#161D2F] text-[#111827] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#C25E00]"
+              placeholder="Nhập username admin"
+            >
+          </div>
+        </div>
+
+        <div>
+          <label for="admin-password" class="block text-xs font-mono font-medium text-[#374151] dark:text-slate-300 mb-1">
+            Mật Khẩu (Password)
+          </label>
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-[#9CA3AF]">
+              <i data-lucide="key" class="w-4 h-4"></i>
+            </span>
+            <input
+              type="password"
+              id="admin-password"
+              required
+              autocomplete="current-password"
+              class="w-full pl-9 pr-10 py-2.5 text-xs rounded-lg border border-[#E5E7EB] dark:border-white/10 bg-[#FAF9F6] dark:bg-[#161D2F] text-[#111827] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#C25E00]"
+              placeholder="••••••••••••"
+            >
+            <button
+              type="button"
+              id="toggle-pwd-visibility"
+              class="absolute inset-y-0 right-0 pr-3 flex items-center text-[#9CA3AF] hover:text-[#111827] dark:hover:text-white"
+              title="Ẩn/Hiện mật khẩu"
+            >
+              <i data-lucide="eye" class="w-4 h-4" id="eye-icon"></i>
+            </button>
+          </div>
+        </div>
+
+        <div id="login-error" class="hidden p-3 rounded-lg bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-800 text-xs text-red-600 dark:text-red-400 flex items-center gap-2">
+          <i data-lucide="alert-circle" class="w-4 h-4 shrink-0"></i>
+          <span>Tên đăng nhập hoặc mật khẩu không chính xác!</span>
+        </div>
+
+        <button
+          type="submit"
+          id="btn-login-submit"
+          class="w-full py-2.5 px-4 rounded-lg bg-[#C25E00] hover:bg-[#A84E00] text-white font-semibold text-xs transition-colors flex items-center justify-center gap-2 shadow-sm"
+        >
+          <i data-lucide="lock-open" class="w-4 h-4"></i>
+          <span>Mở Khóa Quản Trị</span>
+        </button>
+      </form>
+
+      <div class="pt-2 border-t border-[#E5E7EB] dark:border-white/10 flex items-center justify-between text-[11px] font-mono text-[#9CA3AF]">
+        <span>🔒 Bảo mật SHA-256</span>
+        <a href="index.html" class="hover:text-[#C25E00] flex items-center gap-1 transition-colors">
+          <span>Về Portfolio</span>
+          <i data-lucide="arrow-right" class="w-3 h-3"></i>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       2. MAIN ADMIN STUDIO (DISPLAYED AFTER AUTHENTICATION)
+       ======================================================================== -->
+  <div id="admin-studio" class="hidden flex-col min-h-screen">
+    
+    <!-- Top Fixed Header -->
+    <header class="sticky top-0 z-40 bg-white/95 dark:bg-[#0B0F19]/95 backdrop-blur-md border-b border-[#E5E7EB] dark:border-white/10 px-4 sm:px-8 py-3.5 flex flex-wrap items-center justify-between gap-3 shadow-sm">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-lg bg-[#FFF8F0] dark:bg-[#D95D1E]/10 border border-[#FBE3CC] dark:border-[#D95D1E]/30 flex items-center justify-center text-[#C25E00] dark:text-[#D95D1E] font-bold">
+          <i data-lucide="sliders" class="w-4 h-4"></i>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="text-sm font-heading font-bold text-[#111827] dark:text-white">Admin Studio</h1>
+            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+              Đã Đăng Nhập
+            </span>
+          </div>
+          <p class="text-[11px] text-[#6B7280] dark:text-slate-400">Nguyễn Văn An · Content Management Hub</p>
+        </div>
+      </div>
+
+      <!-- Quick Actions Header -->
+      <div class="flex items-center gap-2 font-mono text-xs">
+        <a
+          href="index.html"
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#E5E7EB] dark:border-white/10 text-[#374151] dark:text-slate-300 hover:border-[#C25E00] hover:text-[#C25E00] transition-colors"
+          title="Mở portfolio trên tab mới"
+        >
+          <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          <span class="hidden sm:inline">Xem Web Live</span>
+        </a>
+
+        <button
+          type="button"
+          id="btn-open-github-modal"
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#E5E7EB] dark:border-white/10 text-[#374151] dark:text-slate-300 hover:border-[#C25E00] hover:text-[#C25E00] transition-colors"
+          title="Cài đặt khóa GitHub Personal Access Token"
+        >
+          <i data-lucide="key-round" class="w-3.5 h-3.5 text-[#C25E00]"></i>
+          <span class="hidden sm:inline">GitHub Token</span>
+        </button>
+
+        <button
+          type="button"
+          id="btn-admin-theme"
+          class="p-2 rounded-lg border border-[#E5E7EB] dark:border-white/10 hover:border-[#C25E00] transition-colors"
+          title="Chuyển chế độ sáng/tối"
+        >
+          <i data-lucide="sun" class="w-3.5 h-3.5 hidden dark:block text-amber-400"></i>
+          <i data-lucide="moon" class="w-3.5 h-3.5 block dark:hidden text-slate-700"></i>
+        </button>
+
+        <button
+          type="button"
+          id="btn-logout"
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-50 dark:bg-red-950/40 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-800 hover:bg-red-100 transition-colors"
+          title="Đăng xuất quản trị"
+        >
+          <i data-lucide="log-out" class="w-3.5 h-3.5"></i>
+          <span>Đăng Xuất</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Notification Banner -->
+    <div id="status-banner" class="hidden px-4 sm:px-8 py-3 text-xs font-mono flex items-center justify-between border-b">
+      <div class="flex items-center gap-2" id="status-banner-content">
+        <!-- Dynamic message -->
+      </div>
+      <button type="button" onclick="document.getElementById('status-banner').classList.add('hidden')" class="text-slate-400 hover:text-slate-600">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+    </div>
+
+    <!-- Main Workspace -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-8 space-y-6">
+
+      <!-- Navigation Tabs -->
+      <div class="flex flex-wrap items-center gap-2 border-b border-[#E5E7EB] dark:border-white/10 pb-2">
+        <button
+          type="button"
+          data-tab-target="tab-profile"
+          class="admin-tab-btn active inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-mono font-semibold transition-all bg-[#C25E00] text-white shadow-sm"
+        >
+          <i data-lucide="user" class="w-3.5 h-3.5"></i>
+          <span>1. Hồ Sơ & Liên Hệ</span>
+        </button>
+
+        <button
+          type="button"
+          data-tab-target="tab-hero"
+          class="admin-tab-btn inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-mono font-medium transition-all text-[#6B7280] dark:text-slate-400 hover:text-[#111827] dark:hover:text-white"
+        >
+          <i data-lucide="home" class="w-3.5 h-3.5"></i>
+          <span>2. Trang Chủ & Về Tôi</span>
+        </button>
+
+        <button
+          type="button"
+          data-tab-target="tab-projects"
+          class="admin-tab-btn inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-mono font-medium transition-all text-[#6B7280] dark:text-slate-400 hover:text-[#111827] dark:hover:text-white"
+        >
+          <i data-lucide="layers" class="w-3.5 h-3.5"></i>
+          <span>3. Dự Án Công Nghệ</span>
+        </button>
+
+        <button
+          type="button"
+          data-tab-target="tab-research"
+          class="admin-tab-btn inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-mono font-medium transition-all text-[#6B7280] dark:text-slate-400 hover:text-[#111827] dark:hover:text-white"
+        >
+          <i data-lucide="microscope" class="w-3.5 h-3.5"></i>
+          <span>4. Nghiên Cứu Khoa Học</span>
+        </button>
+
+        <button
+          type="button"
+          data-tab-target="tab-mc"
+          class="admin-tab-btn inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-mono font-medium transition-all text-[#6B7280] dark:text-slate-400 hover:text-[#111827] dark:hover:text-white"
+        >
+          <i data-lucide="mic" class="w-3.5 h-3.5"></i>
+          <span>5. Hoạt Động MC & CV</span>
+        </button>
+      </div>
+
+      <!-- Action Floating Bar -->
+      <div class="sticky top-20 z-30 bg-white/95 dark:bg-[#111726]/95 backdrop-blur border border-[#E5E7EB] dark:border-white/10 rounded-xl p-3 sm:p-4 shadow-md flex flex-wrap items-center justify-between gap-3">
+        <div class="flex items-center gap-2 text-xs text-[#374151] dark:text-slate-300">
+          <i data-lucide="info" class="w-4 h-4 text-[#C25E00]"></i>
+          <span>Sau khi gõ sửa nội dung ở các ô bên dưới, chọn thao tác lưu:</span>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2.5 font-mono text-xs">
+          <!-- Button: Test Local -->
+          <button
+            type="button"
+            id="btn-save-local"
+            class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-[#E5E7EB] dark:border-white/10 bg-[#FAF9F6] dark:bg-[#161D2F] text-[#111827] dark:text-white hover:border-[#C25E00] transition-colors"
+            title="Lưu vào bộ nhớ máy này để xem thử tức thì"
+          >
+            <i data-lucide="eye" class="w-3.5 h-3.5 text-[#C25E00]"></i>
+            <span>Xem Thử Trên Máy Này</span>
+          </button>
+
+          <!-- Button: Download File -->
+          <button
+            type="button"
+            id="btn-download-content"
+            class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-[#E5E7EB] dark:border-white/10 bg-[#FAF9F6] dark:bg-[#161D2F] text-[#111827] dark:text-white hover:border-[#C25E00] transition-colors"
+            title="Tải tệp data/content.js về máy tính để sao lưu hoặc commit thủ công"
+          >
+            <i data-lucide="download" class="w-3.5 h-3.5"></i>
+            <span>Tải File content.js</span>
+          </button>
+
+          <!-- Button: Reset to Defaults -->
+          <button
+            type="button"
+            id="btn-reset-defaults"
+            class="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border border-gray-200 dark:border-white/10 text-gray-500 hover:text-red-500 transition-colors"
+            title="Xóa bản lưu tạm và khôi phục về dữ liệu gốc trong file"
+          >
+            <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+            <span>Khôi Phục Gốc</span>
+          </button>
+
+          <!-- Button: Publish Live via GitHub API -->
+          <button
+            type="button"
+            id="btn-publish-github"
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#C25E00] hover:bg-[#A84E00] text-white font-semibold transition-colors shadow-sm"
+            title="Tự động đồng bộ lên GitHub để cập nhật website toàn cầu"
+          >
+            <i data-lucide="upload-cloud" class="w-4 h-4"></i>
+            <span>Xuất Bản Lên Web (GitHub)</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- FORM TABS CONTAINER -->
+      <form id="admin-form" class="space-y-6">
+
+        <!-- ====================================================================
+             TAB 1: HỒ SƠ & LIÊN HỆ
+             ==================================================================== -->
+        <section id="tab-profile" class="admin-tab-pane space-y-6">
+          <div class="p-6 rounded-xl bg-white dark:bg-[#111726] border border-[#E5E7EB] dark:border-white/10 space-y-6">
+            <div>
+              <h2 class="text-base font-heading font-bold text-[#111827] dark:text-white flex items-center gap-2">
+                <i data-lucide="user-check" class="w-5 h-5 text-[#C25E00]"></i>
+                Thông Tin Cá Nhân & Định Danh Tác Giả
+              </h2>
+              <p class="text-xs text-[#6B7280] dark:text-slate-400 mt-1">
+                Các trường này hiển thị trên toàn bộ các trang (Header, Spotlight, Footer).
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <!-- author_name -->
+              <div class="p-4 rounded-lg bg-[#FAF9F6] dark:bg-[#161D2F] border border-[#E5E7EB] dark:border-white/5 space-y-3">
+                <label class="block font-mono text-xs font-semibold text-[#111827] dark:text-white">
+                  Họ và Tên Tác Giả (author_name)
+                </label>
+                <div>
+                  <span class="text-[10px] font-mono text-slate-400">Tiếng Việt (VI):</span>
+                  <input type="text" data-key="author_name" data-lang="vi" class="w-full mt-1 p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]">
+                </div>
+                <div>
+                  <span class="text-[10px] font-mono text-slate-400">English (EN):</span>
+                  <input type="text" data-key="author_name" data-lang="en" class="w-full mt-1 p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]">
+                </div>
+              </div>
+
+              <!-- author_role -->
+              <div class="p-4 rounded-lg bg-[#FAF9F6] dark:bg-[#161D2F] border border-[#E5E7EB] dark:border-white/5 space-y-3">
+                <label class="block font-mono text-xs font-semibold text-[#111827] dark:text-white">
+                  Vai Trò / Chức Danh (author_role)
+                </label>
+                <div>
+                  <span class="text-[10px] font-mono text-slate-400">Tiếng Việt (VI):</span>
+                  <input type="text" data-key="author_role" data-lang="vi" class="w-full mt-1 p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]">
+                </div>
+                <div>
+                  <span class="text-[10px] font-mono text-slate-400">English (EN):</span>
+                  <input type="text" data-key="author_role" data-lang="en" class="w-full mt-1 p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]">
+                </div>
+              </div>
+
+              <!-- author_subtitle -->
+              <div class="p-4 rounded-lg bg-[#FAF9F6] dark:bg-[#161D2F] border border-[#E5E7EB] dark:border-white/5 space-y-3">
+                <label class="block font-mono text-xs font-semibold text-[#111827] dark:text-white">
+                  Phụ Đề Hành Trình (author_subtitle)
+                </label>
+                <div>
+                  <span class="text-[10px] font-mono text-slate-400">Tiếng Việt (VI):</span>
+                  <input type="text" data-key="author_subtitle" data-lang="vi" class="w-full mt-1 p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]">
+                </div>
+                <div>
+                  <span class="text-[10px] font-mono text-slate-400">English (EN):</span>
+                  <input type="text" data-key="author_subtitle" data-lang="en" class="w-full mt-1 p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]">
+                </div>
+              </div>
+
+              <!-- IELTS Trajectory -->
+              <div class="p-4 rounded-lg bg-[#FAF9F6] dark:bg-[#161D2F] border border-[#E5E7EB] dark:border-white/5 space-y-3">
+                <label class="block font-mono text-xs font-semibold text-[#111827] dark:text-white">
+                  Lộ Trình IELTS / Ngoại Ngữ (about_fact4_val)
+                </label>
+                <div>
+                  <span class="text-[10px] font-mono text-slate-400">Tiếng Việt (VI):</span>
+                  <input type="text" data-key="about_fact4_val" data-lang="vi" class="w-full mt-1 p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]">
+                </div>
+                <div>
+                  <span class="text-[10px] font-mono text-slate-400">English (EN):</span>
+                  <input type="text" data-key="about_fact4_val" data-lang="en" class="w-full mt-1 p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]">
+                </div>
+              </div>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="pt-6 border-t border-[#E5E7EB] dark:border-white/10 space-y-4">
+              <h3 class="text-sm font-heading font-semibold text-[#111827] dark:text-white">
+                Thông Tin Kênh Liên Hệ
+              </h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="p-3.5 rounded-lg bg-[#FAF9F6] dark:bg-[#161D2F] border border-[#E5E7EB] dark:border-white/5 space-y-2">
+                  <label class="block font-mono text-xs font-semibold text-[#111827] dark:text-white">Địa Điểm Hiện Tại (contact_loc_val)</label>
+                  <input type="text" data-key="contact_loc_val" data-lang="vi" class="w-full p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]" placeholder="VI">
+                  <input type="text" data-key="contact_loc_val" data-lang="en" class="w-full p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]" placeholder="EN">
+                </div>
+
+                <div class="p-3.5 rounded-lg bg-[#FAF9F6] dark:bg-[#161D2F] border border-[#E5E7EB] dark:border-white/5 space-y-2">
+                  <label class="block font-mono text-xs font-semibold text-[#111827] dark:text-white">Tình Trạng Học Thuật (contact_status_val)</label>
+                  <input type="text" data-key="contact_status_val" data-lang="vi" class="w-full p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]" placeholder="VI">
+                  <input type="text" data-key="contact_status_val" data-lang="en" class="w-full p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]" placeholder="EN">
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ====================================================================
+             TAB 2: TRANG CHỦ & VỀ TÔI
+             ==================================================================== -->
+        <section id="tab-hero" class="admin-tab-pane hidden space-y-6">
+          <div class="p-6 rounded-xl bg-white dark:bg-[#111726] border border-[#E5E7EB] dark:border-white/10 space-y-6">
+            <div>
+              <h2 class="text-base font-heading font-bold text-[#111827] dark:text-white flex items-center gap-2">
+                <i data-lucide="sparkles" class="w-5 h-5 text-[#C25E00]"></i>
+                Phần Giới Thiệu Đầu Trang (Hero Section)
+              </h2>
+              <p class="text-xs text-[#6B7280] dark:text-slate-400 mt-1">
+                Ấn tượng đầu tiên khi giáo sư hoặc nhà tuyển dụng mở trang chủ.
+              </p>
+            </div>
+
+            <!-- hero_title_1 & 2 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="space-y-2">
+                <label class="block font-mono text-xs font-semibold text-[#111827] dark:text-white">Tiêu Đề Dòng 1 (hero_title_1)</label>
+                <input type="text" data-key="hero_title_1" data-lang="vi" class="w-full p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]" placeholder="VI">
+                <input type="text" data-key="hero_title_1" data-lang="en" class="w-full p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]" placeholder="EN">
+              </div>
+
+              <div class="space-y-2">
+                <label class="block font-mono text-xs font-semibold text-[#111827] dark:text-white">Tiêu Đề Dòng 2 (hero_title_2)</label>
+                <input type="text" data-key="hero_title_2" data-lang="vi" class="w-full p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]" placeholder="VI">
+                <input type="text" data-key="hero_title_2" data-lang="en" class="w-full p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]" placeholder="EN">
+              </div>
+            </div>
+
+            <!-- hero_desc -->
+            <div class="space-y-2">
+              <label class="block font-mono text-xs font-semibold text-[#111827] dark:text-white">
+                Đoạn Văn Giới Thiệu Hero (hero_desc - Hỗ trợ thẻ &lt;strong&gt;, &lt;span&gt;)
+              </label>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <span class="text-[10px] font-mono text-slate-400">Tiếng Việt (VI):</span>
+                  <textarea data-key="hero_desc" data-lang="vi" rows="5" class="w-full mt-1 p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726] font-mono"></textarea>
+                </div>
+                <div>
+                  <span class="text-[10px] font-mono text-slate-400">English (EN):</span>
+                  <textarea data-key="hero_desc" data-lang="en" rows="5" class="w-full mt-1 p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726] font-mono"></textarea>
+                </div>
+              </div>
+            </div>
+
+            <!-- Câu chuyện chuyển ngành -->
+            <div class="pt-6 border-t border-[#E5E7EB] dark:border-white/10 space-y-4">
+              <h3 class="text-sm font-heading font-semibold text-[#111827] dark:text-white">
+                Câu Chuyện & Bước Ngoặt Chuyển Ngành (3 Đoạn Văn)
+              </h3>
+
+              <div class="space-y-4">
+                <!-- Đoạn 1 -->
+                <div class="p-3.5 rounded-lg bg-[#FAF9F6] dark:bg-[#161D2F] border border-[#E5E7EB] dark:border-white/5 space-y-2">
+                  <label class="block font-mono text-xs font-semibold text-[#111827] dark:text-white">Đoạn 1: Nền tảng Hospitality HUIT (about_story_p1)</label>
+                  <textarea data-key="about_story_p1" data-lang="vi" rows="3" class="w-full p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]"></textarea>
+                  <textarea data-key="about_story_p1" data-lang="en" rows="3" class="w-full p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]"></textarea>
+                </div>
+
+                <!-- Đoạn 2 -->
+                <div class="p-3.5 rounded-lg bg-[#FAF9F6] dark:bg-[#161D2F] border border-[#E5E7EB] dark:border-white/5 space-y-2">
+                  <label class="block font-mono text-xs font-semibold text-[#111827] dark:text-white">Đoạn 2: Bước ngoặt NCKH & Chuyển sang CNTT LHU (about_story_p2)</label>
+                  <textarea data-key="about_story_p2" data-lang="vi" rows="3" class="w-full p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]"></textarea>
+                  <textarea data-key="about_story_p2" data-lang="en" rows="3" class="w-full p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]"></textarea>
+                </div>
+
+                <!-- Đoạn 3 -->
+                <div class="p-3.5 rounded-lg bg-[#FAF9F6] dark:bg-[#161D2F] border border-[#E5E7EB] dark:border-white/5 space-y-2">
+                  <label class="block font-mono text-xs font-semibold text-[#111827] dark:text-white">Đoạn 3: Năng lực MC & Kỹ thuật kết hợp (about_story_p3)</label>
+                  <textarea data-key="about_story_p3" data-lang="vi" rows="3" class="w-full p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]"></textarea>
+                  <textarea data-key="about_story_p3" data-lang="en" rows="3" class="w-full p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]"></textarea>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tuyên ngôn sứ mệnh -->
+            <div class="pt-6 border-t border-[#E5E7EB] dark:border-white/10 space-y-4">
+              <h3 class="text-sm font-heading font-semibold text-[#111827] dark:text-white">
+                Tuyên Ngôn Sứ Mệnh & Chí Hướng (Manifesto Quote)
+              </h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <span class="text-[10px] font-mono text-slate-400">Câu nói (VI):</span>
+                  <textarea data-key="about_manifesto_quote" data-lang="vi" rows="3" class="w-full mt-1 p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]"></textarea>
+                </div>
+                <div>
+                  <span class="text-[10px] font-mono text-slate-400">Quote (EN):</span>
+                  <textarea data-key="about_manifesto_quote" data-lang="en" rows="3" class="w-full mt-1 p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]"></textarea>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ====================================================================
+             TAB 3: DỰ ÁN CÔNG NGHỆ
+             ==================================================================== -->
+        <section id="tab-projects" class="admin-tab-pane hidden space-y-6">
+          <div class="p-6 rounded-xl bg-white dark:bg-[#111726] border border-[#E5E7EB] dark:border-white/10 space-y-6">
+            <div>
+              <h2 class="text-base font-heading font-bold text-[#111827] dark:text-white flex items-center gap-2">
+                <i data-lucide="cpu" class="w-5 h-5 text-[#C25E00]"></i>
+                Dự Án 1: Smart Gesture Slide Controller (MediaPipe Hands AI)
+              </h2>
+              <p class="text-xs text-[#6B7280] dark:text-slate-400 mt-1">
+                Dự án Computer Vision trọng điểm trình bày trên trang Dự Án và Case Study.
+              </p>
+            </div>
+
+            <!-- Card dự án -->
+            <div class="space-y-4">
+              <div class="p-4 rounded-lg bg-[#FAF9F6] dark:bg-[#161D2F] border border-[#E5E7EB] dark:border-white/5 space-y-3">
+                <label class="block font-mono text-xs font-semibold text-[#111827] dark:text-white">Tên Dự Án (proj1_title)</label>
+                <input type="text" data-key="proj1_title" data-lang="vi" class="w-full p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]" placeholder="VI">
+                <input type="text" data-key="proj1_title" data-lang="en" class="w-full p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]" placeholder="EN">
+              </div>
+
+              <div class="p-4 rounded-lg bg-[#FAF9F6] dark:bg-[#161D2F] border border-[#E5E7EB] dark:border-white/5 space-y-3">
+                <label class="block font-mono text-xs font-semibold text-[#111827] dark:text-white">Bài Toán Thực Tế (proj1_prob)</label>
+                <textarea data-key="proj1_prob" data-lang="vi" rows="2" class="w-full p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]" placeholder="VI"></textarea>
+                <textarea data-key="proj1_prob" data-lang="en" rows="2" class="w-full p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]" placeholder="EN"></textarea>
+              </div>
+
+              <div class="p-4 rounded-lg bg-[#FAF9F6] dark:bg-[#161D2F] border border-[#E5E7EB] dark:border-white/5 space-y-3">
+                <label class="block font-mono text-xs font-semibold text-[#111827] dark:text-white">Kiến Trúc & Phương Pháp (proj1_meth)</label>
+                <textarea data-key="proj1_meth" data-lang="vi" rows="2" class="w-full p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]" placeholder="VI"></textarea>
+                <textarea data-key="proj1_meth" data-lang="en" rows="2" class="w-full p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]" placeholder="EN"></textarea>
+              </div>
+
+              <div class="p-4 rounded-lg bg-[#FAF9F6] dark:bg-[#161D2F] border border-[#E5E7EB] dark:border-white/5 space-y-3">
+                <label class="block font-mono text-xs font-semibold text-[#111827] dark:text-white">Thông Số Đạt Được (proj1_metr)</label>
+                <input type="text" data-key="proj1_metr" data-lang="vi" class="w-full p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]" placeholder="VI">
+                <input type="text" data-key="proj1_metr" data-lang="en" class="w-full p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]" placeholder="EN">
+              </div>
+
+              <div class="p-4 rounded-lg bg-[#FAF9F6] dark:bg-[#161D2F] border border-[#E5E7EB] dark:border-white/5 space-y-3">
+                <label class="block font-mono text-xs font-semibold text-[#111827] dark:text-white">Tagline Giới Thiệu Case Study (cs_tagline)</label>
+                <textarea data-key="cs_tagline" data-lang="vi" rows="3" class="w-full p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]" placeholder="VI"></textarea>
+                <textarea data-key="cs_tagline" data-lang="en" rows="3" class="w-full p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]" placeholder="EN"></textarea>
+              </div>
+            </div>
+
+            <!-- Dự Án 2: Rà soát tài liệu Excel -->
+            <div class="pt-6 border-t border-[#E5E7EB] dark:border-white/10 space-y-4">
+              <h3 class="text-sm font-heading font-semibold text-[#111827] dark:text-white">
+                Dự Án 2: Rà Soát & Hệ Thống Hóa Tài Liệu (HUIT Stage 1)
+              </h3>
+              <div class="space-y-3">
+                <div class="p-3.5 rounded-lg bg-[#FAF9F6] dark:bg-[#161D2F] border border-[#E5E7EB] dark:border-white/5 space-y-2">
+                  <label class="block font-mono text-xs font-semibold text-[#111827] dark:text-white">Tên Dự Án (proj3_title)</label>
+                  <input type="text" data-key="proj3_title" data-lang="vi" class="w-full p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]" placeholder="VI">
+                  <input type="text" data-key="proj3_title" data-lang="en" class="w-full p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]" placeholder="EN">
+                </div>
+
+                <div class="p-3.5 rounded-lg bg-[#FAF9F6] dark:bg-[#161D2F] border border-[#E5E7EB] dark:border-white/5 space-y-2">
+                  <label class="block font-mono text-xs font-semibold text-[#111827] dark:text-white">Bài Toán (proj3_prob)</label>
+                  <textarea data-key="proj3_prob" data-lang="vi" rows="2" class="w-full p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]" placeholder="VI"></textarea>
+                  <textarea data-key="proj3_prob" data-lang="en" rows="2" class="w-full p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]" placeholder="EN"></textarea>
+                </div>
+
+                <div class="p-3.5 rounded-lg bg-[#FAF9F6] dark:bg-[#161D2F] border border-[#E5E7EB] dark:border-white/5 space-y-2">
+                  <label class="block font-mono text-xs font-semibold text-[#111827] dark:text-white">Kiến Trúc (proj3_meth)</label>
+                  <textarea data-key="proj3_meth" data-lang="vi" rows="2" class="w-full p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]" placeholder="VI"></textarea>
+                  <textarea data-key="proj3_meth" data-lang="en" rows="2" class="w-full p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]" placeholder="EN"></textarea>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ====================================================================
+             TAB 4: NGHIÊN CỨU KHOA HỌC
+             ==================================================================== -->
+        <section id="tab-research" class="admin-tab-pane hidden space-y-6">
+          <div class="p-6 rounded-xl bg-white dark:bg-[#111726] border border-[#E5E7EB] dark:border-white/10 space-y-6">
+            <div>
+              <h2 class="text-base font-heading font-bold text-[#111827] dark:text-white flex items-center gap-2">
+                <i data-lucide="book-open-check" class="w-5 h-5 text-[#C25E00]"></i>
+                Nghiên Cứu Khoa Học & Lộ Trình Thạc Sĩ Quốc Tế
+              </h2>
+              <p class="text-xs text-[#6B7280] dark:text-slate-400 mt-1">
+                Các mục giải trình trung thực về nghiên cứu giai đoạn 1 và định hướng cao học AI.
+              </p>
+            </div>
+
+            <!-- Đề tài Đà Nẵng Stage 1 -->
+            <div class="space-y-4">
+              <div class="p-4 rounded-lg bg-[#FAF9F6] dark:bg-[#161D2F] border border-[#E5E7EB] dark:border-white/5 space-y-3">
+                <label class="block font-mono text-xs font-semibold text-[#111827] dark:text-white">Tên Đề Tài NCKH Cấp Khoa (res_topic1_title)</label>
+                <input type="text" data-key="res_topic1_title" data-lang="vi" class="w-full p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]" placeholder="VI">
+                <input type="text" data-key="res_topic1_title" data-lang="en" class="w-full p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]" placeholder="EN">
+              </div>
+
+              <div class="p-4 rounded-lg bg-[#FAF9F6] dark:bg-[#161D2F] border border-[#E5E7EB] dark:border-white/5 space-y-3">
+                <label class="block font-mono text-xs font-semibold text-[#111827] dark:text-white">Vai Trò Thực Tế Của Bạn (res_topic1_role)</label>
+                <textarea data-key="res_topic1_role" data-lang="vi" rows="2" class="w-full p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]" placeholder="VI"></textarea>
+                <textarea data-key="res_topic1_role" data-lang="en" rows="2" class="w-full p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]" placeholder="EN"></textarea>
+              </div>
+
+              <div class="p-4 rounded-lg bg-[#FAF9F6] dark:bg-[#161D2F] border border-[#E5E7EB] dark:border-white/5 space-y-3">
+                <label class="block font-mono text-xs font-semibold text-[#111827] dark:text-white">Mô Tả Quá Trình Thực Hiện (res_topic1_desc)</label>
+                <textarea data-key="res_topic1_desc" data-lang="vi" rows="3" class="w-full p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]" placeholder="VI"></textarea>
+                <textarea data-key="res_topic1_desc" data-lang="en" rows="3" class="w-full p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]" placeholder="EN"></textarea>
+              </div>
+
+              <div class="p-4 rounded-lg bg-[#FAF9F6] dark:bg-[#161D2F] border border-[#E5E7EB] dark:border-white/5 space-y-3">
+                <label class="block font-mono text-xs font-semibold text-[#111827] dark:text-white">Ghi Chú Bước Ngoặt Học Thuật (res_pivot_note - Hỗ trợ thẻ HTML)</label>
+                <textarea data-key="res_pivot_note" data-lang="vi" rows="4" class="w-full p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726] font-mono" placeholder="VI"></textarea>
+                <textarea data-key="res_pivot_note" data-lang="en" rows="4" class="w-full p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726] font-mono" placeholder="EN"></textarea>
+              </div>
+            </div>
+
+            <!-- Định hướng Thạc sĩ AI -->
+            <div class="pt-6 border-t border-[#E5E7EB] dark:border-white/10 space-y-4">
+              <h3 class="text-sm font-heading font-semibold text-[#111827] dark:text-white">
+                Định Hướng Bậc Thạc Sĩ Quốc Tế (AI Vị Nhân Sinh)
+              </h3>
+              <div class="space-y-3">
+                <div class="p-3.5 rounded-lg bg-[#FAF9F6] dark:bg-[#161D2F] border border-[#E5E7EB] dark:border-white/5 space-y-2">
+                  <label class="block font-mono text-xs font-semibold text-[#111827] dark:text-white">Tiêu Đề Định Hướng (res_topic2_title)</label>
+                  <input type="text" data-key="res_topic2_title" data-lang="vi" class="w-full p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]" placeholder="VI">
+                  <input type="text" data-key="res_topic2_title" data-lang="en" class="w-full p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]" placeholder="EN">
+                </div>
+
+                <div class="p-3.5 rounded-lg bg-[#FAF9F6] dark:bg-[#161D2F] border border-[#E5E7EB] dark:border-white/5 space-y-2">
+                  <label class="block font-mono text-xs font-semibold text-[#111827] dark:text-white">Nội Dung Định Hướng Thạc Sĩ (res_topic2_desc)</label>
+                  <textarea data-key="res_topic2_desc" data-lang="vi" rows="3" class="w-full p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]" placeholder="VI"></textarea>
+                  <textarea data-key="res_topic2_desc" data-lang="en" rows="3" class="w-full p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]" placeholder="EN"></textarea>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ====================================================================
+             TAB 5: HOẠT ĐỘNG MC & ACADEMIC CV
+             ==================================================================== -->
+        <section id="tab-mc" class="admin-tab-pane hidden space-y-6">
+          <div class="p-6 rounded-xl bg-white dark:bg-[#111726] border border-[#E5E7EB] dark:border-white/10 space-y-6">
+            <div>
+              <h2 class="text-base font-heading font-bold text-[#111827] dark:text-white flex items-center gap-2">
+                <i data-lucide="mic" class="w-5 h-5 text-[#C25E00]"></i>
+                Hoạt Động Dẫn Chương Trình (MC) & Hợp Tác Sự Kiện
+              </h2>
+              <p class="text-xs text-[#6B7280] dark:text-slate-400 mt-1">
+                Kinh nghiệm dẫn 4–5 sự kiện cộng đồng và nhận lời mời dẫn workshop công nghệ, tọa đàm.
+              </p>
+            </div>
+
+            <div class="space-y-4">
+              <div class="p-4 rounded-lg bg-[#FAF9F6] dark:bg-[#161D2F] border border-[#E5E7EB] dark:border-white/5 space-y-3">
+                <label class="block font-mono text-xs font-semibold text-[#111827] dark:text-white">Tiêu Đề Mục MC (contact_mc_title)</label>
+                <input type="text" data-key="contact_mc_title" data-lang="vi" class="w-full p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]" placeholder="VI">
+                <input type="text" data-key="contact_mc_title" data-lang="en" class="w-full p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]" placeholder="EN">
+              </div>
+
+              <div class="p-4 rounded-lg bg-[#FAF9F6] dark:bg-[#161D2F] border border-[#E5E7EB] dark:border-white/5 space-y-3">
+                <label class="block font-mono text-xs font-semibold text-[#111827] dark:text-white">Mô Tả Kinh Nghiệm & Phạm Vi Nhận Lời Mời (contact_mc_desc)</label>
+                <textarea data-key="contact_mc_desc" data-lang="vi" rows="3" class="w-full p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]" placeholder="VI"></textarea>
+                <textarea data-key="contact_mc_desc" data-lang="en" rows="3" class="w-full p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]" placeholder="EN"></textarea>
+              </div>
+
+              <div class="p-4 rounded-lg bg-[#FAF9F6] dark:bg-[#161D2F] border border-[#E5E7EB] dark:border-white/5 space-y-3">
+                <label class="block font-mono text-xs font-semibold text-[#111827] dark:text-white">Thế Mạnh Dẫn Chương Trình (contact_mc_strength)</label>
+                <input type="text" data-key="contact_mc_strength" data-lang="vi" class="w-full p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]" placeholder="VI">
+                <input type="text" data-key="contact_mc_strength" data-lang="en" class="w-full p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]" placeholder="EN">
+              </div>
+            </div>
+
+            <!-- Nút CV -->
+            <div class="pt-6 border-t border-[#E5E7EB] dark:border-white/10 space-y-4">
+              <h3 class="text-sm font-heading font-semibold text-[#111827] dark:text-white">
+                Văn Bản Nút Tải / Xem Academic CV
+              </h3>
+              <div class="p-3.5 rounded-lg bg-[#FAF9F6] dark:bg-[#161D2F] border border-[#E5E7EB] dark:border-white/5 space-y-2">
+                <label class="block font-mono text-xs font-semibold text-[#111827] dark:text-white">Nút Xem & In CV (btn_resume & btn_download_cv)</label>
+                <input type="text" data-key="btn_download_cv" data-lang="vi" class="w-full p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]" placeholder="VI">
+                <input type="text" data-key="btn_download_cv" data-lang="en" class="w-full p-2 text-xs rounded border border-gray-300 dark:border-white/10 bg-white dark:bg-[#111726]" placeholder="EN">
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+      </form>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-auto border-t border-[#E5E7EB] dark:border-white/10 py-4 px-4 text-center font-mono text-xs text-[#9CA3AF]">
+      <span>© 2026 Nguyễn Văn An · Admin Content Studio · Zero-Backend Jamstack CMS</span>
+    </footer>
+
+  </div>
+
+  <!-- ========================================================================
+       3. GITHUB PERSONAL ACCESS TOKEN (PAT) SETTINGS MODAL
+       ======================================================================== -->
+  <div id="github-modal" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="w-full max-w-lg bg-white dark:bg-[#111726] border border-[#E5E7EB] dark:border-white/10 rounded-2xl shadow-2xl p-6 sm:p-8 space-y-5 text-[#111827] dark:text-white">
+      
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-lg bg-[#FFF8F0] dark:bg-[#D95D1E]/10 border border-[#FBE3CC] dark:border-[#D95D1E]/30 flex items-center justify-center text-[#C25E00] dark:text-[#D95D1E]">
+            <i data-lucide="github" class="w-4 h-4"></i>
+          </div>
+          <h2 class="text-base font-heading font-bold">Cài Đặt GitHub Access Token</h2>
+        </div>
+        <button type="button" id="btn-close-github-modal" class="text-slate-400 hover:text-slate-600 dark:hover:text-white">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div class="space-y-3 text-xs text-[#4B5563] dark:text-slate-300 leading-relaxed">
+        <p>
+          Để có thể lưu trực tiếp thông tin từ điện thoại hoặc máy tính lên website đang chạy thực tế, bạn chỉ cần dán <strong>GitHub Token (Classic)</strong> vào đây một lần duy nhất.
+        </p>
+        <div class="p-3 rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 text-[11px] text-amber-800 dark:text-amber-300 space-y-1">
+          <div class="font-bold flex items-center gap-1.5">
+            <i data-lucide="help-circle" class="w-3.5 h-3.5"></i>
+            Cách lấy mã Token trong 30 giây:
+          </div>
+          <ol class="list-decimal pl-4 space-y-0.5">
+            <li>Vào GitHub: <a href="https://github.com/settings/tokens" target="_blank" rel="noopener" class="underline font-bold hover:text-[#C25E00]">github.com/settings/tokens</a></li>
+            <li>Bấm <strong>Generate new token (classic)</strong></li>
+            <li>Mục Note: đặt là <code>Portfolio-Admin</code></li>
+            <li>Mục Select Scopes: Tích chọn đúng 1 ô duy nhất là <strong><code>repo</code></strong></li>
+            <li>Bấm <strong>Generate token</strong> ở cuối trang rồi sao chép chuỗi <code>ghp_...</code> dán vào ô bên dưới.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="space-y-2">
+        <label for="github-pat-input" class="block font-mono text-xs font-semibold">
+          GitHub Personal Access Token:
+        </label>
+        <div class="relative">
+          <input
+            type="password"
+            id="github-pat-input"
+            class="w-full p-2.5 pr-10 text-xs font-mono rounded-lg border border-[#E5E7EB] dark:border-white/10 bg-[#FAF9F6] dark:bg-[#161D2F] focus:outline-none focus:ring-2 focus:ring-[#C25E00]"
+            placeholder="ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+          >
+          <button
+            type="button"
+            id="toggle-pat-visibility"
+            class="absolute inset-y-0 right-0 pr-3 flex items-center text-[#9CA3AF] hover:text-[#111827] dark:hover:text-white"
+          >
+            <i data-lucide="eye" class="w-4 h-4" id="pat-eye-icon"></i>
+          </button>
+        </div>
+        <p class="text-[11px] font-mono text-[#9CA3AF]">
+          🔒 Mã token chỉ được lưu cục bộ trong bộ nhớ trình duyệt máy bạn (localStorage), không ai khác thấy được.
+        </p>
+      </div>
+
+      <div class="pt-3 border-t border-[#E5E7EB] dark:border-white/10 flex items-center justify-end gap-2.5 font-mono text-xs">
+        <button
+          type="button"
+          id="btn-remove-token"
+          class="px-3 py-2 rounded-lg border border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/30 transition-colors"
+        >
+          Xóa Token
+        </button>
+        <button
+          type="button"
+          id="btn-save-token"
+          class="px-4 py-2 rounded-lg bg-[#C25E00] hover:bg-[#A84E00] text-white font-semibold transition-colors"
+        >
+          Lưu Cài Đặt Token
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Load Data Source -->
+  <script src="data/content.js"></script>
+
+  <!-- ========================================================================
+       4. ADMIN STUDIO LOGIC ENGINE
+       ======================================================================== -->
+  <script>
+    'use strict';
+
+    // Approved SHA-256 Hashes for credentials
+    const ADMIN_USER_HASH = '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918'; // 'admin'
+    const ADMIN_PASS_HASH = '4fa470cdb122d78a72747d6cd91c9038c633af07f14d2776619f1c8ebf8bfd3d'; // 'AnNguyen@2026'
+
+    const STORAGE_KEY_AUTH = 'adley_admin_auth';
+    const STORAGE_KEY_OVERRIDE = 'portfolio_override_data';
+    const STORAGE_KEY_PAT = 'adley_github_pat';
+    const REPO_OWNER = 'Andrew12126';
+    const REPO_NAME = 'portfolio_An';
+    const FILE_PATH = 'data/content.js';
+
+    /**
+     * Compute SHA-256 hash using Web Crypto API
+     * @param {string} text
+     * @returns {Promise<string>}
+     */
+    async function computeSHA256(text) {
+      const buffer = new TextEncoder().encode(text.trim());
+      const hashBuffer = await crypto.subtle.digest('SHA-256', buffer);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    /**
+     * Safe UTF-8 to Base64 encoder for GitHub API
+     * @param {string} str
+     * @returns {string}
+     */
+    function utf8ToBase64(str) {
+      return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, (match, p1) => {
+        return String.fromCharCode(parseInt(p1, 16));
+      }));
+    }
+
+    /**
+     * Retrieves currently active working data
+     * @returns {object}
+     */
+    function getWorkingData() {
+      try {
+        const local = localStorage.getItem(STORAGE_KEY_OVERRIDE);
+        if (local) {
+          const parsed = JSON.parse(local);
+          if (parsed && parsed.vi && parsed.en) return parsed;
+        }
+      } catch (e) {
+        console.warn('Local override read failed:', e);
+      }
+      return (typeof window.PORTFOLIO_DATA === 'object' && window.PORTFOLIO_DATA) ? JSON.parse(JSON.stringify(window.PORTFOLIO_DATA)) : { vi: {}, en: {} };
+    }
+
+    /**
+     * Shows a banner notification
+     */
+    function showBanner(message, type = 'success') {
+      const banner = document.getElementById('status-banner');
+      const content = document.getElementById('status-banner-content');
+      if (!banner || !content) return;
+
+      banner.className = 'px-4 sm:px-8 py-3 text-xs font-mono flex items-center justify-between border-b transition-all';
+
+      if (type === 'success') {
+        banner.classList.add('bg-emerald-50', 'dark:bg-emerald-950/40', 'border-emerald-200', 'dark:border-emerald-800', 'text-emerald-700', 'dark:text-emerald-300');
+        content.innerHTML = `<i data-lucide="check-circle" class="w-4 h-4 text-emerald-500"></i><span>${message}</span>`;
+      } else if (type === 'error') {
+        banner.classList.add('bg-red-50', 'dark:bg-red-950/40', 'border-red-200', 'dark:border-red-800', 'text-red-700', 'dark:text-red-300');
+        content.innerHTML = `<i data-lucide="alert-triangle" class="w-4 h-4 text-red-500"></i><span>${message}</span>`;
+      } else {
+        banner.classList.add('bg-amber-50', 'dark:bg-amber-950/40', 'border-amber-200', 'dark:border-amber-800', 'text-amber-700', 'dark:text-amber-300');
+        content.innerHTML = `<i data-lucide="info" class="w-4 h-4 text-amber-500"></i><span>${message}</span>`;
+      }
+
+      banner.classList.remove('hidden');
+      if (window.lucide) window.lucide.createIcons();
+    }
+
+    /**
+     * Populate form fields with current data
+     */
+    function populateForm() {
+      const data = getWorkingData();
+      const inputs = document.querySelectorAll('#admin-form [data-key][data-lang]');
+
+      inputs.forEach(input => {
+        const key = input.getAttribute('data-key');
+        const lang = input.getAttribute('data-lang');
+        if (key && lang && data[lang] && typeof data[lang][key] !== 'undefined') {
+          input.value = data[lang][key];
+        }
+      });
+    }
+
+    /**
+     * Gather form data into unified dictionary
+     * @returns {object}
+     */
+    function collectFormData() {
+      const base = getWorkingData();
+      const current = {
+        vi: Object.assign({}, base.vi || {}),
+        en: Object.assign({}, base.en || {})
+      };
+
+      const inputs = document.querySelectorAll('#admin-form [data-key][data-lang]');
+      inputs.forEach(input => {
+        const key = input.getAttribute('data-key');
+        const lang = input.getAttribute('data-lang');
+        if (key && (lang === 'vi' || lang === 'en')) {
+          current[lang][key] = input.value;
+        }
+      });
+
+      return current;
+    }
+
+    /**
+     * Formats data into pure JS file string
+     */
+    function formatContentJS(data) {
+      return `/**\n * @fileoverview Centralized Data Source for Nguyen Van An Portfolio & Academic Hub.\n * Decoupled from core rendering logic to allow seamless editing via admin.html,\n * multi-device synchronization via GitHub REST API, and zero-cost hosting.\n *\n * @version 2.2.0\n */\n\n'use strict';\n\nconst PORTFOLIO_DATA = ${JSON.stringify(data, null, 2)};\n\n// Global browser window attachment\nif (typeof window !== 'undefined') {\n  window.PORTFOLIO_DATA = PORTFOLIO_DATA;\n}\n\n// Module export for node / build scripts\nif (typeof module !== 'undefined' && module.exports) {\n  module.exports = PORTFOLIO_DATA;\n}\n`;
+    }
+
+    // --- TAB SWITCHING LOGIC ---
+    function initTabs() {
+      const tabButtons = document.querySelectorAll('.admin-tab-btn');
+      const panes = document.querySelectorAll('.admin-tab-pane');
+
+      tabButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const targetId = btn.getAttribute('data-tab-target');
+
+          tabButtons.forEach(b => {
+            b.classList.remove('bg-[#C25E00]', 'text-white', 'shadow-sm');
+            b.classList.add('text-[#6B7280]', 'dark:text-slate-400');
+          });
+
+          btn.classList.add('bg-[#C25E00]', 'text-white', 'shadow-sm');
+          btn.classList.remove('text-[#6B7280]', 'dark:text-slate-400');
+
+          panes.forEach(pane => {
+            pane.classList.toggle('hidden', pane.id !== targetId);
+          });
+        });
+      });
+    }
+
+    // --- THEME TOGGLE FOR ADMIN ---
+    function initTheme() {
+      const btn = document.getElementById('btn-admin-theme');
+      const root = document.documentElement;
+
+      const savedTheme = localStorage.getItem('adley_theme');
+      if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        root.classList.add('dark');
+      } else {
+        root.classList.remove('dark');
+      }
+
+      if (btn) {
+        btn.addEventListener('click', () => {
+          const isDark = root.classList.toggle('dark');
+          localStorage.setItem('adley_theme', isDark ? 'dark' : 'light');
+        });
+      }
+    }
+
+    // --- GITHUB PAT MODAL ---
+    function initGitHubModal() {
+      const modal = document.getElementById('github-modal');
+      const openBtn = document.getElementById('btn-open-github-modal');
+      const closeBtn = document.getElementById('btn-close-github-modal');
+      const saveBtn = document.getElementById('btn-save-token');
+      const removeBtn = document.getElementById('btn-remove-token');
+      const input = document.getElementById('github-pat-input');
+      const toggleVisBtn = document.getElementById('toggle-pat-visibility');
+
+      if (openBtn) {
+        openBtn.addEventListener('click', () => {
+          input.value = localStorage.getItem(STORAGE_KEY_PAT) || '';
+          modal.classList.remove('hidden');
+        });
+      }
+
+      if (closeBtn) {
+        closeBtn.addEventListener('click', () => modal.classList.add('hidden'));
+      }
+
+      if (saveBtn) {
+        saveBtn.addEventListener('click', () => {
+          const val = input.value.trim();
+          if (val) {
+            localStorage.setItem(STORAGE_KEY_PAT, val);
+            showBanner('✅ Đã lưu GitHub Access Token vào trình duyệt của bạn!');
+          } else {
+            localStorage.removeItem(STORAGE_KEY_PAT);
+            showBanner('ℹ️ Đã xóa GitHub Access Token.', 'info');
+          }
+          modal.classList.add('hidden');
+        });
+      }
+
+      if (removeBtn) {
+        removeBtn.addEventListener('click', () => {
+          localStorage.removeItem(STORAGE_KEY_PAT);
+          input.value = '';
+          showBanner('🗑️ Đã xóa GitHub Access Token khỏi thiết bị này.', 'info');
+          modal.classList.add('hidden');
+        });
+      }
+
+      if (toggleVisBtn) {
+        toggleVisBtn.addEventListener('click', () => {
+          input.type = input.type === 'password' ? 'text' : 'password';
+        });
+      }
+    }
+
+    // --- MAIN INITIALIZATION & EVENT DISPATCH ---
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide) window.lucide.createIcons();
+      initTheme();
+      initTabs();
+      initGitHubModal();
+
+      const authGate = document.getElementById('auth-gate');
+      const adminStudio = document.getElementById('admin-studio');
+      const loginForm = document.getElementById('login-form');
+      const loginError = document.getElementById('login-error');
+      const togglePwdBtn = document.getElementById('toggle-pwd-visibility');
+      const pwdInput = document.getElementById('admin-password');
+      const logoutBtn = document.getElementById('btn-logout');
+
+      // Check current session
+      const isAuthenticated = sessionStorage.getItem(STORAGE_KEY_AUTH) === 'true';
+      if (isAuthenticated) {
+        authGate.classList.add('hidden');
+        adminStudio.classList.remove('hidden');
+        adminStudio.classList.add('flex');
+        populateForm();
+      }
+
+      // Password toggle
+      if (togglePwdBtn && pwdInput) {
+        togglePwdBtn.addEventListener('click', () => {
+          pwdInput.type = pwdInput.type === 'password' ? 'text' : 'password';
+        });
+      }
+
+      // Login submission
+      if (loginForm) {
+        loginForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const userVal = document.getElementById('admin-username').value;
+          const passVal = document.getElementById('admin-password').value;
+
+          const userHash = await computeSHA256(userVal);
+          const passHash = await computeSHA256(passVal);
+
+          if (userHash === ADMIN_USER_HASH && passHash === ADMIN_PASS_HASH) {
+            sessionStorage.setItem(STORAGE_KEY_AUTH, 'true');
+            loginError.classList.add('hidden');
+            authGate.classList.add('hidden');
+            adminStudio.classList.remove('hidden');
+            adminStudio.classList.add('flex');
+            populateForm();
+            showBanner('Chào mừng bạn đến với Admin Studio!');
+          } else {
+            loginError.classList.remove('hidden');
+          }
+        });
+      }
+
+      // Logout
+      if (logoutBtn) {
+        logoutBtn.addEventListener('click', () => {
+          sessionStorage.removeItem(STORAGE_KEY_AUTH);
+          adminStudio.classList.add('hidden');
+          adminStudio.classList.remove('flex');
+          authGate.classList.remove('hidden');
+        });
+      }
+
+      // 1. SAVE TO LOCAL STORAGE (Test on this device)
+      const saveLocalBtn = document.getElementById('btn-save-local');
+      if (saveLocalBtn) {
+        saveLocalBtn.addEventListener('click', () => {
+          const data = collectFormData();
+          localStorage.setItem(STORAGE_KEY_OVERRIDE, JSON.stringify(data));
+          showBanner('🧪 Đã lưu tạm vào bộ nhớ thiết bị! Hãy bấm "Xem Web Live" để kiểm tra kết quả ngay tức thì.');
+        });
+      }
+
+      // 2. DOWNLOAD FILE
+      const downloadBtn = document.getElementById('btn-download-content');
+      if (downloadBtn) {
+        downloadBtn.addEventListener('click', () => {
+          const data = collectFormData();
+          const content = formatContentJS(data);
+          const blob = new Blob([content], { type: 'application/javascript;charset=utf-8' });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = 'content.js';
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(url);
+          showBanner('💾 Đã tải tệp data/content.js về máy thành công!');
+        });
+      }
+
+      // 3. RESET DEFAULTS
+      const resetBtn = document.getElementById('btn-reset-defaults');
+      if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+          if (confirm('Bạn có chắc muốn khôi phục về dữ liệu ban đầu và xóa bản lưu tạm trên máy này?')) {
+            localStorage.removeItem(STORAGE_KEY_OVERRIDE);
+            populateForm();
+            showBanner('🔄 Đã khôi phục về dữ liệu gốc thành công!', 'info');
+          }
+        });
+      }
+
+      // 4. PUBLISH LIVE VIA GITHUB API
+      const publishBtn = document.getElementById('btn-publish-github');
+      if (publishBtn) {
+        publishBtn.addEventListener('click', async () => {
+          const pat = localStorage.getItem(STORAGE_KEY_PAT);
+          if (!pat) {
+            document.getElementById('github-modal').classList.remove('hidden');
+            showBanner('⚠️ Bạn cần nhập GitHub Access Token trước khi xuất bản lên web.', 'info');
+            return;
+          }
+
+          const originalText = publishBtn.innerHTML;
+          publishBtn.disabled = true;
+          publishBtn.innerHTML = `<i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i><span>Đang Xuất Bản...</span>`;
+          if (window.lucide) window.lucide.createIcons();
+
+          try {
+            const endpoint = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}`;
+            const headers = {
+              'Accept': 'application/vnd.github.v3+json',
+              'Authorization': `Bearer ${pat}`
+            };
+
+            // Step A: Retrieve current file SHA
+            const getRes = await fetch(endpoint, { headers });
+            if (!getRes.ok) {
+              if (getRes.status === 401 || getRes.status === 403) {
+                throw new Error('Token không hợp lệ hoặc không có quyền truy cập repo! Vui lòng kiểm tra lại GitHub Token.');
+              }
+              throw new Error(`Lỗi kiểm tra tệp từ GitHub (Mã lỗi ${getRes.status})`);
+            }
+
+            const getData = await getRes.json();
+            const currentSha = getData.sha;
+
+            // Step B: Collect current data & convert to base64
+            const data = collectFormData();
+            const fileString = formatContentJS(data);
+            const base64Content = utf8ToBase64(fileString);
+
+            // Step C: Send PUT commit to GitHub
+            const putRes = await fetch(endpoint, {
+              method: 'PUT',
+              headers: {
+                ...headers,
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                message: 'Update portfolio content via Admin Studio',
+                content: base64Content,
+                sha: currentSha
+              })
+            });
+
+            if (!putRes.ok) {
+              const errJson = await putRes.json().catch(() => ({}));
+              throw new Error(errJson.message || `Lỗi cập nhật GitHub (Mã ${putRes.status})`);
+            }
+
+            // Also synchronize local storage
+            localStorage.setItem(STORAGE_KEY_OVERRIDE, JSON.stringify(data));
+
+            showBanner('🎉 Xuất bản lên GitHub thành công! GitHub Pages sẽ cập nhật toàn cầu trong khoảng 30–60 giây.');
+          } catch (err) {
+            console.error('Publish error:', err);
+            showBanner(`❌ Lỗi xuất bản: ${err.message}`, 'error');
+          } finally {
+            publishBtn.disabled = false;
+            publishBtn.innerHTML = originalText;
+            if (window.lucide) window.lucide.createIcons();
+          }
+        });
+      }
+
+    });
+  </script>
+</body>
+</html>
+
