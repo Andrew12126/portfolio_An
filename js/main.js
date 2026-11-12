@@ -520,7 +520,7 @@ const AcademicCvModalController = (() => {
           </div>
           <div class="font-mono text-xs text-[#4B5563] dark:text-slate-300 sm:text-right space-y-0.5">
             <div>Bien Hoa City, Dong Nai, Vietnam</div>
-            <div>Email: nguyenvanan722006@gmail.com | Tel: +84 336 554 428</div>
+            <div>Email: nguyenvanan722006@gmail.com</div>
             <div>GitHub: github.com/Andrew12126</div>
           </div>
         </div>
